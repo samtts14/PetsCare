@@ -12,16 +12,17 @@ class _LoginState extends State<Login>{
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Column(
+      body: SingleChildScrollView(
+        child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Container(
-            height: 400,
+            height: 250,
             child: Stack(
               children: <Widget>[
                 Positioned(
                   top: -30,
-                  height: 350,
+                  height: 100,
                   width: width,
                   child: Container(
                     decoration: BoxDecoration(
@@ -33,7 +34,7 @@ class _LoginState extends State<Login>{
                   ),
                 ),
                  Positioned(
-                   height: 350,
+                   height: 200,
                    width: width + 20,
                   child: Container(
                     decoration: BoxDecoration(
@@ -120,6 +121,7 @@ class _LoginState extends State<Login>{
           )
         ],
       ),
+      )
     );
   }
 }
