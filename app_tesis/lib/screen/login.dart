@@ -17,25 +17,13 @@ class _LoginState extends State<Login>{
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Container(
-              height: 400,
+              height: 200,
               child: Stack(
                 children: <Widget>[
                   Positioned(
                     top: -30,
-                    height: 350,
+                    height: 180,
                     width: width,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage('images/img5.jpg'),
-                          fit: BoxFit.fill
-                        ),
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    height: 350,
-                    width: width + 20,
                     child: Container(
                       decoration: BoxDecoration(
                         image: DecorationImage(
