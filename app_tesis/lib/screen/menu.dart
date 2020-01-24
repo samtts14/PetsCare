@@ -22,11 +22,11 @@ class MenuState extends State<Menu> {
         //AssetImage('images/img4.jpg'),
         AssetImage('images/img5.jpg'),
       ],
-      autoplay: true,//mover img automatico o manual
+      autoplay: true,//mover img automatico o manual 
       animationCurve: Curves.fastOutSlowIn,
-      animationDuration: Duration(milliseconds: 1000),
-      dotSize: 0,//tamano circulodebajo de imagenes
-      indicatorBgPadding: 0,//tamano de franja debajo de las imagenes
+      animationDuration: Duration(seconds: 2),
+      dotSize: 4.5,//tamano circulodebajo de imagenes
+      indicatorBgPadding: 3,//tamano de franja debajo de las imagenes
     ),
   );
 

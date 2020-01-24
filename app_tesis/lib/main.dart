@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget{
 
   Widget build(BuildContext context){
     return new MaterialApp(
-      home: Login2(),
+      home: Menu(),
       // theme: new ThemeData(
         // primarySwitch: Colors.blue
       // )
