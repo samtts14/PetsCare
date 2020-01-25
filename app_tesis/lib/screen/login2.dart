@@ -34,7 +34,7 @@ class _LoginState extends State<Login2> {
                 children: <Widget>[
                   FadeAnimation(1, Text("Login", style: TextStyle(color: Colors.white, fontSize: 40),)),
                   SizedBox(height: 10,),
-                  FadeAnimation(1.3, Text("Bienvenido nuevamente", style: TextStyle(color: Colors.white, fontSize: 18),)),
+                  FadeAnimation(1.3, Text("Bienvenido nuevamente!", style: TextStyle(color: Colors.white, fontSize: 18),)),
                 ],
               ),
             ),
@@ -69,7 +69,7 @@ class _LoginState extends State<Login2> {
                               ),
                               child: TextField(
                                 decoration: InputDecoration(
-                                  hintText: "Email o numero de teléfono",
+                                  hintText: "Email o numero de teléfono.",
                                   hintStyle: TextStyle(color: Colors.grey),
                                   border: InputBorder.none
                                 ),
@@ -106,7 +106,7 @@ class _LoginState extends State<Login2> {
                         ),
                       )),
                       SizedBox(height: 50,),
-                      FadeAnimation(1.7, Text("Continuar con una red social", style: TextStyle(color: Colors.grey),)),
+                      FadeAnimation(1.7, Text("Continuar con una red social.", style: TextStyle(color: Colors.grey),)),
                       SizedBox(height: 30,),
                       Row(
                         children: <Widget>[
