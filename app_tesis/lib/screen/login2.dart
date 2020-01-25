@@ -34,7 +34,7 @@ class _LoginState extends State<Login2> {
                 children: <Widget>[
                   FadeAnimation(1, Text("Login", style: TextStyle(color: Colors.white, fontSize: 40),)),
                   SizedBox(height: 10,),
-                  FadeAnimation(1.3, Text("Bienvenido denuevo", style: TextStyle(color: Colors.white, fontSize: 18),)),
+                  FadeAnimation(1.3, Text("Bienvenido nuevamente", style: TextStyle(color: Colors.white, fontSize: 18),)),
                 ],
               ),
             ),
@@ -69,7 +69,7 @@ class _LoginState extends State<Login2> {
                               ),
                               child: TextField(
                                 decoration: InputDecoration(
-                                  hintText: "Email o numero de telefono",
+                                  hintText: "Email o numero de teléfono",
                                   hintStyle: TextStyle(color: Colors.grey),
                                   border: InputBorder.none
                                 ),
@@ -82,7 +82,7 @@ class _LoginState extends State<Login2> {
                               ),
                               child: TextField(
                                 decoration: InputDecoration(
-                                  hintText: "Contrasena",
+                                  hintText: "Contraseña",
                                   hintStyle: TextStyle(color: Colors.grey),
                                   border: InputBorder.none
                                 ),
@@ -92,7 +92,7 @@ class _LoginState extends State<Login2> {
                         ),
                       )),
                       SizedBox(height: 40,),
-                      FadeAnimation(1.5, Text("Olvidaste la contrasena?", style: TextStyle(color: Colors.grey),)),
+                      FadeAnimation(1.5, Text("Olvidaste la contraseña?", style: TextStyle(color: Colors.grey),)),
                       SizedBox(height: 40,),
                       FadeAnimation(1.6, Container(
                         height: 50,
@@ -106,7 +106,7 @@ class _LoginState extends State<Login2> {
                         ),
                       )),
                       SizedBox(height: 50,),
-                      FadeAnimation(1.7, Text("Continue with social media", style: TextStyle(color: Colors.grey),)),
+                      FadeAnimation(1.7, Text("Continuar con una red social", style: TextStyle(color: Colors.grey),)),
                       SizedBox(height: 30,),
                       Row(
                         children: <Widget>[
@@ -128,10 +128,10 @@ class _LoginState extends State<Login2> {
                               height: 50,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(50),
-                                color: Colors.black
+                                color: Colors.grey
                               ),
                               child: Center(
-                                child: Text("Github", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+                                child: Text("Google", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
                               ),
                             )),
                           )
