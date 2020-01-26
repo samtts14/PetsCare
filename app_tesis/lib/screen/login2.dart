@@ -17,9 +17,9 @@ class _LoginState extends State<Login2> {
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             colors: [
-              Colors.orange[900],
-              Colors.orange[800],
-              Colors.orange[400]
+              Colors.orange[900],// color 1 parte arriba de login
+              Colors.orange[800],// color 2
+              Colors.orange[400]// color 3
             ]
           )
         ),
@@ -53,10 +53,10 @@ class _LoginState extends State<Login2> {
                       FadeAnimation(1.4, Container(
                         decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(15),// borde del box de pass y correo
                           boxShadow: [BoxShadow(
-                            color: Color.fromRGBO(225, 95, 27, .3),
-                            blurRadius: 20,
+                            color: Color.fromRGBO(225, 95, 27, .3),// color de sombra detras del box de passwor y correo.
+                            blurRadius: 20, // difuminacion de sombra
                             offset: Offset(0, 10)
                           )]
                         ),
@@ -99,7 +99,7 @@ class _LoginState extends State<Login2> {
                         margin: EdgeInsets.symmetric(horizontal: 50),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(50),
-                          color: Colors.orange[900]
+                          color: Colors.orange[900] // color de boton de login
                         ),
                         child: Center(
                           child: Text("Login", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
