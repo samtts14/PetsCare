@@ -1,13 +1,13 @@
 import 'package:app_tesis/animations/FadeAnimation.dart';
-//import 'package:app_tesis/screen/menu.dart';
+import 'package:app_tesis/screen/menu.dart';
 import 'package:flutter/material.dart';
 
-class Login2 extends StatefulWidget{
+class SignIn extends StatefulWidget{
    @override
-   _LoginState createState() => new _LoginState();
+   _SignIn createState() => new _SignIn();
 }
 
-class _LoginState extends State<Login2> {
+class _SignIn extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,9 +17,9 @@ class _LoginState extends State<Login2> {
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             colors: [
-              Colors.orange[900],// color 1 parte arriba de login
+              Colors.orange[400],// color 1 parte arriba de login
               Colors.orange[800],// color 2
-              Colors.orange[400]// color 3
+              Colors.orange[900]// color 3
             ]
           )
         ),
@@ -32,9 +32,9 @@ class _LoginState extends State<Login2> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  FadeAnimation(1, Text("Login", style: TextStyle(color: Colors.white, fontSize: 40),)),
+                  FadeAnimation(1, Text("Sign in", style: TextStyle(color: Colors.white, fontSize: 40),)),
                   SizedBox(height: 10,),
-                  FadeAnimation(1.3, Text("Bienvenido nuevamente!", style: TextStyle(color: Colors.white, fontSize: 18),)),
+                  FadeAnimation(1.3, Text("Registrate con nosotros!", style: TextStyle(color: Colors.white, fontSize: 18),)),
                 ],
               ),
             ),
@@ -62,6 +62,21 @@ class _LoginState extends State<Login2> {
                         ),
                         child: Column(
                           children: <Widget>[
+                            //Nombre de usuario
+                             Container(
+                              padding: EdgeInsets.all(10),
+                              decoration: BoxDecoration(
+                                border: Border(bottom: BorderSide(color: Colors.grey[200]))
+                              ),
+                              child: TextField(
+                                decoration: InputDecoration(
+                                  hintText: "Nombre de usuario",
+                                  hintStyle: TextStyle(color: Colors.grey),
+                                  border: InputBorder.none
+                                ),
+                              ),
+                            ),
+                            // colocar e-mail
                             Container(
                               padding: EdgeInsets.all(10),
                               decoration: BoxDecoration(
@@ -69,7 +84,7 @@ class _LoginState extends State<Login2> {
                               ),
                               child: TextField(
                                 decoration: InputDecoration(
-                                  hintText: "E-mail.",
+                                  hintText: "E-mail",
                                   hintStyle: TextStyle(color: Colors.grey),
                                   border: InputBorder.none
                                 ),
@@ -88,12 +103,26 @@ class _LoginState extends State<Login2> {
                                 ),
                               ),
                             ),
+                                //Comprobar contraseña
+                             Container(
+                              padding: EdgeInsets.all(10),
+                              decoration: BoxDecoration(
+                                border: Border(bottom: BorderSide(color: Colors.grey[200]))
+                              ),
+                              child: TextField(
+                                decoration: InputDecoration(
+                                  hintText: "Confirmar Contraseña",
+                                  hintStyle: TextStyle(color: Colors.grey),
+                                  border: InputBorder.none
+                                ),
+                              ),
+                            ),
                           ],
                         ),
                       )),
                       SizedBox(height: 40,),
-                      FadeAnimation(1.5, Text("Olvidaste la contraseña?", style: TextStyle(color: Colors.grey),)),
-                      SizedBox(height: 40,),
+                     // FadeAnimation(1.5, Text("Olvidaste la contraseña?", style: TextStyle(color: Colors.grey),)),
+                      SizedBox(height: 0,),
                       FadeAnimation(1.6, Container(
                         height: 50,
                         margin: EdgeInsets.symmetric(horizontal: 50),
@@ -102,16 +131,16 @@ class _LoginState extends State<Login2> {
                           color: Colors.orange[900] // color de boton de login
                         ),
                         child: Center(
-                          child: Text("Login", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+                          child: Text("Aceptar ", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
                         ),
                       )),
-                      SizedBox(height: 50,),
+                      SizedBox(height: 20,),
                       FadeAnimation(1.7, Text("Continuar con una red social.", style: TextStyle(color: Colors.grey),)),
-                      SizedBox(height: 30,),
+                      SizedBox(height: 20,),
                       Row(
                         children: <Widget>[
                           Expanded(
-                            child: FadeAnimation(1.8, Container(
+                            child: FadeAnimation(1.9, Container(
                               height: 50,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(50),
@@ -122,7 +151,7 @@ class _LoginState extends State<Login2> {
                               ),
                             )),
                           ),
-                          SizedBox(width: 30,),
+                          SizedBox(width: 50,),
                           Expanded(
                             child: FadeAnimation(1.9, Container(
                               height: 50,
