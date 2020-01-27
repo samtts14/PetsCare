@@ -1,3 +1,4 @@
+import 'package:app_tesis/screen/login.dart';
 import 'package:flutter/material.dart';
 import 'package:app_tesis/screen/menu.dart';
 
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget{
 
   Widget build(BuildContext context){
     return new MaterialApp(
-      home: Menu(),
+      home: Login(),
       // theme: new ThemeData(
         // primarySwitch: Colors.blue
       // )
