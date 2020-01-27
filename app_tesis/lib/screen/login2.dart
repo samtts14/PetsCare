@@ -32,7 +32,7 @@ class _LoginState extends State<Login2> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  FadeAnimation(1, Text("Login", style: TextStyle(color: Colors.white, fontSize: 40),)),
+                  FadeAnimation(1, Text("Log in", style: TextStyle(color: Colors.white, fontSize: 40),)),
                   SizedBox(height: 10,),
                   FadeAnimation(1.3, Text("Bienvenido nuevamente!", style: TextStyle(color: Colors.white, fontSize: 18),)),
                 ],

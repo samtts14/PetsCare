@@ -7,6 +7,6 @@ class Wrapper extends StatelessWidget {
   Widget build(BuildContext context) {
     
     // Retorna el menu o el widget de autenticacion.
-    return Menu();
+    return Authenticate();
   }
 }

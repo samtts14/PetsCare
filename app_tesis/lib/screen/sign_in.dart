@@ -1,13 +1,16 @@
 import 'package:app_tesis/animations/FadeAnimation.dart';
-import 'package:app_tesis/screen/menu.dart';
+import 'package:app_tesis/screen/auth.dart';
 import 'package:flutter/material.dart';
 
 class SignIn extends StatefulWidget{
    @override
-   _SignIn createState() => new _SignIn();
+   _SignInState createState() => new _SignInState();
 }
 
-class _SignIn extends State<SignIn> {
+class _SignInState extends State<SignIn> {
+
+  final AuthService _authService = AuthService();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +35,7 @@ class _SignIn extends State<SignIn> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  FadeAnimation(1, Text("Sign in", style: TextStyle(color: Colors.white, fontSize: 40),)),
+                  FadeAnimation(1, Text("Sign up", style: TextStyle(color: Colors.white, fontSize: 40),)),
                   SizedBox(height: 10,),
                   FadeAnimation(1.3, Text("Registrate con nosotros!", style: TextStyle(color: Colors.white, fontSize: 18),)),
                 ],
@@ -125,13 +128,26 @@ class _SignIn extends State<SignIn> {
                       SizedBox(height: 0,),
                       FadeAnimation(1.6, Container(
                         height: 50,
-                        margin: EdgeInsets.symmetric(horizontal: 50),
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(50),
-                          color: Colors.orange[900] // color de boton de login
                         ),
-                        child: Center(
+                        width: 150,// tamaño del boton aceptar
+                        child: RaisedButton(
+                         shape: RoundedRectangleBorder(// bordes
+                          borderRadius: new BorderRadius.circular(50),
+                          //side: BorderSide(color: Colors.red)
+                          ),
+                    
+                          color: Colors.orange[900],//color del boton
                           child: Text("Aceptar ", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+                          onPressed: () async{//config boton sign in anon
+                             dynamic result = await _authService.signInAnon(); 
+                             if (result == null){
+                               print("Error al iniciar sesión");
+                             } else{
+                               print("Sesión iniciada");
+                               print(result);
+                             }
+                          }
                         ),
                       )),
                       SizedBox(height: 20,),
