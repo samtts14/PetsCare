@@ -96,13 +96,19 @@ class _LoginState extends State<Login2> {
                       SizedBox(height: 40,),
                       FadeAnimation(1.6, Container(
                         height: 50,
-                        margin: EdgeInsets.symmetric(horizontal: 50),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(50),
-                          color: Colors.orange[900] // color de boton de login
+                        decoration: BoxDecoration( 
                         ),
-                        child: Center(
+                        width: 150,
+                        child: RaisedButton( //Boton log in.
+                           shape: RoundedRectangleBorder(// bordes
+                          borderRadius: new BorderRadius.circular(50),
+                          //side: BorderSide(color: Colors.red)
+                          ),
+                          color: Colors.orange[900], // color de boton de login
                           child: Text("Login", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+                          onPressed: () async{
+                            //Boton log in
+                          },
                         ),
                       )),
                       SizedBox(height: 50,),
