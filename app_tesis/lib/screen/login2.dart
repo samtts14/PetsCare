@@ -1,4 +1,5 @@
 import 'package:app_tesis/animations/FadeAnimation.dart';
+import 'package:app_tesis/screen/sign_in.dart';
 //import 'package:app_tesis/screen/menu.dart';
 import 'package:flutter/material.dart';
 
@@ -112,32 +113,48 @@ class _LoginState extends State<Login2> {
                         ),
                       )),
                       SizedBox(height: 50,),
-                      FadeAnimation(1.7, Text("Continuar con una red social.", style: TextStyle(color: Colors.grey),)),
+                      FadeAnimation(1.7, Text("No tienes cuenta?", style: TextStyle(color: Colors.grey),)),
                       SizedBox(height: 30,),
                       Row(
                         children: <Widget>[
                           Expanded(
-                            child: FadeAnimation(1.8, Container(
+                            child: FadeAnimation(1.9, Container(
                               height: 50,
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(50),
-                                color: Colors.blue
                               ),
-                              child: Center(
-                                child: Text("Facebook", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+                              width: 150,
+                              child: RaisedButton(
+                                 shape: RoundedRectangleBorder(// bordes
+                                 borderRadius: new BorderRadius.circular(50),
+                                 //side: BorderSide(color: Colors.red)
+                                  ),
+                                  color: Colors.orange[900],
+                                  child: Text("Sign Up", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+                                  onPressed: (){
+                                    Navigator.push(
+                                      context, 
+                                      MaterialPageRoute(builder: (context) => SignIn()));
+                                },
                               ),
                             )),
                           ),
-                          SizedBox(width: 30,),
+                          SizedBox(width: 50,),
                           Expanded(
                             child: FadeAnimation(1.9, Container(
                               height: 50,
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(50),
-                                color: Colors.grey
                               ),
-                              child: Center(
+                              width: 150,
+                                child: RaisedButton(
+                                shape: RoundedRectangleBorder(// bordes
+                                 borderRadius: new BorderRadius.circular(50),
+                                 //side: BorderSide(color: Colors.red)
+                                  ),
+                                color: Colors.grey,
                                 child: Text("Google", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+                                onPressed: () async{
+                                  
+                                },
                               ),
                             )),
                           )
