@@ -1,3 +1,4 @@
+import 'package:app_tesis/screen/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 
@@ -10,6 +11,9 @@ class Menu extends StatefulWidget{
 
 
 class MenuState extends State<Menu> {
+  
+  final AuthService _auth = AuthService();
+  
   @override
   Widget build(BuildContext context) {
   Widget  imgMovimiento = new Container(//imagenes en movimiento
@@ -102,10 +106,13 @@ class MenuState extends State<Menu> {
             Divider(),
 
              InkWell(
-              onTap: (){},//Boton home menu lateral
+              onTap: () async {
+                await _auth.signOut();
+              },//Boton home menu lateral
               child: ListTile(
                 title: Text('Cerrar sesión'),
                 leading: Icon(Icons.power_settings_new, color: Colors.red[300],),
+                
               ),
             ),
           ],

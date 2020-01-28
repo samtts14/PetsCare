@@ -1,9 +1,11 @@
 //import 'package:app_tesis/screen/login2.dart';
-import 'package:app_tesis/screen/login2.dart';
+import 'package:app_tesis/models/user.dart';
+import 'package:app_tesis/screen/auth.dart';
+import 'package:app_tesis/screen/authenticate/login2.dart';
 import 'package:app_tesis/screen/wrapper.dart';
 import 'package:flutter/material.dart';
-import 'package:app_tesis/screen/sign_in.dart';
-//import 'package:app_tesis/screen/menu.dart';
+import 'package:provider/provider.dart';
+
 
 
 void main(){
@@ -16,9 +18,12 @@ class MyApp extends StatelessWidget{
   @override
 
   Widget build(BuildContext context){
-    return new MaterialApp(
-      home: Login2(),
-     
+    return StreamProvider<User>.value(
+      value: AuthService().user,
+
+      child: MaterialApp(
+        home: Wrapper(),
+      ),
     );
   }
 }
