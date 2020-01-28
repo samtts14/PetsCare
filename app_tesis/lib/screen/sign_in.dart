@@ -136,7 +136,6 @@ class _SignInState extends State<SignIn> {
                           borderRadius: new BorderRadius.circular(50),
                           //side: BorderSide(color: Colors.red)
                           ),
-                    
                           color: Colors.orange[900],//color del boton
                           child: Text("Aceptar ", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
                           onPressed: () async{//config boton sign in anon
@@ -162,8 +161,17 @@ class _SignInState extends State<SignIn> {
                                 borderRadius: BorderRadius.circular(50),
                                 color: Colors.blue
                               ),
-                              child: Center(
-                                child: Text("Facebook", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+                              width: 150,
+                              child: RaisedButton(
+                                 shape: RoundedRectangleBorder(// bordes
+                                 borderRadius: new BorderRadius.circular(50),
+                                 //side: BorderSide(color: Colors.red)
+                                  ),
+                                  color: Colors.orange[900],
+                                  child: Text("Sign Up", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+                                  onPressed: () async{
+
+                                },
                               ),
                             )),
                           ),
@@ -173,10 +181,19 @@ class _SignInState extends State<SignIn> {
                               height: 50,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(50),
-                                color: Colors.grey
+                                
                               ),
-                              child: Center(
+                              width: 150,
+                              child: RaisedButton(
+                                shape: RoundedRectangleBorder(// bordes
+                                borderRadius: new BorderRadius.circular(50),
+                                 //side: BorderSide(color: Colors.red)
+                                  ),
+                                color: Colors.grey,
                                 child: Text("Google", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+                                onPressed: () async{
+
+                                },
                               ),
                             )),
                           )
@@ -193,3 +210,4 @@ class _SignInState extends State<SignIn> {
     );
   }
 }
+
