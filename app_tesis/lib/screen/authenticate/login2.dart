@@ -1,6 +1,6 @@
 import 'package:app_tesis/animations/FadeAnimation.dart';
 import 'package:app_tesis/screen/auth.dart';
-import 'package:app_tesis/screen/authenticate/sign_in.dart';
+import 'package:app_tesis/screen/authenticate/sign_up.dart';
 import 'package:app_tesis/shared/constant.dart';
 //import 'package:app_tesis/screen/menu.dart';
 import 'package:flutter/material.dart';
@@ -158,7 +158,7 @@ class _LoginState extends State<Login2> {
                                       onPressed: (){
                                         Navigator.push(
                                           context, 
-                                          MaterialPageRoute(builder: (context) => SignIn()));
+                                          MaterialPageRoute(builder: (context) => SingUp()));
                                     },
                                   ),
                                 )),

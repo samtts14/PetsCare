@@ -2,15 +2,16 @@ import 'package:app_tesis/animations/FadeAnimation.dart';
 import 'package:app_tesis/screen/auth.dart';
 import 'package:flutter/material.dart';
 
-class SignIn extends StatefulWidget{
+
+class SingUp extends StatefulWidget{
    @override
-   _SignInState createState() => new _SignInState();
+   _SingUpState createState() => new _SingUpState();
 }
 
-class _SignInState extends State<SignIn> {
+class _SingUpState extends State<SingUp> {
 
   final AuthService _auth = AuthService();
-  final _formKey = GlobalKey<FormState>();
+  //final _formKey = GlobalKey<FormState>();
   bool loading = false;
   
   // text field state
@@ -207,7 +208,7 @@ class _SignInState extends State<SignIn> {
                                   color: Colors.grey,
                                   child: Text("Google", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
                                   onPressed: () async{
-
+                                   
                                   },
                                 ),
                               )),

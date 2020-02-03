@@ -1,22 +1,21 @@
 import 'package:app_tesis/screen/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_pro/carousel_pro.dart';
+import 'package:provider/single_child_widget.dart';
 
 
 
-class Menu extends StatefulWidget{
-   @override
-   State createState() => new MenuState();
+// Menu principal
+class MenuCentral extends StatefulWidget {
+  @override
+  _MenuCentralState createState() => _MenuCentralState();
 }
 
-
-class MenuState extends State<Menu> {
-  
-  final AuthService _auth = AuthService();
-  
+class _MenuCentralState extends State<MenuCentral>{
+   
   @override
   Widget build(BuildContext context) {
-  Widget  imgMovimiento = new Container(//imagenes en movimiento
+    Widget  imgMovimiento = new Container(//imagenes en movimiento
     height: 200.0,
     child:  new Carousel(
       boxFit: BoxFit.cover,
@@ -30,22 +29,24 @@ class MenuState extends State<Menu> {
       animationCurve: Curves.fastOutSlowIn,
       animationDuration: Duration(seconds: 2),
       dotSize: 4.5,//tamano circulodebajo de imagenes
-      indicatorBgPadding: 3,//tamano de franja debajo de las imagenes
+      indicatorBgPadding: 3,//tamano de franja debajo de las imagenes  
     ),
+    
   );
-
     return Scaffold(
-      appBar: new AppBar(
+       appBar: new AppBar(
         backgroundColor: Colors.orange[200], //Color del bacground del titulo
         title:Text('Animal App') ,// Titulo de la app en el home page
         actions: <Widget>[
           new IconButton(icon: Icon(Icons.search, color: Colors.black87,), onPressed: (){})//boton de buscar
         ],
       ),
-
-      drawer: new Drawer(//menu lateral
+//--
+        drawer: new Drawer(//menu lateral
         child: new ListView(
           children: <Widget>[
+           // imgMovimiento,
+         
 //header   
           new UserAccountsDrawerHeader(
             accountName: Text('Paquito'), 
@@ -107,7 +108,7 @@ class MenuState extends State<Menu> {
 
              InkWell(
               onTap: () async {
-                await _auth.signOut();
+                //await _auth.signOut();
               },//Boton home menu lateral
               child: ListTile(
                 title: Text('Cerrar sesión'),
@@ -118,12 +119,99 @@ class MenuState extends State<Menu> {
           ],
         ),
       ),
-
-      body: new ListView(
+      
+      body: Column(
         children: <Widget>[
-          imgMovimiento
+          imgMovimiento,
+          SizedBox(
+            height: 20,
+          ),
+          new Expanded(
+            child: GridView.count(         
+            crossAxisSpacing: 9,// espacio vertical entre botones de menu
+            crossAxisCount: 3, //numero de columnas del grid
+            mainAxisSpacing: 9,// espacio horizontal entre botones de menu
+            padding: const EdgeInsets.all(10), // separa los botones del borde de la pantalla.
+            children: <Widget>[
+              Container(
+               child: RaisedButton(
+                    shape: RoundedRectangleBorder(// bordes
+                    borderRadius: new BorderRadius.circular(20),
+                    //side: BorderSide(color: Colors.red)
+                    ),
+                    color: Colors.grey,
+                    child: Text("Google", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+                    onPressed: () async{             
+                    },
+                  ),
+              ),
+              Container(
+               child: RaisedButton(
+                    shape: RoundedRectangleBorder(// bordes
+                    borderRadius: new BorderRadius.circular(20),
+                    //side: BorderSide(color: Colors.red)
+                    ),
+                    color: Colors.grey,
+                    child: Text("Google", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+                    onPressed: () async{             
+                    },
+                  ),
+              ),
+              Container(
+               child: RaisedButton(
+                    shape: RoundedRectangleBorder(// bordes
+                    borderRadius: new BorderRadius.circular(20),
+                    //side: BorderSide(color: Colors.red)
+                    ),
+                    color: Colors.grey,
+                    child: Text("Google", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+                    onPressed: () async{             
+                    },
+                  ),
+              ),
+              Container(
+               child: RaisedButton(
+                    shape: RoundedRectangleBorder(// bordes
+                    borderRadius: new BorderRadius.circular(20),
+                    //side: BorderSide(color: Colors.red)
+                    ),
+                    color: Colors.grey,
+                    child: Text("Google", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+                    onPressed: () async{             
+                    },
+                  ),
+              ),
+              Container(
+               child: RaisedButton(
+                    shape: RoundedRectangleBorder(// bordes
+                    borderRadius: new BorderRadius.circular(20),
+                    //side: BorderSide(color: Colors.red)
+                    ),
+                    color: Colors.grey,
+                    child: Text("Google", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+                    onPressed: () async{             
+                    },
+                  ),
+              ),
+              Container(
+               child: RaisedButton(
+                    shape: RoundedRectangleBorder(// bordes
+                    borderRadius: new BorderRadius.circular(20),
+                    //side: BorderSide(color: Colors.red)
+                    ),
+                    color: Colors.grey,
+                    child: Text("Google", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+                    onPressed: () async{             
+                    },
+                  ),
+              ),
+             
+             ]
+           ),
+          )
         ],
       )
     );
   }
 }
+
