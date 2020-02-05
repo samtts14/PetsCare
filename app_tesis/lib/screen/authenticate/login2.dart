@@ -35,9 +35,9 @@ class _LoginState extends State<Login2> {
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             colors: [
-              Colors.orange[900],// color 1 parte arriba de login
-              Colors.orange[800],// color 2
-              Colors.orange[400]// color 3
+              Colors.yellow[800],// color 1 parte arriba de login
+              Colors.yellow[600],// color 2
+              Colors.yellow[200]// color 3
             ]
           )
         ),
@@ -50,9 +50,9 @@ class _LoginState extends State<Login2> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  FadeAnimation(1, Text("Log in", style: TextStyle(color: Colors.white, fontSize: 40),)),
+                  FadeAnimation(1, Text("Log in", style: TextStyle(color: Colors.black, fontSize: 40),)),
                   SizedBox(height: 10,),
-                  FadeAnimation(1.3, Text("Bienvenido nuevamente!", style: TextStyle(color: Colors.white, fontSize: 18),)),
+                  FadeAnimation(1.3, Text("Bienvenido nuevamente!", style: TextStyle(color: Colors.black, fontSize: 18),)),
                 ],
               ),
             ),
@@ -74,11 +74,11 @@ class _LoginState extends State<Login2> {
                           FadeAnimation(1.4, Container(
                             decoration: BoxDecoration(
                               color: Colors.white,
-                              borderRadius: BorderRadius.circular(15),// borde del box de pass y correo
+                              borderRadius: BorderRadius.circular(10),// borde del box de pass y correo
                               boxShadow: [BoxShadow(
-                                color: Color.fromRGBO(225, 95, 27, .3),// color de sombra detras del box de passwor y correo.
-                                blurRadius: 20, // difuminacion de sombra
-                                offset: Offset(0, 10)
+                                color: Colors.brown[100],// color de sombra detras del box de passwor y correo.
+                                blurRadius: 10, // difuminacion de sombra
+                                offset: Offset(15, 5)
                               )]
                             ),
                             child: Column(
@@ -116,7 +116,7 @@ class _LoginState extends State<Login2> {
                               borderRadius: new BorderRadius.circular(50),
                               //side: BorderSide(color: Colors.red)
                               ),
-                              color: Colors.orange[900], // color de boton de login
+                              color: Colors.brown[500], // color de boton de login
                               child: Text("Login", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
                               onPressed: () async{
                                 if(_formKey.currentState.validate()){
@@ -151,9 +151,9 @@ class _LoginState extends State<Login2> {
                                   child: RaisedButton(
                                      shape: RoundedRectangleBorder(// bordes
                                      borderRadius: new BorderRadius.circular(50),
-                                     //side: BorderSide(color: Colors.red)
+                                     //side: BorderSide(color: Colors.brown[600])
                                       ),
-                                      color: Colors.orange[900],
+                                      color: Colors.brown[500],
                                       child: Text("Sign Up", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
                                       onPressed: (){
                                         Navigator.push(
@@ -173,9 +173,9 @@ class _LoginState extends State<Login2> {
                                     child: RaisedButton(
                                     shape: RoundedRectangleBorder(// bordes
                                      borderRadius: new BorderRadius.circular(50),
-                                     //side: BorderSide(color: Colors.red)
+                                     //side: BorderSide(color: Colors.brown[600])
                                       ),
-                                    color: Colors.grey,
+                                    color: Colors.grey[400],
                                     child: Text("Google", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
                                     onPressed: () async{
                                       

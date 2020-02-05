@@ -30,9 +30,9 @@ class _SingUpState extends State<SingUp> {
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             colors: [
-              Colors.orange[400],// color 1 parte arriba de login
-              Colors.orange[800],// color 2
-              Colors.orange[900]// color 3
+              Colors.yellow[600],// color 1 parte arriba de login
+              Colors.yellow[800],// color 2
+              Colors.yellow[900]// color 3
             ]
           )
         ),
@@ -45,9 +45,9 @@ class _SingUpState extends State<SingUp> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  FadeAnimation(1, Text("Sign up", style: TextStyle(color: Colors.white, fontSize: 40),)),
+                  FadeAnimation(1, Text("Sign up", style: TextStyle(color: Colors.black, fontSize: 40),)),
                   SizedBox(height: 10,),
-                  FadeAnimation(1.3, Text("Registrate con nosotros!", style: TextStyle(color: Colors.white, fontSize: 18),)),
+                  FadeAnimation(1.3, Text("Registrate con nosotros!", style: TextStyle(color: Colors.black, fontSize: 18),)),
                 ],
               ),
             ),
@@ -69,7 +69,7 @@ class _SingUpState extends State<SingUp> {
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(15),// borde del box de pass y correo
                             boxShadow: [BoxShadow(
-                              color: Color.fromRGBO(225, 95, 27, .3),// color de sombra detras del box de passwor y correo.
+                              color: Colors.brown[100],// color de sombra detras del box de passwor y correo.
                               blurRadius: 20, // difuminacion de sombra
                               offset: Offset(0, 10)
                             )]
@@ -141,7 +141,7 @@ class _SingUpState extends State<SingUp> {
                             borderRadius: new BorderRadius.circular(50),
                             //side: BorderSide(color: Colors.red)
                             ),
-                            color: Colors.orange[900],//color del boton
+                            color: Colors.brown[500], //color del boton
                             child: Text("Aceptar ", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
                             onPressed: () async{//config boton sign in anon
                                dynamic result = await _auth.registerWithEmailAndPassword(email, password); 
@@ -173,7 +173,7 @@ class _SingUpState extends State<SingUp> {
                                    borderRadius: new BorderRadius.circular(50),
                                    //side: BorderSide(color: Colors.red)
                                     ),
-                                    color: Colors.orange[900],
+                                    color: Colors.brown[500], 
                                     child: Text("Sign Up", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
                                     onPressed: () async{
 
