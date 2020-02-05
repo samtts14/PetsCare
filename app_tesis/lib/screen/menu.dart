@@ -2,6 +2,7 @@ import 'package:app_tesis/screen/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:provider/single_child_widget.dart';
+import 'package:line_awesome_icons/line_awesome_icons.dart';
 
 
 
@@ -12,6 +13,7 @@ class MenuCentral extends StatefulWidget {
 }
 
 class _MenuCentralState extends State<MenuCentral>{
+   final AuthService _auth = AuthService();
    
   @override
   Widget build(BuildContext context) {
@@ -35,7 +37,7 @@ class _MenuCentralState extends State<MenuCentral>{
   );
     return Scaffold(
        appBar: new AppBar(
-        backgroundColor: Colors.orange[200], //Color del bacground del titulo
+        backgroundColor: Colors.brown[600], //Color del bacground del titulo
         title:Text('Animal App') ,// Titulo de la app en el home page
         actions: <Widget>[
           new IconButton(icon: Icon(Icons.search, color: Colors.black87,), onPressed: (){})//boton de buscar
@@ -59,7 +61,7 @@ class _MenuCentralState extends State<MenuCentral>{
             ),
 
             decoration: new BoxDecoration(//color menu lateral
-              color: Colors.purple[300]
+              color: Colors.brown[600]
             ),
             ),   
             // Boddy
@@ -108,7 +110,7 @@ class _MenuCentralState extends State<MenuCentral>{
 
              InkWell(
               onTap: () async {
-                //await _auth.signOut();
+                await _auth.signOut();
               },//Boton home menu lateral
               child: ListTile(
                 title: Text('Cerrar sesión'),
@@ -133,74 +135,80 @@ class _MenuCentralState extends State<MenuCentral>{
             mainAxisSpacing: 9,// espacio horizontal entre botones de menu
             padding: const EdgeInsets.all(10), // separa los botones del borde de la pantalla.
             children: <Widget>[
-              Container(
-               child: RaisedButton(
+                Container(
+               child: RaisedButton.icon(
+                    icon: Icon(Icons.pets, size: 70, color: Colors.grey[900],),
+                    label: Text(""),
                     shape: RoundedRectangleBorder(// bordes
                     borderRadius: new BorderRadius.circular(20),
-                    //side: BorderSide(color: Colors.red)
+                   // side: BorderSide(color: Colors.red)
                     ),
-                    color: Colors.grey,
-                    child: Text("Google", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+                    color: Colors.grey[200],
+                    onPressed: () async{             
+                    },
+                  ),
+              ),
+               Container(
+               child: RaisedButton.icon(
+                    icon: Icon(Icons.note, color: Colors.brown[400]),
+                    label: Text("este"),
+                    shape: RoundedRectangleBorder(// bordes
+                    borderRadius: new BorderRadius.circular(20),
+                   // side: BorderSide(color: Colors.red)
+                    ),
+                    color: Colors.grey[200],
+                    onPressed: () async{             
+                    },
+                  ),
+              ),
+               Container(
+               child: RaisedButton.icon(
+                    icon: Icon(Icons.notifications, size: 70, color: Colors.yellow[900]),
+                    label: Text(""),
+                    shape: RoundedRectangleBorder(// bordes
+                    borderRadius: new BorderRadius.circular(20),
+                   // side: BorderSide(color: Colors.red)
+                    ),
+                    color: Colors.grey[200],
                     onPressed: () async{             
                     },
                   ),
               ),
               Container(
-               child: RaisedButton(
+               child: RaisedButton.icon(
+                    icon: Icon(Icons.note_add, size: 70, color: Colors.blueGrey[400],),
+                    label: Text(""),
                     shape: RoundedRectangleBorder(// bordes
                     borderRadius: new BorderRadius.circular(20),
-                    //side: BorderSide(color: Colors.red)
+                   // side: BorderSide(color: Colors.red)
                     ),
-                    color: Colors.grey,
-                    child: Text("Google", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+                    color: Colors.grey[200],
+                    onPressed: () async{             
+                    },
+                  ),
+              ),
+               Container(
+               child: RaisedButton.icon(
+                    icon: Icon(LineAwesomeIcons.hospital_o, size: 80, color: Colors.red[800]),
+                    label: Text(""),
+                    shape: RoundedRectangleBorder(// bordes
+                    borderRadius: new BorderRadius.circular(20),
+                   // side: BorderSide(color: Colors.red)
+                    ),
+                    color: Colors.grey[200],
                     onPressed: () async{             
                     },
                   ),
               ),
               Container(
-               child: RaisedButton(
+               child: RaisedButton.icon(
+                    icon: Icon(LineAwesomeIcons.map_marker, size: 70, color:Colors.lightGreen[800]),
+                    label: Text(""),
                     shape: RoundedRectangleBorder(// bordes
                     borderRadius: new BorderRadius.circular(20),
-                    //side: BorderSide(color: Colors.red)
+                   // side: BorderSide(color: Colors.red)
                     ),
-                    color: Colors.grey,
-                    child: Text("Google", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
-                    onPressed: () async{             
-                    },
-                  ),
-              ),
-              Container(
-               child: RaisedButton(
-                    shape: RoundedRectangleBorder(// bordes
-                    borderRadius: new BorderRadius.circular(20),
-                    //side: BorderSide(color: Colors.red)
-                    ),
-                    color: Colors.grey,
-                    child: Text("Google", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
-                    onPressed: () async{             
-                    },
-                  ),
-              ),
-              Container(
-               child: RaisedButton(
-                    shape: RoundedRectangleBorder(// bordes
-                    borderRadius: new BorderRadius.circular(20),
-                    //side: BorderSide(color: Colors.red)
-                    ),
-                    color: Colors.grey,
-                    child: Text("Google", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
-                    onPressed: () async{             
-                    },
-                  ),
-              ),
-              Container(
-               child: RaisedButton(
-                    shape: RoundedRectangleBorder(// bordes
-                    borderRadius: new BorderRadius.circular(20),
-                    //side: BorderSide(color: Colors.red)
-                    ),
-                    color: Colors.grey,
-                    child: Text("Google", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+                    color: Colors.grey[200],
                     onPressed: () async{             
                     },
                   ),

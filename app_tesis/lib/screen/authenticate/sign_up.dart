@@ -1,5 +1,7 @@
 import 'package:app_tesis/animations/FadeAnimation.dart';
+import 'package:app_tesis/models/user.dart';
 import 'package:app_tesis/screen/auth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 
@@ -122,20 +124,7 @@ class _SingUpState extends State<SingUp> {
                                   },
                                 ),
                               ),
-                                  //Comprobar contraseña
-                               Container(
-                                padding: EdgeInsets.all(10),
-                                decoration: BoxDecoration(
-                                  border: Border(bottom: BorderSide(color: Colors.grey[200]))
-                                ),
-                                child: TextField(
-                                  decoration: InputDecoration(
-                                    hintText: "Confirmar Contraseña",
-                                    hintStyle: TextStyle(color: Colors.grey),
-                                    border: InputBorder.none
-                                  ),
-                                ),
-                              ),
+                              
                             ],
                           ),
                         )),
@@ -161,6 +150,7 @@ class _SingUpState extends State<SingUp> {
                                } else{
                                  print("Sesión iniciada");
                                  print(result);
+
                                }
                             }
                           ),
