@@ -1,7 +1,7 @@
 
 import 'package:app_tesis/screen/authenticate/login2.dart';
 import 'package:flutter/material.dart';
-import 'package:app_tesis/screen/menu.dart';
+import 'package:app_tesis/screen/home/menu.dart';
 import 'package:app_tesis/models/user.dart';
 import 'package:provider/provider.dart';
 

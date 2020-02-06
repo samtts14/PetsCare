@@ -189,7 +189,7 @@ class _MenuCentralState extends State<MenuCentral>{
               ),
                Container(
                child: RaisedButton.icon(
-                    icon: Icon(LineAwesomeIcons.hospital_o, size: 80, color: Colors.red[800]),
+                    icon: Icon(LineAwesomeIcons.hospital_o, size: 70, color: Colors.red[800]),
                     label: Text(""),
                     shape: RoundedRectangleBorder(// bordes
                     borderRadius: new BorderRadius.circular(20),
@@ -216,7 +216,8 @@ class _MenuCentralState extends State<MenuCentral>{
              
              ]
            ),
-          )
+           
+          ),
         ],
       )
     );
