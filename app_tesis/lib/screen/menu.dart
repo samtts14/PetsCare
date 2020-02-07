@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:provider/single_child_widget.dart';
 import 'package:line_awesome_icons/line_awesome_icons.dart';
+import 'package:app_tesis/screen/notas.dart';
 
 
 
@@ -130,14 +131,14 @@ class _MenuCentralState extends State<MenuCentral>{
           ),
           new Expanded(
             child: GridView.count(         
-            crossAxisSpacing: 9,// espacio vertical entre botones de menu
+            crossAxisSpacing: 10,// espacio vertical entre botones de menu
             crossAxisCount: 3, //numero de columnas del grid
-            mainAxisSpacing: 9,// espacio horizontal entre botones de menu
-            padding: const EdgeInsets.all(10), // separa los botones del borde de la pantalla.
+            mainAxisSpacing: 10,// espacio horizontal entre botones de menu
+            padding: const EdgeInsets.all(20), // separa los botones del borde de la pantalla.
             children: <Widget>[
                 Container(
                child: RaisedButton.icon(
-                    icon: Icon(Icons.pets, size: 70, color: Colors.grey[900],),
+                    icon: Icon(Icons.pets, size: 70, color: Colors.grey[900]),
                     label: Text(""),
                     shape: RoundedRectangleBorder(// bordes
                     borderRadius: new BorderRadius.circular(20),
@@ -183,7 +184,10 @@ class _MenuCentralState extends State<MenuCentral>{
                    // side: BorderSide(color: Colors.red)
                     ),
                     color: Colors.grey[200],
-                    onPressed: () async{             
+                    onPressed: () async{ 
+                      Navigator.push(
+                        context, 
+                        MaterialPageRoute(builder: (context) => TextEdit("")));                            
                     },
                   ),
               ),
