@@ -1,6 +1,6 @@
 import 'package:app_tesis/animations/FadeAnimation.dart';
 import 'package:app_tesis/models/user.dart';
-import 'package:app_tesis/screen/auth.dart';
+import 'package:app_tesis/servicios/auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 

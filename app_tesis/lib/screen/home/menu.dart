@@ -1,9 +1,10 @@
-import 'package:app_tesis/screen/auth.dart';
+import 'package:app_tesis/screen/home/calendario.dart';
+import 'package:app_tesis/servicios/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:provider/single_child_widget.dart';
 import 'package:line_awesome_icons/line_awesome_icons.dart';
-import 'package:app_tesis/screen/notas.dart';
+import 'package:app_tesis/screen/home/notas.dart';
 
 
 
@@ -164,14 +165,17 @@ class _MenuCentralState extends State<MenuCentral>{
               ),
                Container(
                child: RaisedButton.icon(
-                    icon: Icon(Icons.notifications, size: 70, color: Colors.yellow[900]),
+                    icon: Icon(Icons.calendar_today, size: 70, color: Colors.blue[800]),
                     label: Text(""),
                     shape: RoundedRectangleBorder(// bordes
                     borderRadius: new BorderRadius.circular(20),
                    // side: BorderSide(color: Colors.red)
                     ),
                     color: Colors.grey[200],
-                    onPressed: () async{             
+                    onPressed: () async{ 
+                       Navigator.push(
+                        context, 
+                        MaterialPageRoute(builder: (context) => Calendario()));              
                     },
                   ),
               ),
@@ -193,7 +197,7 @@ class _MenuCentralState extends State<MenuCentral>{
               ),
                Container(
                child: RaisedButton.icon(
-                    icon: Icon(LineAwesomeIcons.hospital_o, size: 70, color: Colors.red[800]),
+                    icon: Icon(LineAwesomeIcons.plus_square, size: 70, color: Colors.red[800]),
                     label: Text(""),
                     shape: RoundedRectangleBorder(// bordes
                     borderRadius: new BorderRadius.circular(20),

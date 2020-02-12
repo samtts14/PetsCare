@@ -1,5 +1,5 @@
 import 'package:app_tesis/animations/FadeAnimation.dart';
-import 'package:app_tesis/screen/auth.dart';
+import 'package:app_tesis/servicios/auth.dart';
 import 'package:app_tesis/screen/authenticate/sign_up.dart';
 import 'package:app_tesis/shared/constant.dart';
 //import 'package:app_tesis/screen/menu.dart';
