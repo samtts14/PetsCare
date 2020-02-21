@@ -26,6 +26,9 @@ dependencies:
   provider: ^4.0.2 
   flutter_spinkit: "^4.1.1"
   google_sign_in: ^4.1.1
+  flutter_bloc: ^3.2.0
+  equatable: ^1.1.0
+  meta: ^1.1.8
   cloud_firestore: ^0.13.0+1
   path_provider: ^1.4.0
   open_file: ^2.0.3
@@ -33,6 +36,7 @@ dependencies:
   line_awesome_icons: ^1.0.4+2
   table_calendar: ^2.2.2
   shared_preferences: ^0.5.6+1
+  flutter_auth_buttons: ^0.6.0
   
 
   # The following adds the Cupertino Icons font to your application.
@@ -60,10 +64,10 @@ flutter:
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
   assets:
-    - images/img2.jpg
-    - images/img3.jpg
-    - images/img4.jpg
-    - images/img5.jpg
+    - images/perro.jpg
+    - images/periquito.jpg
+    - images/gatos.jpg
+    
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

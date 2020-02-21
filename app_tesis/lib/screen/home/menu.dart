@@ -1,8 +1,10 @@
 import 'package:app_tesis/screen/home/calendario.dart';
 import 'package:app_tesis/servicios/auth.dart';
+import 'package:app_tesis/src/bloc/authentication_bloc/authentication_bloc.dart';
+import 'package:app_tesis/src/bloc/authentication_bloc/authentication_event.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_pro/carousel_pro.dart';
-import 'package:provider/single_child_widget.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:line_awesome_icons/line_awesome_icons.dart';
 import 'package:app_tesis/screen/home/notas.dart';
 
@@ -10,13 +12,14 @@ import 'package:app_tesis/screen/home/notas.dart';
 
 // Menu principal
 class MenuCentral extends StatefulWidget {
+  final String name;
+  MenuCentral({Key key, @required this.name}) : super(key:key);
   @override
   _MenuCentralState createState() => _MenuCentralState();
 }
 
 class _MenuCentralState extends State<MenuCentral>{
    final AuthService _auth = AuthService();
-   
   @override
   Widget build(BuildContext context) {
     Widget  imgMovimiento = new Container(//imagenes en movimiento
@@ -24,10 +27,10 @@ class _MenuCentralState extends State<MenuCentral>{
     child:  new Carousel(
       boxFit: BoxFit.cover,
       images: [
-       // AssetImage('images/img2.jpg'),
-        AssetImage('images/img3.jpg'),
-        //AssetImage('images/img4.jpg'),
-        AssetImage('images/img5.jpg'),
+        AssetImage('images/perro.jpg'),
+        AssetImage('images/gatos.jpg'),
+        AssetImage('images/periquito.jpg'),
+        
       ],
       autoplay: true,//mover img automatico o manual 
       animationCurve: Curves.fastOutSlowIn,
@@ -109,10 +112,11 @@ class _MenuCentralState extends State<MenuCentral>{
             ),
 
             Divider(),
-
+              
              InkWell(
               onTap: () async {
-                await _auth.signOut();
+                BlocProvider.of<AuthenticationBloc>(context).add(LoggedOut());
+               // await _auth.signOut();
               },//Boton home menu lateral
               child: ListTile(
                 title: Text('Cerrar sesión'),

@@ -24,12 +24,12 @@ class _TextEditState extends State<TextEdit> {
            icon: new Icon(Icons.save, color: Colors.white,),
            onPressed: () {
 
-             Navigator.push(
-                context,
-                MaterialPageRoute(
+            // Navigator.push(
+               // context,
+                //MaterialPageRoute(
                  // builder: (context) => SaveText(storage:  TextStorage(), resultToSave: result,) //creo que solo hay que enviarle el texto por que ya tiene hasta un counter 
-                ),
-              );
+               // ),
+             // );
            },
          ),
        ],
