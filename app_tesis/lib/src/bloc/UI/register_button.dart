@@ -8,13 +8,19 @@ class RegisterButton extends StatelessWidget {
   super(key : key);
   @override
   Widget build(BuildContext context) {
+    var maxWidthChild = SizedBox(
+            width: 90,
+            height: 17,
+            child: Text("Sign Up", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),textAlign: TextAlign.center),
+            );
     return RaisedButton(
+      child: maxWidthChild,
       shape: RoundedRectangleBorder(// bordes
             borderRadius: new BorderRadius.circular(50),
             //side: BorderSide(color: Colors.red)
            ),
             color: Colors.brown[500], 
-            child: Text("Sign Up", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+           
             onPressed: _onPressed,
     );
   }

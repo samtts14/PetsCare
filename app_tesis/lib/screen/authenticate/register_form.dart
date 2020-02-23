@@ -1,4 +1,4 @@
-
+import 'package:app_tesis/src/bloc/UI/google_login_button.dart';
 import 'package:app_tesis/src/bloc/UI/register_button.dart';
 import 'package:app_tesis/src/bloc/register_bloc/register_event.dart';
 import 'package:app_tesis/src/bloc/register_bloc/bloc.dart';
@@ -203,32 +203,33 @@ class _RegisterFormState extends State<RegisterForm> {
                     )),
                     SizedBox(height: 40,),
                    // FadeAnimation(1.5, Text("Olvidaste la contraseña?", style: TextStyle(color: Colors.grey),)),
-                    SizedBox(height: 0,),
+                   // SizedBox(height: 0,),
                     //SizedBox(height: 20,),
-                    FadeAnimation(1.7, Text("Continuar con una red social.", style: TextStyle(color: Colors.grey),)),
-                    SizedBox(height: 20),
-                    Row(
-                      children: <Widget>[
+                    Container(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                         children: <Widget>[
                          //boton Sign Up
                         RegisterButton(
                           onPressed: isRegisterButtonEnabled(state)
                           ? _onFormSubmitted
                           : null,
                         ),
-
-                        SizedBox(width: 50,),
-                        Expanded(
-                          child: FadeAnimation(1.9, Container(
-                            height: 50,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(50),
-                              
-                            ),
-                          )
-                        ),
-                        )
                       ],
-                    )
+                      ),
+                    ),
+                    Container(
+                      child: Column(
+                           crossAxisAlignment: CrossAxisAlignment.center,
+                           children: <Widget>[
+                             SizedBox(height: 20),
+                              FadeAnimation(1.7, Text("Continuar con una red social.", style: TextStyle(color: Colors.grey),)),
+                              SizedBox(height: 20),
+                              //boton Google
+                              GoogleLoginButton(),
+                           ],
+                      ),
+                    ),    
                   ],
                 ),
               ),

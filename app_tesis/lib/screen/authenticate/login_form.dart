@@ -162,8 +162,8 @@ bool isButtonLoginEnable(LoginState state){
                           ],
                         ),
                       )),
-                      SizedBox(height: 40,),
-                      FadeAnimation(1.5, Text("Olvidaste la contraseña?", style: TextStyle(color: Colors.grey),)),
+                      //SizedBox(height: 40,),
+                      //FadeAnimation(1.5, Text("Olvidaste la contraseña?", style: TextStyle(color: Colors.grey),)),
                       SizedBox(height: 40,),
                       FadeAnimation(1.6, Container(
                         height: 50,
@@ -179,17 +179,21 @@ bool isButtonLoginEnable(LoginState state){
                             )//Boton de login por clase
                           ]),
                       )),
-                      SizedBox(height: 50,),
-                      FadeAnimation(1.7, Text("No tienes cuenta?", style: TextStyle(color: Colors.grey),)),
                       SizedBox(height: 30,),
-                      Row(
-                        children: <Widget>[
-                          //Boton de login con googgle
-                         GoogleLoginButton(),
-                         //Boton de crear cuanta
-                         CreateAccountButton(userRepository: _userRepository,),
-                        ],
-                      )
+                      FadeAnimation(1.7, Text("No tienes cuenta?", style: TextStyle(color: Colors.grey),)),
+                      SizedBox(height: 15,),
+                      Container(
+                       child: Column(
+                         crossAxisAlignment: CrossAxisAlignment.center,
+                         children: <Widget>[
+                            //Boton de crear cuanta
+                            CreateAccountButton(userRepository: _userRepository,),
+                             SizedBox(height: 15,),
+                            //Boton de login con googgle
+                            GoogleLoginButton(),  
+                         ]
+                       ),
+                      ),
                     ],
                   ),
                 ),

@@ -9,13 +9,19 @@ class LoginButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+   
+var maxWidthChild = SizedBox(
+            width: 90,
+            height: 17,
+            child: Text("Login", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold,),textAlign: TextAlign.center ),           
+            );
     return RaisedButton( //Boton log in.
-        shape: RoundedRectangleBorder(// bordes
+          child: maxWidthChild,
+          shape: RoundedRectangleBorder(// bordes
           borderRadius: new BorderRadius.circular(50),
             //side: BorderSide(color: Colors.red)
           ),
           color: Colors.brown[500], // color de boton de login
-          child: Text("Login", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
           onPressed: _onPressed,
     );
   }

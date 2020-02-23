@@ -8,11 +8,13 @@ class GoogleLoginButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GoogleSignInButton(
+      
       onPressed: (){
         Scaffold.of(context).showSnackBar(
           SnackBar(
             content: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              
               children: <Widget>[
                 Text('Loggin in...'),
                 CircularProgressIndicator()
@@ -24,6 +26,8 @@ class GoogleLoginButton extends StatelessWidget {
             LoginWithGooglePressed()
         );
       },
+      borderRadius: 50,
+      darkMode: false,//  cambiar de azul a blanco
     );
   }
 }
