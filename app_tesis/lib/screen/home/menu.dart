@@ -195,7 +195,7 @@ class _MenuCentralState extends State<MenuCentral>{
                     onPressed: () async{ 
                       Navigator.push(
                         context, 
-                        MaterialPageRoute(builder: (context) => TextEdit("")));                            
+                        MaterialPageRoute(builder: (context) => Notas()));                            
                     },
                   ),
               ),

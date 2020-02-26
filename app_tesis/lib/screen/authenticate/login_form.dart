@@ -48,11 +48,11 @@ bool isButtonLoginEnable(LoginState state){
         if(state.isFailure){
             Scaffold.of(context)
             ..hideCurrentSnackBar()
-            ..showSnackBar(
+            ..showSnackBar(//mensaje de abajo
                SnackBar(
                  content: Row(
                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                   children:[ Text('Login Failure'), Icon(Icons.error)],
+                   children:[ Text('Fallo en inicio de sesion'), Icon(Icons.error)],
                  ),
                  backgroundColor: Colors.red,
               ),
@@ -66,7 +66,7 @@ bool isButtonLoginEnable(LoginState state){
                SnackBar(
                  content: Row(
                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                   children:[ Text('Login in...'),
+                   children:[ Text('Iniciando sesion...'),
                    CircularProgressIndicator()],
                    
                  ),
@@ -101,7 +101,7 @@ bool isButtonLoginEnable(LoginState state){
 
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                FadeAnimation(1, Text("Log in", style: TextStyle(color: Colors.black, fontSize: 40),)),
+                FadeAnimation(1, Text("Inicio de sesion", style: TextStyle(color: Colors.black, fontSize: 40),)),
                 SizedBox(height: 10,),
                 FadeAnimation(1.3, Text("Bienvenido nuevamente!", style: TextStyle(color: Colors.black, fontSize: 18),)),
               ],
@@ -142,7 +142,7 @@ bool isButtonLoginEnable(LoginState state){
                                 autovalidate: true,
                                 autocorrect: false,
                                 validator: (_){
-                                  return !state.isEmailValid? 'Invalid email' : null;
+                                  return !state.isEmailValid? 'Email invalido' : null;
                                 },
                               ),
                             Divider(),
@@ -150,13 +150,13 @@ bool isButtonLoginEnable(LoginState state){
                                 controller: _passwordcontroller,
                                 decoration: InputDecoration(
                                   icon: Icon(Icons.lock),
-                                  labelText: 'Password'
+                                  labelText: 'Contraseña'
                                 ),
                                 obscureText: true,
                                 autovalidate: true,
                                 autocorrect: false,
                                 validator: (_){
-                                  return !state.isPasswordValid? 'Invalid password' : null;
+                                  return !state.isPasswordValid? 'Contraseña invalida' : null;
                                 },
                               ),
                           ],
@@ -180,7 +180,7 @@ bool isButtonLoginEnable(LoginState state){
                           ]),
                       )),
                       SizedBox(height: 30,),
-                      FadeAnimation(1.7, Text("No tienes cuenta?", style: TextStyle(color: Colors.grey),)),
+                      FadeAnimation(1.7, Text("¿No tienes cuenta?", style: TextStyle(color: Colors.grey),)),
                       SizedBox(height: 15,),
                       Container(
                        child: Column(

@@ -1,66 +1,101 @@
+import 'package:app_tesis/Servicios/firestore_service.dart';
+import 'package:app_tesis/Servicios/note.dart';
+import 'package:app_tesis/cnotas/add_note.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-// import //Importar paquete de guardado
+import 'package:app_tesis/cnotas/note_details.dart';
 
-class TextEdit extends StatefulWidget {
-  var ocrText;
-
-  TextEdit(this.ocrText);
-  @override
-  _TextEditState createState() => new _TextEditState(this.ocrText);
- }
-class _TextEditState extends State<TextEdit> {
-  var ocrText; //Valor inicial
-  _TextEditState(this.ocrText);
-  String result = "";
-
+class Notas extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var values = ocrText; //values es una variable auxiliar
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text("Comentarios"),
-        actions: <Widget>[
-         new IconButton(////////////////////////////////////// Buton Save
-           icon: new Icon(Icons.save, color: Colors.white,),
-           onPressed: () {
-
-            // Navigator.push(
-               // context,
-                //MaterialPageRoute(
-                 // builder: (context) => SaveText(storage:  TextStorage(), resultToSave: result,) //creo que solo hay que enviarle el texto por que ya tiene hasta un counter 
-               // ),
-             // );
-           },
-         ),
-       ],
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Notas'),
+        backgroundColor: Colors.brown[600],
       ),
-     
-    body: new Container(
-      padding: const EdgeInsets.all(20.0),
-      width: MediaQuery.of(context).size.width, //Toma el tamaño del area asignada
-      
-      child: new Stack(
-        children: <Widget>[
-          TextFormField(
-            decoration: new InputDecoration.collapsed(
-              border: InputBorder.none,
-              hintText: 'Escribe aqui'
-            ),
-            //initialValue: values, //esto es por si tienen un valor inicial
-            textAlign: TextAlign.justify, //Alineacion del texto
-            keyboardType: TextInputType.multiline, //La tecla RETORNO o ENTER sirve paea hacer saltos de linea
-            maxLines: null, //numero maximo de lineas si es nulo tomara lineas infinitas
-            
-            onChanged: (String value){ //Altera el valor o estado [ setState(() {}) ] de la variable final en tiempo real
-              setState(() {
-                result = value;// result almasena todo el texto
-              });
-            },
-          ),
-          
-        ]  
+     body: StreamBuilder(
+       stream: FirestoreService().getNotas(),
+       builder: (BuildContext context, AsyncSnapshot <List<Note>> snapshot){
+         if(snapshot.hasError || !snapshot.hasData){
+           return CircularProgressIndicator();
+         }
+         return ListView.builder(
+            itemCount: snapshot.data.length,
+            itemBuilder:(BuildContext context, int index){
+             Note note = snapshot.data[index];
+              return ListTile(
+                title: Text(note.title),
+                subtitle: Text(note.description),
+                trailing: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                     IconButton(
+                      color: Colors.blue,
+                      icon: Icon(Icons.edit),
+                      onPressed: () => Navigator.push(context,
+                        MaterialPageRoute(
+                          builder: (_) => AddNotePage(note : note),
+                        ))
+                      ),
+                    IconButton(
+                      color: Colors.red,
+                      icon: Icon(Icons.delete),
+                      onPressed: () => _deleteNote(context,note.id),
+                   ),           
+                  ],
+                ),
+                onTap:  () => Navigator.push(
+                  context, MaterialPageRoute(
+                    builder: (_) => NoteDetailsPage(note: note)
+                  ),
+                ),
+              );
+            } ,
+         );
+       },
       ),
-    ),
-   );
+       floatingActionButton: FloatingActionButton(
+         child:  Icon(Icons.add),
+         onPressed: (){
+           Navigator.push(context, MaterialPageRoute(
+              builder: (_) => AddNotePage()
+           )
+          );
+         },
+       ),
+    );
   }
+
+  void _deleteNote(BuildContext context,String id) async{
+    if(await _showConfirmationDialog(context)){
+      try {
+            await FirestoreService().deleteNote(id);
+        } catch (e) {
+          print(e);
+     }
+    }
+  }
+
+  Future<bool> _showConfirmationDialog(BuildContext context)async{
+    return showDialog(
+      context: context,
+      barrierDismissible: true,
+      builder: (context) => AlertDialog(
+        content:Text("Estás seguro de borrar esta nota?"),
+        actions: <Widget>[
+          FlatButton(
+            textColor:  Colors.red,
+            onPressed: () => Navigator.pop(context,true), 
+            child: Text("Borrar"),
+          ),
+           FlatButton(
+             textColor: Colors.black,
+            onPressed: () => Navigator.pop(context,false), 
+            child: Text("No"),
+          )
+        ],
+      )
+    );
+  }
+
 }

@@ -53,7 +53,7 @@ class _RegisterFormState extends State<RegisterForm> {
                 content: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    Text('Registring'),
+                    Text('Registrando'),
                     CircularProgressIndicator()
                   ],
                 ) ,)
@@ -74,7 +74,7 @@ class _RegisterFormState extends State<RegisterForm> {
               content: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Text('Registration failure'),
+                  Text('Registro fallido'),
                   Icon(Icons.error)
                 ],
               ),
@@ -110,9 +110,9 @@ class _RegisterFormState extends State<RegisterForm> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  FadeAnimation(1, Text("Sign up", style: TextStyle(color: Colors.black, fontSize: 40),)),
+                  FadeAnimation(1, Text("Crear cuenta", style: TextStyle(color: Colors.black, fontSize: 40),)),
                   SizedBox(height: 10,),
-                  FadeAnimation(1.3, Text("Registrate con nosotros!", style: TextStyle(color: Colors.black, fontSize: 18),)),
+                  FadeAnimation(1.3, Text(" Registrate con nosotros!", style: TextStyle(color: Colors.black, fontSize: 18),)),
                 ],
               ),
             ),
@@ -148,6 +148,7 @@ class _RegisterFormState extends State<RegisterForm> {
                             ),
                             child: TextField(
                               decoration: InputDecoration(
+                                icon: Icon(Icons.people),
                                 hintText: "Nombre de usuario",
                                 hintStyle: TextStyle(color: Colors.grey),
                                 border: InputBorder.none
@@ -172,7 +173,7 @@ class _RegisterFormState extends State<RegisterForm> {
                               autocorrect: false,
                               autovalidate: true,
                               validator: (_){
-                                return !state.isEmailValid? 'Invalid Email' : null;
+                                return !state.isEmailValid? 'Email invalido' : null;
                               },
                             ),
                           ),
@@ -193,7 +194,7 @@ class _RegisterFormState extends State<RegisterForm> {
                                autocorrect: false,
                                autovalidate: true,
                                validator: (_){
-                                 return !state.isPasswordValid ? 'Invalid Password' : null;
+                                 return !state.isPasswordValid ? 'Contraseña invalida' : null;
                                },
                             ),
                           ),
