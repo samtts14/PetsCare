@@ -8,6 +8,7 @@ import 'package:app_tesis/src/bloc/repository/user_repository.dart';
 
 
 class LoginBloc extends Bloc<LoginEvent, LoginState>{
+  
   UserRepository _userRepository;
   //constructor
   LoginBloc({@required UserRepository userRepository})
@@ -77,7 +78,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState>{
     yield LoginState.loading();
     try {
       await _userRepository.signInWithCredential(email, password);
-      yield LoginState.success();
+      yield LoginState.success();//
+      print(LoginState);
     } catch (_) {
      yield LoginState.failure();
     }

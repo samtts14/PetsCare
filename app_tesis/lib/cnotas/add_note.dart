@@ -5,10 +5,9 @@ import 'package:flutter/services.dart';
 
 class AddNotePage extends StatefulWidget {
   final Note note;
-
   const AddNotePage({Key key, this.note}) : super(key: key);
   @override
-  _AddNotePageState createState() => _AddNotePageState();
+  _AddNotePageState createState() => _AddNotePageState(); 
 }
 
 class _AddNotePageState extends State<AddNotePage> {

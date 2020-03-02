@@ -7,7 +7,7 @@ import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:line_awesome_icons/line_awesome_icons.dart';
 import 'package:app_tesis/screen/home/notas.dart';
-
+import 'package:app_tesis/screen/home/notas.dart';
 
 
 // Menu principal
@@ -225,6 +225,7 @@ class _MenuCentralState extends State<MenuCentral>{
                     },
                   ),
               ),
+             
              
              ]
            ),

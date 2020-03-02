@@ -1,7 +1,6 @@
 import 'package:app_tesis/Servicios/firestore_service.dart';
 import 'package:app_tesis/Servicios/note.dart';
 import 'package:app_tesis/cnotas/add_note.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:app_tesis/cnotas/note_details.dart';
 
