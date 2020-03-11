@@ -1,4 +1,5 @@
-import 'package:app_tesis/screen/home/calendario.dart';
+
+import 'package:app_tesis/screen/home/citas.dart';
 import 'package:app_tesis/servicios/auth.dart';
 import 'package:app_tesis/src/bloc/authentication_bloc/authentication_bloc.dart';
 import 'package:app_tesis/src/bloc/authentication_bloc/authentication_event.dart';
@@ -7,7 +8,7 @@ import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:line_awesome_icons/line_awesome_icons.dart';
 import 'package:app_tesis/screen/home/notas.dart';
-import 'package:app_tesis/screen/home/notas.dart';
+
 
 
 // Menu principal
@@ -179,7 +180,7 @@ class _MenuCentralState extends State<MenuCentral>{
                     onPressed: () async{ 
                        Navigator.push(
                         context, 
-                        MaterialPageRoute(builder: (context) => Calendario()));              
+                        MaterialPageRoute(builder: (context) => Cita()));              
                     },
                   ),
               ),
