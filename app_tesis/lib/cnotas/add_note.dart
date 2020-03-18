@@ -1,11 +1,16 @@
 import 'package:app_tesis/Servicios/firestore_service.dart';
 import 'package:app_tesis/Servicios/note.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:firebase_auth/firebase_auth.dart';
+import 'package:app_tesis/src/bloc/repository/user_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class AddNotePage extends StatefulWidget {
   final Note note;
   const AddNotePage({Key key, this.note}) : super(key: key);
+  
+  
   @override
   _AddNotePageState createState() => _AddNotePageState(); 
 }
@@ -16,6 +21,10 @@ class _AddNotePageState extends State<AddNotePage> {
   TextEditingController _descriptionController;
   FocusNode _descriptionNode;
 
+  
+  
+  
+
   @override
   void initState() {
     super.initState();
@@ -24,6 +33,7 @@ class _AddNotePageState extends State<AddNotePage> {
     _descriptionController = TextEditingController(text: isEditMote ?
     widget.note.description: "");
     _descriptionNode = FocusNode();
+    
   }
 
   get isEditMote => widget.note != null;
@@ -86,13 +96,15 @@ class _AddNotePageState extends State<AddNotePage> {
                        Note note =  Note(
                         description: _descriptionController.text,
                         title: _titleController.text,
-                        id: widget.note.id
+                        id: widget.note.id,
+                        // usuario:  
+                        
                       );
                        await FirestoreService().updateNote(note);
                       }else{
                        Note note =  Note(
                         description: _descriptionController.text,
-                        title: _titleController.text,
+                        title: _titleController.text, 
                         
                       );
                         await  FirestoreService().addNote(note);

@@ -1,5 +1,7 @@
 //imports
 import 'dart:async';
+import 'package:app_tesis/Servicios/firestore_service.dart';
+import 'package:app_tesis/Servicios/petdata.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -34,10 +36,14 @@ class UserRepository{
   }
   //Registro o SignUp
   Future<void> signUp(String email, String password) async{
-    return await _firebaseAuth.createUserWithEmailAndPassword(
+
+    AuthResult result =await _firebaseAuth.createUserWithEmailAndPassword(
       email: email,
       password: password
     );
+    FirebaseUser user = result.user;
+    await PetData(uid: user.uid).updatePetData('Max', "Dog", "Chow-Chow", "M", "5 years");
+    return result;
   }
   //SignOut
   Future<void> signOut() async{
