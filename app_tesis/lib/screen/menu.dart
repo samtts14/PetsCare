@@ -1,3 +1,4 @@
+import 'package:app_tesis/screen/home/mascotas.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 
@@ -72,7 +73,9 @@ class MenuState extends State<Menu> {
             ),
 
              InkWell(
-              onTap: (){},//Boton home menu lateral
+              onTap:(){
+                Navigator.push(context, MaterialPageRoute(
+                builder: (_) => Mascotas()));},
               child: ListTile(
                 title: Text('Mis mascotas'),
                 leading: Icon(Icons.pets),

@@ -37,13 +37,18 @@ class UserRepository{
   //Registro o SignUp
   Future<void> signUp(String email, String password) async{
 
-    AuthResult result =await _firebaseAuth.createUserWithEmailAndPassword(
-      email: email,
-      password: password
-    );
-    FirebaseUser user = result.user;
-    await PetData(uid: user.uid).updatePetData('Max', "Dog", "Chow-Chow", "M", "5 years");
-    return result;
+    try{
+      AuthResult result =await _firebaseAuth.createUserWithEmailAndPassword(
+        email: email,
+        password: password
+      );
+      FirebaseUser user = result.user;
+      await PetData(uid :user.uid).updatePetData('firu', 'dog', 'chow-chow', 'M', "5 years old");
+      return result;
+    }catch(e){
+      print(e.tosString());
+      return null;
+    }
   }
   //SignOut
   Future<void> signOut() async{

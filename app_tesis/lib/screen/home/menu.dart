@@ -1,5 +1,6 @@
 
 import 'package:app_tesis/screen/home/citas.dart';
+import 'package:app_tesis/screen/home/mascotas.dart';
 import 'package:app_tesis/servicios/auth.dart';
 import 'package:app_tesis/src/bloc/authentication_bloc/authentication_bloc.dart';
 import 'package:app_tesis/src/bloc/authentication_bloc/authentication_event.dart';
@@ -88,7 +89,9 @@ class _MenuCentralState extends State<MenuCentral>{
             ),
 
              InkWell(
-              onTap: (){},//Boton home menu lateral
+              onTap:(){
+                Navigator.push(context, MaterialPageRoute(
+                builder: (_) => Mascotas()));},//Boton home menu lateral
               child: ListTile(
                 title: Text('Mis mascotas'),
                 leading: Icon(Icons.pets),

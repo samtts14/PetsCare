@@ -1,4 +1,5 @@
 import 'package:app_tesis/Servicios/note.dart';
+import 'package:app_tesis/models/pet.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class FirestoreService{
@@ -21,6 +22,11 @@ class FirestoreService{
     });
   }
 
+  Future<void> addPet(Pet pet){
+    return _db.collection('pets').add(pet.toMap());
+  }
+
+  
   // factory FirestoreService(){
   //   return _firestoreService;
   // }
@@ -29,7 +35,7 @@ class FirestoreService{
   /// para manejo de las notas
   Stream<List<Note>>getNotas(){
     return _db
-    .collection('notess').snapshots().map(
+    .collection('notes').snapshots().map(
       (snapshot)=>snapshot.documents.map(
         (doc){
           var documentID = doc.documentID;
@@ -39,14 +45,14 @@ class FirestoreService{
     );
   }
   Future<void> addNote(Note note){
-    return _db.collection('notess').add(note.toMap());
+    return _db.collection('notes').add(note.toMap());
   }
   Future<void> deleteNote(String id){
-    return _db.collection('notess').document(id).delete();
+    return _db.collection('notes').document(id).delete();
   }
 
   Future<void> updateNote(Note note){
-    return _db.collection('note').document(note.id).updateData(note.toMap());
+    return _db.collection('notes').document(note.id).updateData(note.toMap());
   }
 
 }

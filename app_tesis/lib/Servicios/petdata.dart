@@ -1,3 +1,4 @@
+import 'package:app_tesis/models/pet.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class PetData{
@@ -16,4 +17,23 @@ class PetData{
       'age' : age,
     });
   }
+
+  // lista de mascotas
+  List<Pet> _petListFromSnapshot(QuerySnapshot snapshot){
+    return snapshot.documents.map((doc){
+      return Pet(
+        name: doc.data['name'] ?? '',
+        species: doc.data['species'] ?? '',
+        breed: doc.data['breed'] ?? '',
+        sex: doc.data['sex'] ?? '',
+        age: doc.data['age'] ?? ''
+      );
+    }).toList();
+  }
+  
+
+  Stream<List<Pet>> get pets{
+    return petsCollection.snapshots().map(_petListFromSnapshot);
+  }
+
 }
