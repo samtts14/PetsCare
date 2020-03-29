@@ -1,5 +1,5 @@
 
-import 'package:app_tesis/screen/home/citas.dart';
+import 'package:app_tesis/screen/home/citasHomeP.dart';
 import 'package:app_tesis/servicios/auth.dart';
 import 'package:app_tesis/src/bloc/authentication_bloc/authentication_bloc.dart';
 import 'package:app_tesis/src/bloc/authentication_bloc/authentication_event.dart';
@@ -180,7 +180,7 @@ class _MenuCentralState extends State<MenuCentral>{
                     onPressed: () async{ 
                        Navigator.push(
                         context, 
-                        MaterialPageRoute(builder: (context) => Cita()));              
+                        MaterialPageRoute(builder: (context) => TareasHomeP()));              
                     },
                   ),
               ),
