@@ -5,7 +5,7 @@ import 'package:app_tesis/widgetsCitas/custom_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class AddEventPage extends StatefulWidget {//53:00
+class AddEventPage extends StatefulWidget {
   @override
   _AddEventPageState createState() => _AddEventPageState();
 }
@@ -14,7 +14,7 @@ class _AddEventPageState extends State<AddEventPage> {
 
   String _selectedDate = 'Elegir Fecha';
   String _selectedTime = 'Elegir hora';
-
+  String id = "id";
   String newCita = "";
   String descripcion = "";
 
@@ -47,6 +47,7 @@ class _AddEventPageState extends State<AddEventPage> {
   Firestore.instance.runTransaction((Transaction transsaction) async{
   CollectionReference reference = Firestore.instance.collection("Citas");
   await reference.add({
+        'id' : id,//prueba
         'title' : newCita,
         'description' : descripcion,
         'date' : _selectedDate,

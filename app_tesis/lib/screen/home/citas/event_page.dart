@@ -1,113 +1,142 @@
-import 'package:app_tesis/widgetsCitas/custom_icon_decoration.dart';
+import 'package:app_tesis/screen/home/citas/editEventPage.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class EventPage extends StatefulWidget {
+  EventPage({this.user, this.googleSignIn});
+  final FirebaseUser user;
+  final GoogleSignIn googleSignIn;
   @override
   _EventPageState createState() => _EventPageState();
 }
 
-class Event{
-  final String time;
-  final String task;
-  final String desc;
-  final bool isFinish;
-
-  const Event(this.time, this.task, this.desc, this.isFinish);
-}
-
-final List<Event> _eventList = [
-    new Event ("8:05","Tarea 1.","personal", true),
-    new Event ("9:12","Tarea 2.","Mascota", true),
-    new Event ("11:15","Tarea 3.","personal", false),
-    new Event ("3:30","Tarea 4.","personal", false),
-    new Event ("6:54","Tarea 5.","personal", false),
-];
-
 class _EventPageState extends State<EventPage> {
+
+
   @override
   Widget build(BuildContext context) {
-    double iconSize = 20;
-
-    return ListView.builder(
-      itemCount: _eventList.length,
-      padding:  const EdgeInsets.all(0),
-      itemBuilder: (context, index){
-        return Padding(
-          padding: const EdgeInsets.only(left:24.0, right: 24.0),
-          child: Row(
-          children: <Widget>[
-            _lineStyle(context, iconSize, 
-              index, _eventList.length, _eventList[index].isFinish),
-            _displayTime(_eventList[index].time),
-            _displayContent(_eventList[index])
-          ],
-        ),
+    return Scaffold(
+      body: Stack(
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.only(top: 8.0),
+            child: StreamBuilder(
+              stream: Firestore.instance.collection("Citas")
+             // .where("title")
+              .snapshots(),
+              builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot){
+                if(!snapshot.hasData)
+                return new Container(child: Center(
+                  child: CircularProgressIndicator(),
+                ));
+                return new CitasList(document: snapshot.data.documents,);//presentar datos
+              }
+            ),
+          ),
+          Container(
+    
+          ),
+        ],
+      ),
     );
+  }
+}
+
+class CitasList extends StatelessWidget {
+  CitasList({this.document});
+  final List<DocumentSnapshot> document;
+  @override
+  Widget build(BuildContext context) {
+    return new ListView.builder(
+      itemCount:  document.length,
+      itemBuilder: (BuildContext context, int i){
+
+        String title = document[i].data["title"].toString();
+        String description = document[i].data["description"].toString();
+        String date = document[i].data["date"].toString();
+        String time = document[i].data["time"].toString();
+
+        return Dismissible(
+          key: new Key(document[i].documentID),
+          onDismissed: (direction){
+            Firestore.instance.runTransaction((transaction) async{
+                DocumentSnapshot snapshot = 
+                await transaction.get(document[i].reference);
+                await transaction.delete(snapshot.reference);
+            });
+
+            Scaffold.of(context).showSnackBar(
+              new SnackBar(content: new Text("Cita eliminada"),)
+            );
+          },
+          child: Padding(
+            padding: const EdgeInsets.only(left:16.0, top: 8.0, right: 16.0, bottom: 8.0),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                new Expanded(
+                  child: Container(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 8.0),
+                          child: Text(title, style: new TextStyle(fontSize: 20.0,
+                            fontWeight: FontWeight.bold, letterSpacing: 1.0),),
+                        ),//titulo de cada cita
+                        Row(//parte donde muestra la parte de la fecha
+                          children: <Widget>[
+                            Padding(
+                              padding: const EdgeInsets.only(right: 16.0),
+                              child: Icon(Icons.date_range, color: Colors.brown,),
+                            ),
+                            Text(date, style: new TextStyle(fontSize: 18.0),),
+                          ],
+                        ),
+                        Row(//parte donde muestra la parte de la hora
+                          children: <Widget>[
+                            Padding(
+                              padding: const EdgeInsets.only(right: 16.0),
+                              child: Icon(Icons.access_time, color: Colors.brown,),
+                            ),
+                            Text(time, style: new TextStyle(fontSize: 18.0),),
+                          ],
+                        ),
+                        Row( // parte de la descripcion
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Padding(
+                              padding: const EdgeInsets.only(right: 16.0),
+                              child: Icon(Icons.note, color: Colors.brown,),
+                            ),
+                            new Expanded(child: Text(description, style: new TextStyle(fontSize: 18.0,),)),
+                          ],
+                        )
+                      ]
+                    ),
+                  ),
+                ),
+                new IconButton(
+                  icon: Icon(Icons.edit), 
+                  onPressed: (){
+                    Navigator.of(context).push(new MaterialPageRoute(
+                      builder: (BuildContext context)=> EditEventPage(
+                        title: title,
+                        description: description,
+                        date: document[i].data["date"],
+                        time: document[i].data["time"],
+                        index: document[i].reference,
+                      )
+                    ));
+                  }
+                ),
+              ],
+            ),
+          ),
+        );
       },
     );
   }
-
-  Expanded _displayContent(Event event){
-    return Expanded(
-            child: Padding(
-              padding: const EdgeInsets.only(top: 12.0, bottom: 12.0),
-              child:Container(
-              padding: const EdgeInsets.all(14.0),
-              decoration: BoxDecoration(color: Colors.white, 
-              borderRadius: BorderRadius.all(Radius.circular(12)),
-              boxShadow: [
-                BoxShadow(
-                color: Color(0x20000000),
-                blurRadius: 5,
-                offset: Offset(0,3)
-                )]
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(event.task ),//nombre de cita
-                  SizedBox(
-                    height: 12
-                  ),
-                  Text(event.desc ), //tipo de cita   
-                ],
-              ),
-            ),
-      ),
-          );
-  }
-
-  Container _displayTime(String time) {
-    return Container(width:80, 
-            child: Padding(
-            padding: const EdgeInsets.only(left: 8.0),
-            child: Text(time),)
-          );
-  }
-
-  Container _lineStyle(BuildContext context, double iconSize, int index, int listLenght, bool isFinish) {
-    return Container(
-            decoration: CustomIconDecoration(
-              iconSize: iconSize,
-              lineWidth: 1,
-              firstData: index == 0 ?? true,
-              lastData: index == listLenght - 1 ?? true
-            ),
-            child:Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(50)),
-                boxShadow: [
-                  BoxShadow(offset: Offset(0,3), color: Color(0x20000000),
-                  blurRadius: 5)
-                ]
-              ),
-              child: Icon(isFinish
-                ? Icons.fiber_manual_record 
-                : Icons.radio_button_unchecked, 
-                size: 20, color: Colors.yellow[800]),
-            )
-          );
-  }
 }
-
-
