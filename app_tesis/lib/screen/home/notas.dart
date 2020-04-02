@@ -28,7 +28,7 @@ class Notas extends StatelessWidget {
                 trailing: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
-                     IconButton(
+                    IconButton(
                       color: Colors.blue,
                       icon: Icon(Icons.edit),
                       onPressed: () => Navigator.push(context,

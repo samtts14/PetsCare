@@ -16,6 +16,16 @@ class PetTile extends StatelessWidget {
           leading: Icon(Icons.pets),
           title: Text(pet.name),
           subtitle: Text(pet.breed),
+          trailing: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              IconButton(
+                color: Colors.blue,
+                icon: Icon(Icons.edit),
+                onPressed: (){}
+              )
+            ]
+          )
         )
       )
     );

@@ -5,15 +5,17 @@ class Pet{
   final String breed;
   final String sex;
   final String age;
+  final String owner;
 
-  Pet({this.name, this.species, this.breed, this.sex, this.age});
+  Pet({this.name, this.species, this.breed, this.sex, this.age, this.owner});
 
   Pet.fromMap(Map<String, dynamic> data, String id):
     name = data['name'],
     breed = data['breed'],  
     species = data['species'],  
     sex = data['sex'],  
-    age = data['age'];   
+    age = data['age'],
+    owner = data['owner']; 
     
 
     Map<String, dynamic> toMap(){
@@ -23,6 +25,7 @@ class Pet{
         'breed' : breed,
         'sex' : sex,
         'age' : age,
+        'owner' : owner,
          
       };
     }
