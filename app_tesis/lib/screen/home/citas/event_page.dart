@@ -119,7 +119,7 @@ class CitasList extends StatelessWidget {
                   ),
                 ),
                 new IconButton(
-                  icon: Icon(Icons.edit), 
+                  icon: Icon(Icons.edit, color: Colors.yellow[800],), 
                   onPressed: (){
                     Navigator.of(context).push(new MaterialPageRoute(
                       builder: (BuildContext context)=> EditEventPage(

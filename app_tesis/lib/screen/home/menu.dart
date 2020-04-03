@@ -1,4 +1,3 @@
-
 import 'package:app_tesis/screen/home/citasHomeP.dart';
 import 'package:app_tesis/servicios/auth.dart';
 import 'package:app_tesis/src/bloc/authentication_bloc/authentication_bloc.dart';
@@ -46,7 +45,7 @@ class _MenuCentralState extends State<MenuCentral>{
         backgroundColor: Colors.brown[600], //Color del bacground del titulo
         title:Text('Animal App') ,// Titulo de la app en el home page
         actions: <Widget>[
-          new IconButton(icon: Icon(Icons.search, color: Colors.black87,), onPressed: (){})//boton de buscar
+         // new IconButton(icon: Icon(Icons.search, color: Colors.black87,), onPressed: (){})//boton de buscar
         ],
       ),
 //--
@@ -72,7 +71,11 @@ class _MenuCentralState extends State<MenuCentral>{
             ),   
             // Boddy
             InkWell(
-              onTap: (){},//Boton home menu lateral
+              onTap: (){
+                 Navigator.of(context).push(new MaterialPageRoute(
+                  builder: (BuildContext context)=> MenuCentral(name:"paco",)
+                ));
+              },//Boton home menu lateral
               child: ListTile(
                 title: Text('Inicio'),
                 leading: Icon(Icons.home),
@@ -96,7 +99,11 @@ class _MenuCentralState extends State<MenuCentral>{
             ),
 
              InkWell(
-              onTap: (){},//Boton home menu lateral
+              onTap: (){
+               Navigator.of(context).push(new MaterialPageRoute(
+                  builder: (BuildContext context)=> TareasHomeP()
+                ));
+              },//Boton home menu lateral
               child: ListTile(
                 title: Text('Mis citas'),
                 leading: Icon(Icons.note),
