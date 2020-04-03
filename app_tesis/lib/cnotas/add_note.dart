@@ -81,8 +81,8 @@ class _AddNotePageState extends State<AddNotePage> {
               ),
               const SizedBox(height:20.0),
               RaisedButton(
-                color: Theme.of(context).primaryColor,
-                textColor: Colors.white,
+                color: Colors.yellow[800],
+                textColor: Colors.black,
                 child:  Text(isEditMote ? "Actualizar" : "Guardar"),//poner logo de guardar
                 shape: RoundedRectangleBorder(// bordes
                 borderRadius: new BorderRadius.circular(20),

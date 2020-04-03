@@ -53,7 +53,9 @@ class Notas extends StatelessWidget {
          );
        },
       ),
+       
        floatingActionButton: FloatingActionButton(
+         backgroundColor: Colors.brown[500],
          child:  Icon(Icons.add),
          onPressed: (){
            Navigator.push(context, MaterialPageRoute(
@@ -62,6 +64,19 @@ class Notas extends StatelessWidget {
           );
          },
        ),
+       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        bottomNavigationBar: BottomAppBar(
+        shape: CircularNotchedRectangle(),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            IconButton(
+              icon: Icon(Icons.help_outline),
+              onPressed: (){},// enviar a pantalla de ayuda de la app
+            ),
+          ],
+        )
+      ),
     );
   }
 

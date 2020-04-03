@@ -46,7 +46,7 @@ class _TareasHomePState extends State<TareasHomeP> {
             context: context,
             builder: (BuildContext context){
               return Dialog(
-                child: currentPage == 0 ? AddTaskPage() : AddEventPage(),
+                child: currentPage == 0 ? AddEventPage() : AddTaskPage(),
                 shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(12))
               ),);
@@ -63,12 +63,8 @@ class _TareasHomePState extends State<TareasHomeP> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             IconButton(
-              icon: Icon(Icons.settings),//revisar si dejar o quitar
-              onPressed: (){},
-            ),
-            IconButton(
-              icon: Icon(Icons.more_vert),
-              onPressed: (){},
+              icon: Icon(Icons.help_outline),
+              onPressed: (){},// enviar a pantalla de ayuda de la app
             ),
           ],)
       ),
@@ -95,8 +91,8 @@ class _TareasHomePState extends State<TareasHomeP> {
         Expanded(child: PageView(
           controller: _pageController,
           children: <Widget>[//hace scroll de una ventana a otra
+          EventPage(),
           TaskPage(),
-          EventPage()
         ],)),
       ],
     );
@@ -113,7 +109,7 @@ class _TareasHomePState extends State<TareasHomeP> {
                     curve: Curves.bounceInOut
                   );
                 }, 
-                buttonText: "Tareas",
+                buttonText: "Citas",
                 color: currentPage < 0.5 ? Colors.brown[500] : Colors.white,
                 textColor: currentPage <0.5 ? Colors.white : Colors.brown[500], 
                  borderColor: currentPage <0.5 ?Colors.transparent : Colors.brown[600],
@@ -131,7 +127,7 @@ class _TareasHomePState extends State<TareasHomeP> {
                     curve: Curves.bounceInOut
                   );
                 }, 
-                buttonText: "Citas",
+                buttonText: "Tareas",
                 color: currentPage > 0.5 ? Colors.brown[500] : Colors.white,
                 textColor: currentPage > 0.5 ? Colors.white : Colors.brown[500], 
                  borderColor: currentPage > 0.5 ?Colors.transparent : Colors.brown[600],
