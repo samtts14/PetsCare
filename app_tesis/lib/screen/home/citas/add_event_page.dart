@@ -1,9 +1,8 @@
 import 'package:app_tesis/widgetsCitas/custom_buttom.dart';
 import 'package:app_tesis/widgetsCitas/custom_date_time_picker.dart';
-import 'package:app_tesis/widgetsCitas/custom_modal_action_button.dart';
-import 'package:app_tesis/widgetsCitas/custom_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+
 
 class AddEventPage extends StatefulWidget {
   @override
@@ -12,7 +11,7 @@ class AddEventPage extends StatefulWidget {
 
 class _AddEventPageState extends State<AddEventPage> {
 
-  String _selectedDate = 'Elegir Fecha';
+  String _selectedDate = 'Elegir fecha';
   String _selectedTime = 'Elegir hora';
   String id = "id";
   String newCita = "";
@@ -74,7 +73,7 @@ class _AddEventPageState extends State<AddEventPage> {
               height: 24,
             ), 
               Material(
-                            child: TextField(// titulo de la cita
+                child: TextField(// titulo de la cita
                   onChanged: (String str){
                     setState(() {
                       newCita = str;
@@ -92,7 +91,7 @@ class _AddEventPageState extends State<AddEventPage> {
               height: 12,
             ),
               Material(
-                            child: TextField(//descripcion de la cita
+                child: TextField(//descripcion de la cita
                  onChanged: (String str){
                     setState(() {
                       descripcion = str;
@@ -112,12 +111,12 @@ class _AddEventPageState extends State<AddEventPage> {
              CustomDateTimePicker(
               icon: Icons.date_range,
               onPressed: _pickDate,
-              value: _selectedDate,
+              value: _selectedDate
             ),
             CustomDateTimePicker(
               icon: Icons.access_time,
               onPressed: _pickTime,
-              value: _selectedTime,
+              value: _selectedTime
             ),
               SizedBox(//cambiae color de textBox
               height: 12,

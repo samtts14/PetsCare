@@ -1,3 +1,5 @@
+import 'package:app_tesis/screen/home/alimentosPDF.dart';
+import 'package:app_tesis/screen/home/citas/event_page.dart';
 import 'package:app_tesis/screen/home/citasHomeP.dart';
 import 'package:app_tesis/servicios/auth.dart';
 import 'package:app_tesis/src/bloc/authentication_bloc/authentication_bloc.dart';
@@ -164,14 +166,17 @@ class _MenuCentralState extends State<MenuCentral>{
               ),
                Container(
                child: RaisedButton.icon(
-                    icon: Icon(Icons.note, color: Colors.brown[400]),
-                    label: Text("este"),
+                    icon: Icon(LineAwesomeIcons.apple,size: 70, color: Colors.red[800]),
+                    label: Text(""),
                     shape: RoundedRectangleBorder(// bordes
                     borderRadius: new BorderRadius.circular(20),
                    // side: BorderSide(color: Colors.red)
                     ),
                     color: Colors.grey[200],
-                    onPressed: () async{             
+                    onPressed: () async{ 
+                       Navigator.push(
+                        context, 
+                        MaterialPageRoute(builder: (context) => GuiaNutricion()));              
                     },
                   ),
               ),
@@ -233,8 +238,6 @@ class _MenuCentralState extends State<MenuCentral>{
                     },
                   ),
               ),
-             
-             
              ]
            ),
            

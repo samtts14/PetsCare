@@ -112,7 +112,7 @@ class _TareasHomePState extends State<TareasHomeP> {
                 buttonText: "Citas",
                 color: currentPage < 0.5 ? Colors.brown[500] : Colors.white,
                 textColor: currentPage <0.5 ? Colors.white : Colors.brown[500], 
-                 borderColor: currentPage <0.5 ?Colors.transparent : Colors.brown[600],
+                borderColor: currentPage <0.5 ?Colors.transparent : Colors.brown[600],
               )
               
             ),
