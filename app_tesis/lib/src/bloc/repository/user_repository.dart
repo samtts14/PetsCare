@@ -43,7 +43,7 @@ class UserRepository{
         password: password
       );
       FirebaseUser user = result.user;
-      await PetData(uid :user.uid).updatePetData('firu', 'dog', 'chow-chow', 'M', "5 years old", user.uid);
+      await PetData.updatePetData('firu', 'dog', 'chow-chow', 'M', "5 years old");
       return result;
     }catch(e){
       print(e.tosString());
