@@ -1,5 +1,5 @@
 import 'package:app_tesis/Servicios/note.dart';
-import 'package:app_tesis/models/pet.dart';
+// import 'package:app_tesis/models/pet.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class FirestoreService{
@@ -23,9 +23,9 @@ class FirestoreService{
     });
   }
 
-  Future<void> addPet(Pet pet){
-    return _db.collection('pets').add(pet.toMap());
-  }
+  // Future<void> addPet(Pet pet){
+  //   return _db.collection('pets').add(pet.toMap());
+  // }
 
   
   // factory FirestoreService(){

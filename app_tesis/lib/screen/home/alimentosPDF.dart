@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:flutter_pdfview/flutter_pdfview.dart';
+// import 'package:flutter_pdfview/flutter_pdfview.dart';
 
 class GuiaNutricion extends StatefulWidget {
   @override
@@ -131,23 +131,23 @@ class _PdfViewPageState extends State<PdfViewPage> {
       appBar: AppBar(
         title: Text("My Document"),
       ),
-      body: Stack(
-        children: <Widget>[
-          PDFView(
-            filePath: widget.path,
-            autoSpacing: true,
-            enableSwipe: true,
-            pageSnap: true,
-            swipeHorizontal: true,
-            nightMode: false,
-            onError: (e) {
-              print(e);
-            },
+      // body: Stack(
+      //   children: <Widget>[
+      //     PDFView(
+      //       filePath: widget.path,
+      //       autoSpacing: true,
+      //       enableSwipe: true,
+      //       pageSnap: true,
+      //       swipeHorizontal: true,
+      //       nightMode: false,
+      //       onError: (e) {
+      //         print(e);
+      //       },
               
-            onPageError: (page, e) {},
-          ),
-        ],
-      ),
+      //       onPageError: (page, e) {},
+      //     ),
+      //   ],
+      // ),
    
     );
   }

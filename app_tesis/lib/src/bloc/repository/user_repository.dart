@@ -1,7 +1,7 @@
 //imports
 import 'dart:async';
 import 'package:app_tesis/Servicios/firestore_service.dart';
-import 'package:app_tesis/Servicios/petdata.dart';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -43,7 +43,7 @@ class UserRepository{
         password: password
       );
       FirebaseUser user = result.user;
-      await PetData.updatePetData('firu', 'dog', 'chow-chow', 'M', "5 years old");
+      
       return result;
     }catch(e){
       print(e.tosString());
