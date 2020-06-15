@@ -3,17 +3,15 @@ class Animal{
   final String especie;
   final String sexo;
   final String raza;
-  final String ownerEmail;
   final String id;
 
-  Animal({this.name, this.especie, this.id, this.sexo,this.raza,this.ownerEmail}); 
+  Animal({this.name, this.especie, this.id, this.sexo,this.raza}); 
 
   Animal.fromMap(Map<String, dynamic> data, String id):
     name = data["name"],
-    especie = data["description"],
+    especie = data["especie"],
     sexo = data["sexo"],
     raza= data["raza"],
-    ownerEmail = data["ownerEmail"],
     id=id;
 
     Map<String, dynamic> toMap(){
@@ -21,7 +19,8 @@ class Animal{
         "name" : name,
         "especie" : especie,
         "sexo" : sexo,
-        "raza" : raza
+        "raza" : raza,
+        
       };
     }
 }

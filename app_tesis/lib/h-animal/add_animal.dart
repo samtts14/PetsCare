@@ -16,8 +16,8 @@ class _AddAnimalPageState extends State<AddAnimalPage> {
   TextEditingController _especie;
   TextEditingController _raza;
   TextEditingController _sexo;
-  TextEditingController _ownerEmail;
-  DateTime _dateTime;
+  TextEditingController _owner;
+  //DateTime _dateTime;
   FocusNode _descriptionNode;
 
   @override
@@ -32,8 +32,7 @@ class _AddAnimalPageState extends State<AddAnimalPage> {
     widget.animal.raza: "");
      _sexo =  TextEditingController(text: isEditMote ?
     widget.animal.sexo: "");
-     _ownerEmail =  TextEditingController(text: isEditMote ?
-    widget.animal.ownerEmail: "");
+  
   }
 
   get isEditMote => widget.animal != null;
@@ -75,10 +74,11 @@ class _AddAnimalPageState extends State<AddAnimalPage> {
                 controller: _especie,
                 maxLines: 1,
                 decoration: InputDecoration(
-                  labelText: "Descripción",
+                  labelText: "especie",
                   border: OutlineInputBorder()
                 ),
               ),
+
               const SizedBox(height:20.0),
               RaisedButton(
                 color: Colors.yellow[800],
@@ -96,6 +96,12 @@ class _AddAnimalPageState extends State<AddAnimalPage> {
                        Animal animal =  Animal(
                         especie: _especie.text,
                         name: _nameController.text,
+                        raza: _raza.text,
+                        sexo: _sexo.text,
+                       
+                       
+                        
+                        
                         id: widget.animal.id
                       );
                        await FirestoreService().updateAnimal(animal);
@@ -103,6 +109,9 @@ class _AddAnimalPageState extends State<AddAnimalPage> {
                        Animal animal =  Animal(
                         especie: _especie.text,
                         name: _nameController.text,
+                        raza: _raza.text,
+                        sexo: _sexo.text,
+                       
                         
                       );
                         await  FirestoreService().addAnimal(animal);
