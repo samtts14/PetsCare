@@ -29,16 +29,16 @@ class _AddAnimalPageState extends State<AddAnimalPage> {
     'Ave',
   ];
   List<String> _razaDeMascota = <String>[
-    'Chow-Chow',
-    'Chihuahua',
-    'Husky',
+      'Cacatua',
+      'Loro',
+      'Perico',
   ];
 
   String name = '';
-  String especie = 'Perro';
-  String raza = 'Chow-Chow';
+  String especie = 'Ave';
+  String raza = 'Loro';
   String edad = '';
-  String sexo = 'M';
+  String sexo = 'F';
   String owner = '';
 
   Future<Null> _razasPorMascota(String especie) async{
@@ -131,19 +131,10 @@ class _AddAnimalPageState extends State<AddAnimalPage> {
                   border: OutlineInputBorder()
                 ),
               ),
-              const SizedBox(height: 10.0),
-              TextFormField(
-                focusNode: _descriptionNode,
-                controller: _especie,
-                maxLines: 1,
-                decoration: InputDecoration(
-                  labelText: "especie",
-                  border: OutlineInputBorder()
-                ),
-              ),
-              SizedBox(height: 15.0),
+            //  const SizedBox(height: 10.0),
+             
               Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   Icon(Icons.pets,
                   size: 25.0,
@@ -151,13 +142,14 @@ class _AddAnimalPageState extends State<AddAnimalPage> {
                   
                   DropdownButton<String>(
                     value: especie,
-                    icon: Icon(Icons.arrow_downward),
+                   // icon: Icon(Icons.arrow_downward),
                     iconSize: 24,
                     elevation: 16,
-                    style: TextStyle(color: Colors.deepPurple),
+                    style: TextStyle(color: Colors.black),
+                    
                     underline: Container(
                       height: 2,
-                      color: Colors.deepPurpleAccent,
+                      color: Colors.yellow[800],
                     ),
                     onChanged: (String newValue) {
                       setState(() {
@@ -177,7 +169,7 @@ class _AddAnimalPageState extends State<AddAnimalPage> {
                 ],
               ),
               
-              SizedBox(height: 15.0),
+             // SizedBox(height: 0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -186,13 +178,13 @@ class _AddAnimalPageState extends State<AddAnimalPage> {
                   color: Colors.brown,),
                   DropdownButton<String>(
                     value: raza,
-                    icon: Icon(Icons.arrow_downward),
+                   // icon: Icon(Icons.arrow_downward),
                     iconSize: 24,
-                    elevation: 16,
-                    style: TextStyle(color: Colors.deepPurple),
+                    elevation: 5,
+                    style: TextStyle(color: Colors.black),
                     underline: Container(
                       height: 2,
-                      color: Colors.deepPurpleAccent,
+                       color: Colors.yellow[800],
                     ),
                     onChanged: (String newValue) {
                       setState(() {
@@ -210,9 +202,9 @@ class _AddAnimalPageState extends State<AddAnimalPage> {
                 ],
               ),
 
-              SizedBox(height: 15.0),
+              //SizedBox(height: 15.0),
               Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
                   Icon(Icons.pets,
                   size: 25.0,
@@ -220,13 +212,13 @@ class _AddAnimalPageState extends State<AddAnimalPage> {
                   
                   DropdownButton<String>(
                     value: sexo,
-                    icon: Icon(Icons.pets),
+                   // icon: Icon(Icons.pets),
                     iconSize: 24,
                     elevation: 16,
-                    style: TextStyle(color: Colors.deepPurple),
+                    style: TextStyle(color: Colors.black),
                     underline: Container(
                       height: 2,
-                      color: Colors.deepPurpleAccent,
+                      color: Colors.yellow[800],
                     ),
                     onChanged: (String newValue) {
                       setState(() {
