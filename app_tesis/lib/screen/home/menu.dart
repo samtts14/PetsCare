@@ -237,14 +237,15 @@ class _MenuCentralState extends State<MenuCentral>{
               ),
               Container(
                child: RaisedButton.icon(
-                    icon: Icon(LineAwesomeIcons.map_marker, size: 70, color:Colors.lightGreen[800]),
+                    icon: Icon(LineAwesomeIcons.info_circle, size: 70, color:Colors.lightGreen[800]),
                     label: Text(""),
                     shape: RoundedRectangleBorder(// bordes
                     borderRadius: new BorderRadius.circular(20),
                    // side: BorderSide(color: Colors.red)
                     ),
                     color: Colors.grey[200],
-                    onPressed: () async{             
+                    onPressed: () async{   
+                        
                     },
                   ),
               ),
