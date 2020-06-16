@@ -35,31 +35,12 @@ class _AddAnimalPageState extends State<AddAnimalPage> {
   ];
 
   String name = '';
-  String especie = 'Ave';
-  String raza = 'Loro';
+  String especie = 'Seleciona el tipo de Mascota';
+  String raza = 'Seleciona la raza';
   String edad = '';
-  String sexo = 'F';
+  String sexo = '';
   String owner = '';
 
-  Future<Null> _razasPorMascota(String especie) async{
-    switch( especie){
-      case 'Perro': { _razaDeMascota = <String>[
-                      'Chow-Chow',
-                      'Chihuahua',
-                      'Husky',];}
-      break;
-      case 'Gato': {_razaDeMascota = <String>[
-                      'British Shorthair',
-                      'Coon De Maine',
-                      'Persas Doll',];}
-      break;
-      case 'Ave': {_razaDeMascota = <String>[
-                      'Cacatua',
-                      'Loro',
-                      'Perico',];}
-      break;
-      }
-    }
 
     DateTime _dueDate = new DateTime.now();
     String _dateText = '';
@@ -100,8 +81,91 @@ class _AddAnimalPageState extends State<AddAnimalPage> {
 
   get isEditMote => widget.animal != null;
 
+  bool disabledropdown = true;
+  List<DropdownMenuItem<String>> menu_items = List();
+  final perro = {
+    '1' : "Chow-Chow",
+    '2' : "Chihuahua",
+    '3' : "Husky",
+  };
+
+  final gato = {
+    '1' : "British Shorthair",
+    '2' : "Coon De Maine",
+    '3' : "Persas Doll",
+  };
+
+  final ave = {
+    '1' : "Cacatua",
+    '2' : "Loro",
+    '3' : "Perico",
+  };
+
+  void populateperro(){
+    for(String key in perro.keys){
+      menu_items.add(DropdownMenuItem<String>(
+        value:  perro[key],
+        child: Center(
+          child: Text(
+            perro[key]
+          ),
+        ),
+      ));
+    }
+  }
+  void populategato(){
+    for(String key in gato.keys){
+      menu_items.add(DropdownMenuItem<String>(
+        value:  gato[key],
+        child: Center(
+          child: Text(
+            gato[key]
+          ),
+        ),
+      ));
+    }
+  }
+  void populateave(){
+    for(String key in ave.keys){
+      menu_items.add(DropdownMenuItem<String>(
+        value:  ave[key],
+        child: Center(
+          child: Text(
+            ave[key]
+          ),
+        ),
+      ));
+    }
+  }
+  void valuechanged(_value){
+    if(_value == 'Perro'){
+      menu_items = [];
+      populateperro();
+    }else if(_value == 'Gato'){
+      menu_items = [];
+      populategato();
+    }else if(_value == 'Ave'){
+      menu_items = [];
+      populateave();
+    }
+    setState(() {
+      especie = _value;
+      raza = 'Selecciona la raza';
+      disabledropdown = false;
+    });
+  }
+
+  void secondvaluechanged(_value){
+    
+    setState(() {
+      raza = _value;
+      disabledropdown = false;
+    });
+  }
   @override
   Widget build(BuildContext context) {
+    String _selectedRegion;
+    String _selectedSecond;
     return Scaffold(
       appBar: AppBar(
         title: Text(isEditMote ? 'Editar Mascota' : 'Añadir mascota'),
@@ -133,111 +197,77 @@ class _AddAnimalPageState extends State<AddAnimalPage> {
               ),
             //  const SizedBox(height: 10.0),
              
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  Icon(Icons.pets,
-                  size: 25.0,
-                  color: Colors.brown,),
-                  
-                  DropdownButton<String>(
-                    value: especie,
-                   // icon: Icon(Icons.arrow_downward),
-                    iconSize: 24,
-                    elevation: 16,
-                    style: TextStyle(color: Colors.black),
-                    
-                    underline: Container(
-                      height: 2,
-                      color: Colors.yellow[800],
+              Center(
+                child: Column(
+                  children: <Widget>[
+                    // Primer dropdown Button el cual escoge la especie
+                    Padding(
+                      padding: EdgeInsets.all(5.0),
+                      child: DropdownButton<String>(
+                        items: [
+                          DropdownMenuItem<String>(
+                            value: 'Perro',
+                            child: Center(
+                              child: Text('Perro')
+                            ),
+                          ),
+                          DropdownMenuItem<String>(
+                            value: 'Gato',
+                            child: Center(
+                              child: Text('Gato')
+                            ),
+                          ),
+                          DropdownMenuItem<String>(
+                            value: 'Ave',
+                            child: Center(
+                              child: Text('Ave')
+                            ),
+                          )
+                        ],
+                        onChanged: (_value) => valuechanged(_value),
+                        hint: Text('${especie}'),
+                      ),
                     ),
-                    onChanged: (String newValue) {
-                      setState(() {
-                        especie = newValue;
-                        _razasPorMascota(especie);
-                      });
-                    },
-                    
-                    items: <String>['Perro','Ave', 'Gato', ]
-                        .map<DropdownMenuItem<String>>((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value),
-                      );
-                    }).toList(),
-                  )
-                ],
-              ),
-              
-             // SizedBox(height: 0),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Icon(Icons.pets,
-                  size: 25.0,
-                  color: Colors.brown,),
-                  DropdownButton<String>(
-                    value: raza,
-                   // icon: Icon(Icons.arrow_downward),
-                    iconSize: 24,
-                    elevation: 5,
-                    style: TextStyle(color: Colors.black),
-                    underline: Container(
-                      height: 2,
-                       color: Colors.yellow[800],
+                    // Segundo DropDown button, donde se elige la raza dependiendo de cual especie se eliga
+                    Padding(
+                      padding: EdgeInsets.all(5.0),
+                      child: DropdownButton<String>(
+                        items: menu_items ,
+                        onChanged: (disabledropdown ? null : (_value) => secondvaluechanged(_value)),
+                        hint: Text('${raza}'),
+                        disabledHint: Text('Primero selecciona el tipo de Mascota') ,
+                      ),
                     ),
-                    onChanged: (String newValue) {
-                      setState(() {
-                        raza = newValue;
-                      });
-                    },
-                    items: _razaDeMascota
-                        .map<DropdownMenuItem<String>>((String value){
-                        return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value),
-                      );
-                    }).toList(),
-                  )
-                ],
-              ),
+                  ],),
+              ), 
 
-              //SizedBox(height: 15.0),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: <Widget>[
-                  Icon(Icons.pets,
-                  size: 25.0,
-                  color: Colors.brown,),
-                  
-                  DropdownButton<String>(
-                    value: sexo,
-                   // icon: Icon(Icons.pets),
-                    iconSize: 24,
-                    elevation: 16,
-                    style: TextStyle(color: Colors.black),
-                    underline: Container(
-                      height: 2,
-                      color: Colors.yellow[800],
+              Padding(
+                      padding: EdgeInsets.all(5.0),
+                      child: DropdownButton<String>(
+                        items: [
+                          DropdownMenuItem<String>(
+                            value: 'M',
+                            child: Center(
+                              child: Text('M')
+                            ),
+                          ),
+                          DropdownMenuItem<String>(
+                            value: 'F',
+                            child: Center(
+                              child: Text('F')
+                            ),
+                          ),
+                          
+                        ],
+                        onChanged: (_value) => {
+                          print(_value.toString()),
+                          setState((){
+                            sexo = _value;
+                          })
+                        },
+                        hint: Text('Sexo'),
+                      ),
                     ),
-                    onChanged: (String newValue) {
-                      setState(() {
-                        sexo = newValue;
-                        
-                      });
-                    },
-                    
-                    items: <String>['M','F' ]
-                        .map<DropdownMenuItem<String>>((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value),
-                      );
-                    }).toList(),
-                  )
-                ],
-              ),
-
               new Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: new Row(
@@ -247,8 +277,9 @@ class _AddAnimalPageState extends State<AddAnimalPage> {
                       onPressed: ()=> _selectDueDate(context), 
                       child: Text(_dateText, style: new TextStyle(fontSize: 18.0, color: Colors.black),))
                   ],
-                ),),
-
+                ),
+              ),
+              
               const SizedBox(height:20.0),
               RaisedButton(
                 color: Colors.yellow[800],
