@@ -1,8 +1,8 @@
-import 'package:app_tesis/mascota/mascotas.dart';
+import 'package:app_tesis/screen/home/Historial/animales.dart';
 import 'package:app_tesis/screen/home/alimentosPDF.dart';
 import 'package:app_tesis/screen/home/citas/event_page.dart';
 import 'package:app_tesis/screen/home/citasHomeP.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:app_tesis/screen/home/historial.dart';
 import 'package:app_tesis/servicios/auth.dart';
 import 'package:app_tesis/src/bloc/authentication_bloc/authentication_bloc.dart';
 import 'package:app_tesis/src/bloc/authentication_bloc/authentication_event.dart';
@@ -60,8 +60,8 @@ class _MenuCentralState extends State<MenuCentral>{
          
 //header   
           new UserAccountsDrawerHeader(
-            accountName: Text('Paquito'), 
-            accountEmail: Text('paquito02@gmail.com'),
+            accountName: Text('nombre de usuario'), 
+            accountEmail: Text('Correo'),
             currentAccountPicture: GestureDetector( // foto de perfil
               child: new CircleAvatar(
                 backgroundColor: Colors.grey,
@@ -77,7 +77,7 @@ class _MenuCentralState extends State<MenuCentral>{
             InkWell(
               onTap: (){
                  Navigator.of(context).push(new MaterialPageRoute(
-                  builder: (BuildContext context)=> MenuCentral(name:"paco",)
+                  builder: (BuildContext context)=> MenuCentral(name:"nombre",)
                 ));
               },//Boton home menu lateral
               child: ListTile(
@@ -228,7 +228,10 @@ class _MenuCentralState extends State<MenuCentral>{
                    // side: BorderSide(color: Colors.red)
                     ),
                     color: Colors.grey[200],
-                    onPressed: () async{             
+                    onPressed: () async{  
+                       Navigator.push(
+                        context, 
+                        MaterialPageRoute(builder: (context) => Mascotas()));              
                     },
                   ),
               ),

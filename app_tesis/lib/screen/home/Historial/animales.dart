@@ -1,51 +1,51 @@
-import 'package:app_tesis/Servicios/firestore_service.dart';
-import 'package:app_tesis/Servicios/note.dart';
-import 'package:app_tesis/cnotas/add_note.dart';
+import 'package:app_tesis/Servicios/firestore_service_mascotas.dart';
+import 'package:app_tesis/Servicios/animal.dart';
+import 'package:app_tesis/h-animal/add_animal.dart';
 import 'package:flutter/material.dart';
-import 'package:app_tesis/cnotas/note_details.dart';
+import 'package:app_tesis/h-animal/animal_details.dart';
 
-class Notas extends StatelessWidget {
+class Mascotas extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Notas'),
+        title: Text('Mascota'),
         backgroundColor: Colors.brown[600],
       ),
      body: StreamBuilder(
-       stream: FirestoreService().getNotas(),
-       builder: (BuildContext context, AsyncSnapshot <List<Note>> snapshot){
+       stream: FirestoreService().getAnimales(),
+       builder: (BuildContext context, AsyncSnapshot <List<Animal>> snapshot){
          if(snapshot.hasError || !snapshot.hasData){
            return CircularProgressIndicator();//cargando. Hay que centrarlo
          }
          return ListView.builder(
             itemCount: snapshot.data.length,
             itemBuilder:(BuildContext context, int index){
-             Note note = snapshot.data[index];
+             Animal animal = snapshot.data[index];
               return ListTile(
-                title: Text(note.title),
-                subtitle: Text(note.description),
+                title: Text(animal.name),
+                subtitle: Text(animal.especie),
                 trailing: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
-                    IconButton(
+                     IconButton(
                       color: Colors.blue,
                       icon: Icon(Icons.edit),
                       onPressed: () => Navigator.push(context,
                         MaterialPageRoute(
-                          builder: (_) => AddNotePage(note : note),
+                          builder: (_) => AddAnimalPage(animal : animal),
                         ))
                       ),
                     IconButton(
                       color: Colors.red,
                       icon: Icon(Icons.delete),
-                      onPressed: () => _deleteNote(context,note.id),
+                      onPressed: () => _deleteAnimal(context,animal.id),
                    ),           
                   ],
                 ),
                 onTap:  () => Navigator.push(
                   context, MaterialPageRoute(
-                    builder: (_) => NoteDetailsPage(note: note)
+                    builder: (_) => AnimalDetailsPage(animal: animal)
                   ),
                 ),
               );
@@ -59,7 +59,7 @@ class Notas extends StatelessWidget {
          child:  Icon(Icons.add),
          onPressed: (){
            Navigator.push(context, MaterialPageRoute(
-              builder: (_) => AddNotePage()
+              builder: (_) => AddAnimalPage()
            )
           );
          },
@@ -80,10 +80,10 @@ class Notas extends StatelessWidget {
     );
   }
 
-  void _deleteNote(BuildContext context,String id) async{
+  void _deleteAnimal(BuildContext context,String id) async{
     if(await _showConfirmationDialog(context)){
       try {
-            await FirestoreService().deleteNote(id);
+            await FirestoreService().deleteAnimal(id);
         } catch (e) {
           print(e);
      }
@@ -95,7 +95,7 @@ class Notas extends StatelessWidget {
       context: context,
       barrierDismissible: true,
       builder: (context) => AlertDialog(
-        content:Text("Estás seguro de borrar esta nota?"),
+        content:Text("Estás seguro de borrar esta mascota?"),
         actions: <Widget>[
           FlatButton(
             textColor:  Colors.red,
