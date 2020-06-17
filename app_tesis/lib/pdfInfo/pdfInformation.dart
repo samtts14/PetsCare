@@ -6,16 +6,16 @@ import 'package:path_provider/path_provider.dart';
 import 'package:flutter_pdfview/flutter_pdfview.dart';
 import 'package:http/http.dart' as http;
 
-void main() => runApp(GuiaNutricion());
+void main() => runApp(PdfInfo());
 
-class GuiaNutricion extends StatefulWidget {
+class PdfInfo extends StatefulWidget {
   @override
-  _GuiaNutricionState createState() => _GuiaNutricionState();
+  _PdfInfoState createState() => _PdfInfoState();
 }
 
-class _GuiaNutricionState extends State<GuiaNutricion> {
+class _PdfInfoState extends State<PdfInfo> {
   String assetPDFPath = "";
-  String urlPDFPath = "";
+  
 
   @override
   void initState() {
@@ -27,13 +27,6 @@ class _GuiaNutricionState extends State<GuiaNutricion> {
         print(assetPDFPath);
       });
     });
-
-    getFileFromAsset2("assets/pdf/nutricion.pdf").then((f) {
-      setState(() {
-        urlPDFPath = f.path;
-        print(urlPDFPath);
-      });
-    });
   }
 
   Future<File> getFileFromAsset(String asset) async {
@@ -42,20 +35,6 @@ class _GuiaNutricionState extends State<GuiaNutricion> {
       var bytes = data.buffer.asUint8List();
       var dir = await getApplicationDocumentsDirectory();
       File file = File("${dir.path}/mypdf.pdf");
-
-      File assetFile = await file.writeAsBytes(bytes);
-      return assetFile;
-    } catch (e) {
-     // throw Exception("Error opening asset file");
-    }
-  }
-
-  Future<File> getFileFromAsset2(String asset2) async {
-   try {
-      var data = await rootBundle.load(asset2);
-      var bytes = data.buffer.asUint8List();
-      var dir = await getApplicationDocumentsDirectory();
-      File file = File("${dir.path}/mypdfonline.pdf");
 
       File assetFile = await file.writeAsBytes(bytes);
       return assetFile;
@@ -77,22 +56,6 @@ class _GuiaNutricionState extends State<GuiaNutricion> {
             builder: (context) => Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    RaisedButton(
-                      color: Colors.amber,
-                      child: Text("Open from URL"),
-                      onPressed: () {
-                        if (urlPDFPath != null) {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      PdfViewPage(path: urlPDFPath)));
-                        }
-                      },
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
                     RaisedButton(
                       color: Colors.cyan,
                       child: Text("Open from Asset"),

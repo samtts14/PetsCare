@@ -1,3 +1,4 @@
+import 'package:app_tesis/pdfInfo/pdfInformation.dart';
 import 'package:app_tesis/screen/home/Historial/animales.dart';
 import 'package:app_tesis/screen/home/alimentosPDF.dart';
 import 'package:app_tesis/screen/home/citas/event_page.dart';
@@ -245,7 +246,9 @@ class _MenuCentralState extends State<MenuCentral>{
                     ),
                     color: Colors.grey[200],
                     onPressed: () async{   
-                        
+                        Navigator.push(
+                       context, 
+                       MaterialPageRoute(builder: (context) => PdfInfo()));
                     },
                   ),
               ),
