@@ -12,8 +12,10 @@ import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:line_awesome_icons/line_awesome_icons.dart';
 import 'package:app_tesis/screen/home/notas.dart';
-
-
+import 'package:app_tesis/pdfInfo/pdfInformation.dart';
+import 'package:flutter/services.dart';
+import 'package:path_provider/path_provider.dart';
+import 'dart:io';
 
 // Menu principal
 class MenuCentral extends StatefulWidget {
@@ -24,8 +26,35 @@ class MenuCentral extends StatefulWidget {
 }
 
 class _MenuCentralState extends State<MenuCentral>{
+   String assetPDFPath = "";//string para pdfinfo 
    final AuthService _auth = AuthService();
   @override
+  void initState() {
+    super.initState();
+
+    getFileFromAsset("assets/pdf/avesNutricion.pdf").then((f) {
+      setState(() {
+        assetPDFPath = f.path;
+        print(assetPDFPath);
+      });
+    });
+  }
+
+  Future<File> getFileFromAsset(String asset) async {
+    try {
+      var data = await rootBundle.load(asset);
+      var bytes = data.buffer.asUint8List();
+      var dir = await getApplicationDocumentsDirectory();
+      File file = File("${dir.path}/mypdf.pdf");
+
+      File assetFile = await file.writeAsBytes(bytes);
+      return assetFile;
+    } catch (e) {
+     // throw Exception("Error opening asset file");
+    }
+  }//parte de pdfinfo hasta aqui.
+
+  
   Widget build(BuildContext context) {
     Widget  imgMovimiento = new Container(//imagenes en movimiento
     height: 200.0,
@@ -237,6 +266,7 @@ class _MenuCentralState extends State<MenuCentral>{
                   ),
               ),
               Container(
+                
                child: RaisedButton.icon(
                     icon: Icon(LineAwesomeIcons.info_circle, size: 70, color:Colors.lightGreen[800]),
                     label: Text(""),
@@ -246,9 +276,13 @@ class _MenuCentralState extends State<MenuCentral>{
                     ),
                     color: Colors.grey[200],
                     onPressed: () async{   
-                        Navigator.push(
-                       context, 
-                       MaterialPageRoute(builder: (context) => PdfInfo()));
+                       if (assetPDFPath != null) {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      PdfViewPageInfo(path: assetPDFPath)));
+                        }
                     },
                   ),
               ),
