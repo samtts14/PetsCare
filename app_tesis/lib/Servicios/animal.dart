@@ -6,8 +6,10 @@ class Animal{
   final String id;
   final String fecha;
   final String owner;
+  final String fechaVeterinario;
+  final String detalleVeterinario;
 
-  Animal({this.name, this.especie, this.id, this.sexo,this.raza, this.fecha, this.owner}); 
+  Animal({this.name, this.especie, this.id, this.sexo,this.raza, this.fecha, this.owner, this.fechaVeterinario, this.detalleVeterinario}); 
 
   Animal.fromMap(Map<String, dynamic> data, String id):
     name = data["name"],
@@ -16,6 +18,8 @@ class Animal{
     raza= data["raza"],
     fecha = data['adquisicion'],
     owner = data['owner'],
+    fechaVeterinario = data['Ultima visita al veterinario'],
+    detalleVeterinario = data['Vacunas'],
     id=id;
 
     Map<String, dynamic> toMap(){
@@ -26,7 +30,8 @@ class Animal{
         "raza" : raza,
         "owner" : owner,
         "Adquisicion" : fecha,
-        
+        "Ultima visita al veterinario" : fechaVeterinario,
+        "Vacunas" : detalleVeterinario,
       };
     }
 }

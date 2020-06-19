@@ -40,6 +40,7 @@ class _AddAnimalPageState extends State<AddAnimalPage> {
   String edad = '';
   String sexo = '';
   String owner = '';
+  String detalleVet = '';
 
 
     DateTime _dueDate = new DateTime.now();
@@ -61,6 +62,25 @@ class _AddAnimalPageState extends State<AddAnimalPage> {
     }
   }
 
+  DateTime _vetDate = new DateTime.now();
+    String _dateString = '';
+
+    Future<Null> _selectVetDate(BuildContext context) async{
+    final picked = await showDatePicker(
+      context: context,
+      initialDate: _vetDate,
+      firstDate: DateTime(2020),
+      lastDate: DateTime(2060)
+    );
+
+    if(picked != null){
+      setState(() {
+        _vetDate = picked;
+        _dateString = '${picked.day}/${picked.month}/${picked.year}';
+      });
+    }
+  }
+
   @override
   void initState() {
     super.initState();
@@ -73,9 +93,13 @@ class _AddAnimalPageState extends State<AddAnimalPage> {
     widget.animal.raza: "");
      _sexo =  TextEditingController(text: isEditMote ?
     widget.animal.sexo: "");
+    
 
     super.initState();
     _dateText = "${_dueDate.day}/${_dueDate.month}/${_dueDate.year}";
+
+    super.initState();
+    _dateString = "${_vetDate.day}/${_vetDate.month}/${_vetDate.year}";
   
   }
 
@@ -164,8 +188,7 @@ class _AddAnimalPageState extends State<AddAnimalPage> {
   }
   @override
   Widget build(BuildContext context) {
-    String _selectedRegion;
-    String _selectedSecond;
+    
     return Scaffold(
       appBar: AppBar(
         title: Text(isEditMote ? 'Editar Mascota' : 'Añadir mascota'),
@@ -279,6 +302,35 @@ class _AddAnimalPageState extends State<AddAnimalPage> {
                   ],
                 ),
               ),
+              new Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: new Row(
+                  children: <Widget>[
+                    new Expanded(child: Text("Ultima visita al Veterinario",style: new TextStyle(fontSize:18.0, color: Colors.black))),
+                    new FlatButton(
+                      onPressed: ()=> _selectVetDate(context), 
+                      child: Text(_dateString, style: new TextStyle(fontSize: 18.0, color: Colors.black),))
+                  ],
+                ),
+              ),
+              TextFormField(
+                textInputAction: TextInputAction.next,
+                // onEditingComplete: (){
+                //   FocusScope.of(context).requestFocus(_descriptionNode);
+                // },
+                
+                validator: (value){
+                  detalleVet= value;
+                  if(value == null || value.isEmpty){
+                    return "No puede quedar vacio";
+                  }
+                  return null;
+                },
+                decoration: InputDecoration(
+                  labelText: "Detalles de la visita al veterinario",
+                  border: OutlineInputBorder()
+                ),
+              ),
               
               const SizedBox(height:20.0),
               RaisedButton(
@@ -302,6 +354,8 @@ class _AddAnimalPageState extends State<AddAnimalPage> {
                         sexo: sexo,
                         owner: currentUser.email,
                         fecha: _dateText,
+                        fechaVeterinario: _dateString,
+                        detalleVeterinario: detalleVet,
                        
                        
                         
@@ -317,6 +371,8 @@ class _AddAnimalPageState extends State<AddAnimalPage> {
                         sexo: sexo,
                         owner: currentUser.email,
                         fecha: _dateText,
+                        fechaVeterinario: _dateString,
+                        detalleVeterinario: detalleVet,
                         
                        
                         

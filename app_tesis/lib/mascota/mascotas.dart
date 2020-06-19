@@ -9,6 +9,8 @@ class Mascotas extends StatefulWidget {
   Mascotas({this.user, this.googleSignIn});
   final FirebaseUser user;
   final GoogleSignIn googleSignIn;
+
+  
   
   @override
   _MascotasState createState() => _MascotasState();
@@ -21,6 +23,13 @@ class _MascotasState extends State<Mascotas> {
     final user =
               await _auth.currentUser().then((value) => userEmail = value.email);
     }
+  bool _isChecked = false;
+  void onChanged(bool value){
+    setState((){
+          _isChecked = value;
+        });
+      }
+    
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,10 +55,22 @@ class _MascotasState extends State<Mascotas> {
             height: 120.0,
             width: double.infinity,
             color: Colors.purple,
-          )
+          ),
+          Container(
+            child: Column(
+                  children:<Widget>[
+                    new Row(
+                      children: <Widget>[
+                        new Text('Alimentar Mascota'),
+                        new Checkbox(value: _isChecked, onChanged: (bool value){onChanged(value);}),
+                      ],
+                    )
+                  ]),
+      ),
         ],
         
       ),
+      
       floatingActionButton: new FloatingActionButton(
         onPressed: (){
           Navigator.of(context).push(new MaterialPageRoute(
