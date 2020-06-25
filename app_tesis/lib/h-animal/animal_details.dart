@@ -20,29 +20,28 @@ class AnimalDetailsPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Text("Nombre de mascota: ${animal.name}", style: Theme.of(context).textTheme.title.copyWith(
-                  fontWeight: FontWeight.bold,
+                Text("Nombre de mascota: ${animal.name}", style: Theme.of(context).textTheme.title.copyWith(                  
                   fontSize: 20.0
                 ),),
                 const SizedBox(height: 20.0),//tamano de palabras de notas
-                Text("Especie: ${animal.especie}", style:TextStyle(
+                Text("Especie: ${animal.especie}", style:TextStyle(                  
                   fontSize: 16.0
                 ),),
                 //const SizedBox(height: 30.0),
                 const SizedBox(height: 20.0),//tamano de palabras de notas
-                Text("Raza: ${animal.raza}", style:TextStyle(
+                Text("Raza: ${animal.raza}", style:TextStyle(                
                   fontSize: 16.0
                 ),),
                 const SizedBox(height: 20.0),//tamano de palabras de notas
-                Text("Sexo: ${animal.sexo}", style:TextStyle(
+                Text("Sexo: ${animal.sexo}", style:TextStyle(                
                   fontSize: 16.0
                 ),),
                 const SizedBox(height: 20.0),//tamano de palabras de notas
-                Text("Ultima visita al Veterinario: ${animal.fechaVeterinario}", style:TextStyle(
+                Text("Ultima visita al Veterinario: ${animal.fechaVeterinario}", style:TextStyle(               
                   fontSize: 16.0
                 ),),
                 const SizedBox(height: 20.0),//tamano de palabras de notas
-                Text("Vacunas: ${animal.detalleVeterinario}", style:TextStyle(
+                Text("Vacunas: ${animal.detalleVeterinario}", style:TextStyle(                
                   fontSize: 16.0
                 ),),
                 
