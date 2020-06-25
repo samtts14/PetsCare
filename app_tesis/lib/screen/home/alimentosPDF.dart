@@ -70,8 +70,7 @@ class _GuiaNutricionState extends State<GuiaNutricion> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.brown[600],
-          title: Text("Guia de nutrición de mascotas"),
+          title: Text("Flutter PDF Tutorial"),
         ),
         body: Center(
           child: Builder(
@@ -79,12 +78,8 @@ class _GuiaNutricionState extends State<GuiaNutricion> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     RaisedButton(
-                      color: Colors.yellow[800],
-                      child: Text("Gatos", style: TextStyle(color: Colors.black, fontSize: 30)),
-                      shape: RoundedRectangleBorder(// bordes
-                        borderRadius: new BorderRadius.circular(20),
-                   // side: BorderSide(color: Colors.red)
-                    ),
+                      color: Colors.amber,
+                      child: Text("Open from URL"),
                       onPressed: () {
                         if (urlPDFPath != null) {
                           Navigator.push(
@@ -99,12 +94,8 @@ class _GuiaNutricionState extends State<GuiaNutricion> {
                       height: 20,
                     ),
                     RaisedButton(
-                      color: Colors.brown[500],
-                      child: Text("Perros", style: TextStyle(color: Colors.white, fontSize: 30)),
-                       shape: RoundedRectangleBorder(// bordes
-                        borderRadius: new BorderRadius.circular(20),
-                   // side: BorderSide(color: Colors.red)
-                    ),
+                      color: Colors.cyan,
+                      child: Text("Open from Asset"),
                       onPressed: () {
                         if (assetPDFPath != null) {
                           Navigator.push(
@@ -142,8 +133,7 @@ class _PdfViewPageState extends State<PdfViewPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.brown[600],
-        title: Text("Guia de nutricón de mascotas"),
+        title: Text("My Document"),
       ),
       body: Stack(
         children: <Widget>[
@@ -178,7 +168,31 @@ class _PdfViewPageState extends State<PdfViewPage> {
               : Offstage()
         ],
       ),
-     
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: <Widget>[
+          _currentPage > 0
+              ? FloatingActionButton.extended(
+                  backgroundColor: Colors.red,
+                  label: Text("Go to ${_currentPage - 1}"),
+                  onPressed: () {
+                    _currentPage -= 1;
+                    _pdfViewController.setPage(_currentPage);
+                  },
+                )
+              : Offstage(),
+          _currentPage+1 < _totalPages
+              ? FloatingActionButton.extended(
+                  backgroundColor: Colors.green,
+                  label: Text("Go to ${_currentPage + 1}"),
+                  onPressed: () {
+                    _currentPage += 1;
+                    _pdfViewController.setPage(_currentPage);
+                  },
+                )
+              : Offstage(),
+        ],
+      ),
     );
   }
 }
