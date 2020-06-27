@@ -15,11 +15,11 @@ class AddAnimalPage extends StatefulWidget {
 class _AddAnimalPageState extends State<AddAnimalPage> {
   GlobalKey<FormState> _key = GlobalKey<FormState>();
   TextEditingController _nameController;
-  TextEditingController _especie;
+  TextEditingController _especie;// No en funcionamiento.
   TextEditingController _raza;
   TextEditingController _sexo;
   TextEditingController _owner;
-  //DateTime _dateTime;
+  DateTime _dateTime;
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   FocusNode _descriptionNode;
   FirebaseUser user;
@@ -356,10 +356,6 @@ class _AddAnimalPageState extends State<AddAnimalPage> {
                         fecha: _dateText,
                         fechaVeterinario: _dateString,
                         detalleVeterinario: detalleVet,
-                       
-                       
-                        
-                        
                         id: widget.animal.id
                       );
                        await FirestoreService().updateAnimal(animal);
