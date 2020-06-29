@@ -1,10 +1,8 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter_pdfview/flutter_pdfview.dart';
-import 'package:http/http.dart' as http;
 
 void main() => runApp(GuiaNutricion());
 
@@ -14,8 +12,9 @@ class GuiaNutricion extends StatefulWidget {
 }
 
 class _GuiaNutricionState extends State<GuiaNutricion> {
-  String assetPDFPath = "";
-  String urlPDFPath = "";
+  String perrosPDF = "";
+  String gatosPDF = "";
+  String avesPDF = "";
 
   @override
   void initState() {
@@ -23,15 +22,22 @@ class _GuiaNutricionState extends State<GuiaNutricion> {
 
     getFileFromAsset("assets/pdf/avesNutricion.pdf").then((f) {
       setState(() {
-        assetPDFPath = f.path;
-        print(assetPDFPath);
+        perrosPDF = f.path;
+        print(perrosPDF);
       });
     });
 
     getFileFromAsset2("assets/pdf/nutricion.pdf").then((f) {
       setState(() {
-        urlPDFPath = f.path;
-        print(urlPDFPath);
+        gatosPDF = f.path;
+        print(gatosPDF);
+      });
+    });
+
+    getFileFromAsset3("assets/pdf/gato.pdf").then((f){
+      setState(() {
+        avesPDF = f.path;
+        print(avesPDF);
       });
     });
   }
@@ -41,7 +47,7 @@ class _GuiaNutricionState extends State<GuiaNutricion> {
       var data = await rootBundle.load(asset);
       var bytes = data.buffer.asUint8List();
       var dir = await getApplicationDocumentsDirectory();
-      File file = File("${dir.path}/mypdf.pdf");
+      File file = File("${dir.path}/perro.pdf");
 
       File assetFile = await file.writeAsBytes(bytes);
       return assetFile;
@@ -55,7 +61,7 @@ class _GuiaNutricionState extends State<GuiaNutricion> {
       var data = await rootBundle.load(asset2);
       var bytes = data.buffer.asUint8List();
       var dir = await getApplicationDocumentsDirectory();
-      File file = File("${dir.path}/mypdfonline.pdf");
+      File file = File("${dir.path}/gato.pdf");
 
       File assetFile = await file.writeAsBytes(bytes);
       return assetFile;
@@ -63,7 +69,16 @@ class _GuiaNutricionState extends State<GuiaNutricion> {
      // throw Exception("Error opening asset file");
     }
   }
-
+Future<File> getFileFromAsset3(String asset3) async{
+  try{
+    var data = await rootBundle.load(asset3);
+    var bytes = data.buffer.asUint8List();
+    var dir = await getApplicationDocumentsDirectory();
+    File file = File("${dir.path}/ave");
+    File assetFile = await file.writeAsBytes(bytes);
+    return assetFile;
+  }catch(e){}
+}
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -86,12 +101,12 @@ class _GuiaNutricionState extends State<GuiaNutricion> {
                    // side: BorderSide(color: Colors.red)
                     ),
                       onPressed: () {
-                        if (urlPDFPath != null) {
+                        if (gatosPDF != null) {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
-                                      PdfViewPage(path: urlPDFPath)));
+                                      PdfViewPage(path: gatosPDF)));
                         }
                       },
                     ),
@@ -106,15 +121,35 @@ class _GuiaNutricionState extends State<GuiaNutricion> {
                    // side: BorderSide(color: Colors.red)
                     ),
                       onPressed: () {
-                        if (assetPDFPath != null) {
+                        if (perrosPDF != null) {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
-                                      PdfViewPage(path: assetPDFPath)));
+                                      PdfViewPage(path: perrosPDF)));
                         }
                       },
-                    )
+                    ),
+                     SizedBox(
+                      height: 20,
+                    ),
+                    RaisedButton(
+                      color: Colors.green[500],
+                      child: Text("aves", style: TextStyle(color: Colors.black, fontSize: 30)),
+                       shape: RoundedRectangleBorder(// bordes
+                        borderRadius: new BorderRadius.circular(20),
+                   // side: BorderSide(color: Colors.red)
+                    ),
+                      onPressed: () {
+                        if (avesPDF != null) {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      PdfViewPage(path: avesPDF)));
+                        }
+                      },
+                    ),
                   ],
                 ),
           ),

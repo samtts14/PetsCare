@@ -21,6 +21,7 @@ class Notas extends StatelessWidget {
          return ListView.builder(
             itemCount: snapshot.data.length,
             itemBuilder:(BuildContext context, int index){
+              Divider();
              Note note = snapshot.data[index];
               return ListTile(
                 title: Text(note.title),
@@ -51,6 +52,7 @@ class Notas extends StatelessWidget {
               );
             } ,
          );
+         
        },
       ),
        
