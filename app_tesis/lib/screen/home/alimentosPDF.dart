@@ -1,8 +1,10 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter_pdfview/flutter_pdfview.dart';
+
 
 void main() => runApp(GuiaNutricion());
 
@@ -88,71 +90,79 @@ Future<File> getFileFromAsset3(String asset3) async{
           backgroundColor: Colors.brown[600],
           title: Text("Guia de nutrición de mascotas"),
         ),
-        body: Center(
-          child: Builder(
-            builder: (context) => Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    RaisedButton(
-                      color: Colors.yellow[800],
-                      child: Text("Gatos", style: TextStyle(color: Colors.black, fontSize: 30)),
-                      shape: RoundedRectangleBorder(// bordes
-                        borderRadius: new BorderRadius.circular(20),
+        body: Column(
+          children: <Widget>[
+            new Expanded(
+              child: GridView.count(
+                crossAxisSpacing: 30,// espacio vertical entre botones de menu
+                crossAxisCount: 1, //numero de boton por fila del grid
+                mainAxisSpacing: 30,
+                padding: const EdgeInsets.all(120),
+                children: <Widget>[
+                  Container(
+                    child: RaisedButton.icon(
+                     icon: Center(child: Icon(LineAwesomeIcons.cat, size: 70),),
+                    label: Text(""),
+                    shape: RoundedRectangleBorder(// bordes
+                    borderRadius: new BorderRadius.circular(20),
                    // side: BorderSide(color: Colors.red)
                     ),
-                      onPressed: () {
-                        if (gatosPDF != null) {
+                    color: Colors.grey[200],
+                    onPressed: () async{  
+                      if (gatosPDF != null) {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
                                       PdfViewPage(path: gatosPDF)));
-                        }
-                      },
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    RaisedButton(
-                      color: Colors.brown[500],
-                      child: Text("Perros", style: TextStyle(color: Colors.white, fontSize: 30)),
-                       shape: RoundedRectangleBorder(// bordes
-                        borderRadius: new BorderRadius.circular(20),
+                        }           
+                    },
+                  )
+                ),
+                 Container(
+                    child: RaisedButton.icon(
+                     icon: Center(child: Icon(LineAwesomeIcons.dog, size: 70),),
+                    label: Text(""),
+                    shape: RoundedRectangleBorder(// bordes
+                    borderRadius: new BorderRadius.circular(20),
                    // side: BorderSide(color: Colors.red)
                     ),
-                      onPressed: () {
-                        if (perrosPDF != null) {
+                    color: Colors.grey[200],
+                    onPressed: () async{  
+                      if (perrosPDF != null) {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
                                       PdfViewPage(path: perrosPDF)));
-                        }
-                      },
-                    ),
-                     SizedBox(
-                      height: 20,
-                    ),
-                    RaisedButton(
-                      color: Colors.green[500],
-                      child: Text("aves", style: TextStyle(color: Colors.black, fontSize: 30)),
-                       shape: RoundedRectangleBorder(// bordes
-                        borderRadius: new BorderRadius.circular(20),
+                        }           
+                    },
+                  )
+                ),
+                 Container(
+                    child: RaisedButton.icon(
+                    icon: Center(child: Icon(LineAwesomeIcons.dove, size: 70),),
+                    label: Text(""),
+                    shape: RoundedRectangleBorder(// bordes
+                    borderRadius: new BorderRadius.circular(20),
                    // side: BorderSide(color: Colors.red)
                     ),
-                      onPressed: () {
-                        if (avesPDF != null) {
+                    color: Colors.grey[200],
+                    onPressed: () async{  
+                      if (avesPDF != null) {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
                                       PdfViewPage(path: avesPDF)));
-                        }
-                      },
-                    ),
-                  ],
-                ),
-          ),
+                        }           
+                    },
+                  )
+                )
+                ],
+              )
+            )
+          ],
         ),
       ),
     );
