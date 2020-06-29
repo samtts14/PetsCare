@@ -1,4 +1,6 @@
+
 import 'package:app_tesis/screen/authenticate/login2.dart';
+import 'package:app_tesis/screen/home/Historial/animales.dart';
 import 'package:app_tesis/screen/home/menu.dart';
 import 'package:app_tesis/src/bloc/UI/splash_screen.dart';
 import 'package:app_tesis/src/bloc/authentication_bloc/authentication_bloc.dart';
@@ -42,6 +44,7 @@ class App extends StatelessWidget{
             return SplashScreen();
           }
           if (state is Authenticated){
+            Mascotas(email: state.displayName);
             return MenuCentral(name: state.displayName,);
           }
           if(state is Unauthenticated){

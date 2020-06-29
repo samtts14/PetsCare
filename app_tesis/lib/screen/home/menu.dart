@@ -28,6 +28,9 @@ class MenuCentral extends StatefulWidget {
 class _MenuCentralState extends State<MenuCentral>{
    String assetPDFPath = "";//string para pdfinfo 
    final AuthService _auth = AuthService();
+
+  
+
   @override
   void initState() {
     super.initState();
@@ -39,7 +42,7 @@ class _MenuCentralState extends State<MenuCentral>{
       });
     });
   }
-
+  
   Future<File> getFileFromAsset(String asset) async {
     try {
       var data = await rootBundle.load(asset);
@@ -56,6 +59,7 @@ class _MenuCentralState extends State<MenuCentral>{
 
   
   Widget build(BuildContext context) {
+    Mascotas(email: "${widget.name}");
     Widget  imgMovimiento = new Container(//imagenes en movimiento
     height: 200.0,
     child:  new Carousel(
@@ -75,6 +79,7 @@ class _MenuCentralState extends State<MenuCentral>{
     
   );
     return Scaffold(
+      
        appBar: new AppBar(
         backgroundColor: Colors.brown[600], //Color del bacground del titulo
         title:Text('Animal App') ,// Titulo de la app en el home page
@@ -90,8 +95,9 @@ class _MenuCentralState extends State<MenuCentral>{
          
 //header   
           new UserAccountsDrawerHeader(
-            accountName: Text('nombre de usuario'), 
-            accountEmail: Text('Correo'),
+            accountName: Text('nombre de usuario'),
+            
+            accountEmail: Text('${widget.name}'),
             currentAccountPicture: GestureDetector( // foto de perfil
               child: new CircleAvatar(
                 backgroundColor: Colors.grey,
@@ -129,7 +135,7 @@ class _MenuCentralState extends State<MenuCentral>{
                
                   
                 Navigator.push(context, MaterialPageRoute(
-                builder: (_) => Mascotas()));
+                builder: (_) => Mascotas(email: widget.name,)));
               },//Boton home menu lateral
               child: ListTile(
                 title: Text('Mis mascotas'),

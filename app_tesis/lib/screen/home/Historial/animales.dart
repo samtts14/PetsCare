@@ -1,19 +1,27 @@
 import 'package:app_tesis/Servicios/firestore_service_mascotas.dart';
 import 'package:app_tesis/Servicios/animal.dart';
 import 'package:app_tesis/h-animal/add_animal.dart';
+import 'package:app_tesis/models/user.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:app_tesis/h-animal/animal_details.dart';
 
 class Mascotas extends StatelessWidget {
+  final String email;
+  Mascotas({Key key, this.email}) : super(key:key);
+  
+  
+  String prueba = "yoggi@hotmail.com";
   @override
   Widget build(BuildContext context) {
+    print(Text("${email} BUENOOOOOOO"));
     return Scaffold(
       appBar: AppBar(
         title: Text('Mascota'),
         backgroundColor: Colors.brown[600],
       ),
      body: StreamBuilder(
-       stream: FirestoreService().getAnimales(),
+       stream: FirestoreService().getAnimales(email),
        builder: (BuildContext context, AsyncSnapshot <List<Animal>> snapshot){
          if(snapshot.hasError || !snapshot.hasData){
            return CircularProgressIndicator();//cargando. Hay que centrarlo
@@ -88,7 +96,9 @@ class Mascotas extends StatelessWidget {
           print(e);
      }
     }
-  }
+  } 
+
+  
 
   Future<bool> _showConfirmationDialog(BuildContext context)async{
     return showDialog(
