@@ -5,15 +5,17 @@ import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class EventPage extends StatefulWidget {
-  EventPage({this.user, this.googleSignIn});
+  EventPage({this.user, this.googleSignIn, Key key, this.email}) : super(key:key);
   final FirebaseUser user;
   final GoogleSignIn googleSignIn;
   @override
   _EventPageState createState() => _EventPageState();
+  final String email;
+  
 }
 
 class _EventPageState extends State<EventPage> {
-
+  
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +25,7 @@ class _EventPageState extends State<EventPage> {
           Padding(
             padding: const EdgeInsets.only(top: 8.0),
             child: StreamBuilder(
-              stream: Firestore.instance.collection("Citas")
-             // .where("title")
+              stream: Firestore.instance.collection("Citas").where("owner", isEqualTo: widget.email)
               .snapshots(),
               builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot){
                 if(!snapshot.hasData)

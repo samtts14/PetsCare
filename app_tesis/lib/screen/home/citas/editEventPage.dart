@@ -4,11 +4,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class EditEventPage extends StatefulWidget {
-  EditEventPage({this.title, this.date, this.time, this.description, this.index});
+  EditEventPage({this.title, this.date, this.time, this.description, this.owner, this.index});
   final String title;
   final String date;
   final String time;
   final String description;
+  final String owner;
   final index;
   @override
   _EditEventPageState createState() => _EditEventPageState();

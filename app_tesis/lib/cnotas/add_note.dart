@@ -21,7 +21,7 @@ class _AddNotePageState extends State<AddNotePage> {
   TextEditingController _descriptionController;
   FocusNode _descriptionNode;
 
-  
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   
   
 
@@ -89,6 +89,7 @@ class _AddNotePageState extends State<AddNotePage> {
                    // side: BorderSide(color: Colors.red)
                     ),
                 onPressed: () async {
+                  final currentUser = await _firebaseAuth.currentUser();
                   if(_key.currentState.validate()){
                      
                     try {
@@ -96,6 +97,7 @@ class _AddNotePageState extends State<AddNotePage> {
                        Note note =  Note(
                         description: _descriptionController.text,
                         title: _titleController.text,
+                        owner: currentUser.email,
                         id: widget.note.id,
                          
                         
@@ -104,7 +106,8 @@ class _AddNotePageState extends State<AddNotePage> {
                       }else{
                        Note note =  Note(
                         description: _descriptionController.text,
-                        title: _titleController.text, 
+                        title: _titleController.text,
+                        owner: currentUser.email, 
                         
                       );
                         await  FirestoreService().addNote(note);

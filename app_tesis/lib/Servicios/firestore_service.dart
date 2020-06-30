@@ -10,9 +10,9 @@ class FirestoreService{
   factory FirestoreService(){
     return _firestoreService;
   }
-  Stream<List<Note>>getNotas(){
+  Stream<List<Note>>getNotas(email){
     return _db
-    .collection('note').snapshots().map(
+    .collection('note').where("owner", isEqualTo: email).snapshots().map(
       (snapshot)=>snapshot.documents.map(
         (doc)=>Note.fromMap(doc.data, doc.documentID),
       ).toList(),

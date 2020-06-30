@@ -1,5 +1,6 @@
 import 'package:app_tesis/widgetsCitas/custom_buttom.dart';
 import 'package:app_tesis/widgetsCitas/custom_date_time_picker.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -16,6 +17,7 @@ class _AddEventPageState extends State<AddEventPage> {
   String id = "id";
   String newCita = "";
   String descripcion = "";
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
   Future _pickDate() async{
     DateTime datepick = await showDatePicker(
@@ -42,7 +44,7 @@ class _AddEventPageState extends State<AddEventPage> {
     }
   }
 
- void _addData(){//subir a la BD
+ void _addData(owner){//subir a la BD
   Firestore.instance.runTransaction((Transaction transsaction) async{
   CollectionReference reference = Firestore.instance.collection("Citas");
   await reference.add({
@@ -50,7 +52,8 @@ class _AddEventPageState extends State<AddEventPage> {
         'title' : newCita,
         'description' : descripcion,
         'date' : _selectedDate,
-        'time' : _selectedTime
+        'time' : _selectedTime,
+        'owner' : owner,
     });
   });
 
@@ -134,8 +137,9 @@ class _AddEventPageState extends State<AddEventPage> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               CustomButtom(
-                onPressed: (){
-                  _addData();
+                onPressed: ()async{
+                  final currentUser = await _firebaseAuth.currentUser();
+                  _addData(currentUser.email.toString());
                 }, 
                 buttonText: "Guardar",
                 color: Colors.brown[600],

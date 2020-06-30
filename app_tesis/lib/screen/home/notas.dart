@@ -5,6 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:app_tesis/cnotas/note_details.dart';
 
 class Notas extends StatelessWidget {
+  final String email;
+  Notas({Key key, this.email}) : super(key:key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,7 +16,7 @@ class Notas extends StatelessWidget {
         backgroundColor: Colors.brown[600],
       ),
      body: StreamBuilder(
-       stream: FirestoreService().getNotas(),
+       stream: FirestoreService().getNotas(email),
        builder: (BuildContext context, AsyncSnapshot <List<Note>> snapshot){
          if(snapshot.hasError || !snapshot.hasData){
            return CircularProgressIndicator();//cargando. Hay que centrarlo
