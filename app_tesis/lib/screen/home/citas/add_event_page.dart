@@ -17,6 +17,7 @@ class _AddEventPageState extends State<AddEventPage> {
   String id = "id";
   String newCita = "";
   String descripcion = "";
+
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
   Future _pickDate() async{
@@ -44,7 +45,7 @@ class _AddEventPageState extends State<AddEventPage> {
     }
   }
 
- void _addData(owner){//subir a la BD
+ void _addData(){//subir a la BD
   Firestore.instance.runTransaction((Transaction transsaction) async{
   CollectionReference reference = Firestore.instance.collection("Citas");
   await reference.add({
@@ -53,7 +54,7 @@ class _AddEventPageState extends State<AddEventPage> {
         'description' : descripcion,
         'date' : _selectedDate,
         'time' : _selectedTime,
-        'owner' : owner,
+        
     });
   });
 
@@ -139,7 +140,7 @@ class _AddEventPageState extends State<AddEventPage> {
               CustomButtom(
                 onPressed: ()async{
                   final currentUser = await _firebaseAuth.currentUser();
-                  _addData(currentUser.email.toString());
+                  _addData();
                 }, 
                 buttonText: "Guardar",
                 color: Colors.brown[600],
