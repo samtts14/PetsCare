@@ -1,8 +1,5 @@
 import 'package:app_tesis/screen/home/citas/add_event_page.dart';
-import 'package:app_tesis/screen/home/citas/add_task_page.dart';
 import 'package:app_tesis/screen/home/citas/event_page.dart';
-import 'package:app_tesis/screen/home/citas/task_page.dart';
-import 'package:app_tesis/widgetsCitas/custom_buttom.dart';
 import 'package:flutter/material.dart';
 
 class TareasHomeP extends StatefulWidget {
@@ -46,7 +43,7 @@ class _TareasHomePState extends State<TareasHomeP> {
             context: context,
             builder: (BuildContext context){
               return Dialog(
-                child: currentPage == 0 ? AddEventPage() : AddTaskPage(),
+                child: currentPage == 0 ? AddEventPage() : AddEventPage(), 
                 shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(12))
               ),);
@@ -86,54 +83,15 @@ class _TareasHomePState extends State<TareasHomeP> {
     ),
        Padding(
          padding: const EdgeInsets.all(24.0),
-         child: _button(context),
         ),
         Expanded(child: PageView(
           controller: _pageController,
           children: <Widget>[//hace scroll de una ventana a otra
           EventPage(),
-          TaskPage(),
-        ],)),
+          
+        ],)
+        ),
       ],
     );
   }
-
- Widget _button(BuildContext context) {
-    return Row(
-          children: <Widget>[
-            Expanded(
-              child: CustomButtom(//cambio de color de botones
-                onPressed: (){
-                  _pageController.previousPage(
-                    duration: Duration(milliseconds: 500), 
-                    curve: Curves.bounceInOut
-                  );
-                }, 
-                buttonText: "Citas",
-                color: currentPage < 0.5 ? Colors.brown[500] : Colors.white,
-                textColor: currentPage <0.5 ? Colors.white : Colors.brown[500], 
-                borderColor: currentPage <0.5 ?Colors.transparent : Colors.brown[600],
-              )
-              
-            ),
-              SizedBox(
-                width:32
-              ),
-              Expanded(
-              child: CustomButtom(
-                onPressed: (){
-                    _pageController.nextPage(
-                    duration: Duration(milliseconds: 500), 
-                    curve: Curves.bounceInOut
-                  );
-                }, 
-                buttonText: "Tareas",
-                color: currentPage > 0.5 ? Colors.brown[500] : Colors.white,
-                textColor: currentPage > 0.5 ? Colors.white : Colors.brown[500], 
-                 borderColor: currentPage > 0.5 ?Colors.transparent : Colors.brown[600],
-                ),
-        ),
-      ]
-    );
-  }       
 }

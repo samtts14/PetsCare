@@ -1,9 +1,7 @@
 import 'package:app_tesis/pdfInfo/pdfInformation.dart';
 import 'package:app_tesis/screen/home/Historial/animales.dart';
 import 'package:app_tesis/screen/home/alimentosPDF.dart';
-import 'package:app_tesis/screen/home/citas/event_page.dart';
 import 'package:app_tesis/screen/home/citasHomeP.dart';
-import 'package:app_tesis/screen/home/historial.dart';
 import 'package:app_tesis/servicios/auth.dart';
 import 'package:app_tesis/src/bloc/authentication_bloc/authentication_bloc.dart';
 import 'package:app_tesis/src/bloc/authentication_bloc/authentication_event.dart';
@@ -12,7 +10,7 @@ import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:line_awesome_icons/line_awesome_icons.dart';
 import 'package:app_tesis/screen/home/notas.dart';
-import 'package:app_tesis/pdfInfo/pdfInformation.dart';
+//import 'package:app_tesis/pdfInfo/pdfInformation.dart';
 import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
 import 'dart:io';
@@ -26,7 +24,7 @@ class MenuCentral extends StatefulWidget {
 }
 
 class _MenuCentralState extends State<MenuCentral>{
-   String assetPDFPath = "";//string para pdfinfo 
+   String infoPDF = "";//string para pdfinfo 
    final AuthService _auth = AuthService();
 
   
@@ -35,10 +33,10 @@ class _MenuCentralState extends State<MenuCentral>{
   void initState() {
     super.initState();
 
-    getFileFromAsset("assets/pdf/avesNutricion.pdf").then((f) {
+    getFileFromAsset("assets/pdf/gato.pdf").then((f) {
       setState(() {
-        assetPDFPath = f.path;
-        print(assetPDFPath);
+        infoPDF = f.path;
+        print(infoPDF);
       });
     });
   }
@@ -48,7 +46,7 @@ class _MenuCentralState extends State<MenuCentral>{
       var data = await rootBundle.load(asset);
       var bytes = data.buffer.asUint8List();
       var dir = await getApplicationDocumentsDirectory();
-      File file = File("${dir.path}/mypdf.pdf");
+      File file = File("${dir.path}/info.pdf");
 
       File assetFile = await file.writeAsBytes(bytes);
       return assetFile;
@@ -203,7 +201,10 @@ class _MenuCentralState extends State<MenuCentral>{
                    // side: BorderSide(color: Colors.red)
                     ),
                     color: Colors.grey[200],
-                    onPressed: () async{             
+                    onPressed: () async{  
+                      Navigator.push(
+                        context, 
+                        MaterialPageRoute(builder: (context) => Mascotas()));            
                     },
                   ),
               ),
@@ -282,12 +283,12 @@ class _MenuCentralState extends State<MenuCentral>{
                     ),
                     color: Colors.grey[200],
                     onPressed: () async{   
-                       if (assetPDFPath != null) {
+                       if (infoPDF != null) {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
-                                      PdfViewPageInfo(path: assetPDFPath)));
+                                      PdfViewPageInfo(path: infoPDF)));
                         }
                     },
                   ),
