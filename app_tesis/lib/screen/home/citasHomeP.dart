@@ -3,18 +3,21 @@ import 'package:app_tesis/screen/home/citas/event_page.dart';
 import 'package:flutter/material.dart';
 
 class TareasHomeP extends StatefulWidget {
+  final String email;
+  TareasHomeP({Key key, this.email}) : super(key:key);
   @override
   _TareasHomePState createState() => _TareasHomePState();
 }
 
 class _TareasHomePState extends State<TareasHomeP> {
   PageController _pageController = PageController();
-
+  DateTime now = new DateTime.now();
+  
   double currentPage = 0;
 
   @override
   Widget build(BuildContext context) {
-
+    DateTime date = new DateTime(now.year, now.month, now.day);
     _pageController.addListener((){
       setState(() {
         currentPage = _pageController.page;
@@ -29,7 +32,7 @@ class _TareasHomePState extends State<TareasHomeP> {
         ),
         Positioned(
           right: 0,
-            child: Text("28", 
+            child: Text("${date.day}", 
               style: TextStyle(fontSize: 200, color: Color(0x10000000)),
           ),
         ),
@@ -87,7 +90,7 @@ class _TareasHomePState extends State<TareasHomeP> {
         Expanded(child: PageView(
           controller: _pageController,
           children: <Widget>[//hace scroll de una ventana a otra
-          EventPage(),
+          EventPage(email: widget.email,),
           
         ],)
         ),

@@ -6,6 +6,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 
 class AddEventPage extends StatefulWidget {
+  final String email;
+  const AddEventPage({Key key, this.email}) : super(key: key);
   @override
   _AddEventPageState createState() => _AddEventPageState();
 }
@@ -17,6 +19,7 @@ class _AddEventPageState extends State<AddEventPage> {
   String id = "id";
   String newCita = "";
   String descripcion = "";
+  String owner = "";
 
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
@@ -45,7 +48,7 @@ class _AddEventPageState extends State<AddEventPage> {
     }
   }
 
- void _addData(){//subir a la BD
+ void _addData(String owner){//subir a la BD
   Firestore.instance.runTransaction((Transaction transsaction) async{
   CollectionReference reference = Firestore.instance.collection("Citas");
   await reference.add({
@@ -54,6 +57,7 @@ class _AddEventPageState extends State<AddEventPage> {
         'description' : descripcion,
         'date' : _selectedDate,
         'time' : _selectedTime,
+        'owner': owner,
         
     });
   });
@@ -140,7 +144,8 @@ class _AddEventPageState extends State<AddEventPage> {
               CustomButtom(
                 onPressed: ()async{
                   final currentUser = await _firebaseAuth.currentUser();
-                  _addData();
+                  String email = currentUser.email.toString();
+                  _addData(email);
                 }, 
                 buttonText: "Guardar",
                 color: Colors.brown[600],

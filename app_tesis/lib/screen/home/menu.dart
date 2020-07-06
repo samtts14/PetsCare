@@ -204,7 +204,7 @@ class _MenuCentralState extends State<MenuCentral>{
                     onPressed: () async{  
                       Navigator.push(
                         context, 
-                        MaterialPageRoute(builder: (context) => Mascotas()));            
+                        MaterialPageRoute(builder: (context) => Mascotas(email: widget.name)));            
                     },
                   ),
               ),
@@ -236,7 +236,7 @@ class _MenuCentralState extends State<MenuCentral>{
                     onPressed: () async{ 
                        Navigator.push(
                         context, 
-                        MaterialPageRoute(builder: (context) => TareasHomeP()));              
+                        MaterialPageRoute(builder: (context) => TareasHomeP(email:widget.name ,)));              
                     },
                   ),
               ),
