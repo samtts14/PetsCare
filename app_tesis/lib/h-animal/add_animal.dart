@@ -46,7 +46,7 @@ class _AddAnimalPageState extends State<AddAnimalPage> {
     DateTime _dueDate = new DateTime.now();
     String _dateText = '';
 
-    Future<Null> _selectDueDate(BuildContext context) async{
+  Future<Null> _selectDueDate(BuildContext context) async{
     final picked = await showDatePicker(
       context: context,
       initialDate: _dueDate,
@@ -65,7 +65,7 @@ class _AddAnimalPageState extends State<AddAnimalPage> {
   DateTime _vetDate = new DateTime.now();
     String _dateString = '';
 
-    Future<Null> _selectVetDate(BuildContext context) async{
+  Future<Null> _selectVetDate(BuildContext context) async{
     final picked = await showDatePicker(
       context: context,
       initialDate: _vetDate,

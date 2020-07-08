@@ -22,17 +22,20 @@ class _AddEventPageState extends State<AddEventPage> {
   String owner = "";
 
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+   DateTime _dueDate = new DateTime.now();
+    String _dateText = 'Elegir fecha';
 
   Future _pickDate() async{
     DateTime datepick = await showDatePicker(
       context: context, 
-      initialDate: new DateTime.now(), 
-      firstDate: new DateTime.now().add(Duration(days: -365)), 
-      lastDate: new DateTime.now().add(Duration(days: 365)), 
+      initialDate: _dueDate,
+      firstDate: DateTime(2020),
+      lastDate: DateTime(2060)
     );
 
     if(datepick != null ) setState(() {
       _selectedDate = datepick.toString();
+      _dateText = '${datepick.day}/${datepick.month}/${datepick.year}';
     });
   }
 
@@ -43,7 +46,7 @@ class _AddEventPageState extends State<AddEventPage> {
     );
     if(timepick != null){
       setState(() {
-        _selectedTime = timepick.toString();
+        _selectedTime = "${timepick.hour}:${timepick.minute}";
       });
     }
   }
@@ -55,7 +58,7 @@ class _AddEventPageState extends State<AddEventPage> {
         'id' : id,//prueba
         'title' : newCita,
         'description' : descripcion,
-        'date' : _selectedDate,
+        'date' : _dateText,
         'time' : _selectedTime,
         'owner': owner,
         
@@ -65,7 +68,7 @@ class _AddEventPageState extends State<AddEventPage> {
   Navigator.pop(context);
 
  }
-
+  
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -119,7 +122,7 @@ class _AddEventPageState extends State<AddEventPage> {
              CustomDateTimePicker(
               icon: Icons.date_range,
               onPressed: _pickDate,
-              value: _selectedDate
+              value: _dateText
             ),
             CustomDateTimePicker(
               icon: Icons.access_time,

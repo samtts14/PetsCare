@@ -17,7 +17,11 @@ class _TareasHomePState extends State<TareasHomeP> {
 
   @override
   Widget build(BuildContext context) {
-    DateTime date = new DateTime(now.year, now.month, now.day);
+    
+    
+    DateTime date = new DateTime(now.year, now.month, now.day,);
+
+    
     _pageController.addListener((){
       setState(() {
         currentPage = _pageController.page;
@@ -71,14 +75,31 @@ class _TareasHomePState extends State<TareasHomeP> {
     );
   }
 
+  String _getDay(dayOfTheWeek){
+    String day = '';
+    switch(dayOfTheWeek){
+      case 1 : {day = "Lunes";} break;
+      case 2 : {day = "Martes";} break;
+      case 3 : {day = "Miercoles";} break;
+      case 4 : {day = "Jueves";} break;
+      case 5 : {day = "Viernes";} break;
+      case 6 : {day = "Sabado";} break;
+      case 7 : {day = "Domingo";} break;
+    }
+    return day;
+  }
+
   Widget _mainContent(BuildContext context) {
+    var dayOfWeek = 1;
+    DateTime dayOfTheWeek = DateTime.now();
+    
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         SizedBox(height: 60,),
         Padding(
           padding: const EdgeInsets.all(24.0),
-        child: Text("Lunes", 
+        child: Text("${_getDay(dayOfTheWeek.weekday) }", 
         style: TextStyle(
           fontSize:32, 
           fontWeight: FontWeight.bold),

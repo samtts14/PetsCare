@@ -30,7 +30,8 @@ class Mascotas extends StatelessWidget {
             itemCount: snapshot.data.length,
             itemBuilder:(BuildContext context, int index){
              Animal animal = snapshot.data[index];
-              return ListTile(
+              return Card(
+                child: ListTile(
                 title: Text(animal.name),
                 subtitle: Text(animal.especie),
                 trailing: Row(
@@ -56,7 +57,7 @@ class Mascotas extends StatelessWidget {
                     builder: (_) => AnimalDetailsPage(animal: animal)
                   ),
                 ),
-              );
+              ));
             } ,
          );
        },

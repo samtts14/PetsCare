@@ -26,7 +26,8 @@ class Notas extends StatelessWidget {
             itemBuilder:(BuildContext context, int index){
               
              Note note = snapshot.data[index];
-              return ListTile(
+              return Card( 
+                child: ListTile(
                 title: Text(note.title),
                 subtitle: Text(note.description),
                 trailing: Row(
@@ -52,7 +53,7 @@ class Notas extends StatelessWidget {
                     builder: (_) => NoteDetailsPage(note: note)
                   ),
                 ),
-              );
+              ));
             } ,
          );
          

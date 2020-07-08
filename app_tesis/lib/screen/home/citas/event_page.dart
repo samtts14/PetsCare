@@ -36,9 +36,6 @@ class _EventPageState extends State<EventPage> {
               }
             ),
           ),
-          Container(
-    
-          ),
         ],
       ),
     );
@@ -74,7 +71,8 @@ class CitasList extends StatelessWidget {
           },
           child: Padding(
             padding: const EdgeInsets.only(left:16.0, top: 8.0, right: 16.0, bottom: 8.0),
-            child: Row(
+            child: Card(
+              child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 new Expanded(
@@ -136,7 +134,7 @@ class CitasList extends StatelessWidget {
               ],
             ),
           ),
-        );
+        ));
       },
     );
   }
