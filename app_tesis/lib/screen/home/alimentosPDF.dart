@@ -22,7 +22,7 @@ class _GuiaNutricionState extends State<GuiaNutricion> {
   void initState() {
     super.initState();
 
-    getFileFromAsset("assets/pdf/avesNutricion.pdf").then((f) {
+    getFileFromAsset("assets/pdf/perros.pdf").then((f) {
       setState(() {
         perrosPDF = f.path;
         print(perrosPDF);
