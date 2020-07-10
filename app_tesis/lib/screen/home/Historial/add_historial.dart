@@ -11,6 +11,7 @@ import 'package:flutter/services.dart';
 class AddHistorialPage extends StatefulWidget {
   final HistorialServ historial;
   final String email;
+
   const AddHistorialPage({Key key, this.historial, this.email}) : super(key: key);
   @override
   _AddHistorialPageState createState() => _AddHistorialPageState(); 
@@ -26,6 +27,7 @@ class _AddHistorialPageState extends State<AddHistorialPage> {
   String _selectedDate = 'Elegir fecha';
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   var mascota;
+  
   @override
   void initState() {
     super.initState();
@@ -34,6 +36,7 @@ class _AddHistorialPageState extends State<AddHistorialPage> {
     _descriptionController = TextEditingController(text: isEditMote ?
     widget.historial.descripcion: "");
     _descriptionNode = FocusNode();
+    
   }
 
   get isEditMote => widget.historial != null;
@@ -50,7 +53,10 @@ class _AddHistorialPageState extends State<AddHistorialPage> {
       _dateText = '${datepick.day}/${datepick.month}/${datepick.year}';
     });
   }
-  
+  Future<String> get user async{
+    final currentUser = await _firebaseAuth.currentUser();
+    return currentUser.email.toString();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -89,7 +95,7 @@ class _AddHistorialPageState extends State<AddHistorialPage> {
             ),
                 
             StreamBuilder<QuerySnapshot>(
-              stream: Firestore.instance.collection("pets").snapshots(),
+              stream: Firestore.instance.collection("pets").where("owner", isEqualTo: widget.email).snapshots(),
               builder: (context, snapshot){
                 if(!snapshot.hasData){
                   Text("Cargando");
@@ -102,7 +108,7 @@ class _AddHistorialPageState extends State<AddHistorialPage> {
                       DropdownMenuItem(
                         child: Text(
                           snap.data["name"],
-                          style: TextStyle(color: Color(0xff11b719)),
+                          style: TextStyle(color: Colors.black),
                         ),
                         value: "${snap.data["name"]}",
                       )
@@ -111,23 +117,23 @@ class _AddHistorialPageState extends State<AddHistorialPage> {
                   return Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Icon(Icons.pets, size: 25.0,color: Color(0xff11b719)),
+                      Icon(Icons.pets, size: 25.0,color: Colors.brown),
                       DropdownButton(
                         items:mascotas,
                         onChanged: (mascotas){
                           final snackBar = SnackBar(
-                            content: Text("Selecciono a ${mascota}",style: TextStyle(color: Color(0xff11b719))),
+                            content: Text("Selecciono a ${mascotas}",style: TextStyle(color: Colors.cyan)),
                             );
                             Scaffold.of(context).showSnackBar(snackBar);
                             setState(() {
                               mascota = mascotas;
-                              print("$mascota");
+                              print("${widget.email}");
                             });
                         },
                         value: mascota,
                         
                         isExpanded: false,
-                        hint: new Text('Selecciona una mascota', style:TextStyle(color: Color(0xff11b719)),)
+                        hint: new Text('Selecciona una mascota', style:TextStyle(color: Colors.black))
 
                       )
                     ],

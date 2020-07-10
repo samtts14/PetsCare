@@ -1,7 +1,9 @@
 
 import 'package:app_tesis/screen/authenticate/login2.dart';
+import 'package:app_tesis/screen/home/Historial/add_historial.dart';
 import 'package:app_tesis/screen/home/Historial/animales.dart';
 import 'package:app_tesis/screen/home/citas/event_page.dart';
+import 'package:app_tesis/screen/home/histo2.dart';
 import 'package:app_tesis/screen/home/menu.dart';
 import 'package:app_tesis/screen/home/notas.dart';
 import 'package:app_tesis/src/bloc/UI/splash_screen.dart';
@@ -49,6 +51,8 @@ class App extends StatelessWidget{
             Mascotas(email: state.displayName);
             Notas(email: state.displayName);
             EventPage(email: state.displayName );
+            Historial2(email: state.displayName);
+            
             return MenuCentral(name: state.displayName,);
           }
           if(state is Unauthenticated){

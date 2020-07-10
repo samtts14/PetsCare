@@ -10,6 +10,7 @@ class Historial2 extends StatelessWidget {
   Historial2({Key key, @required this.email}) : super(key:key);
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Historial'),
@@ -36,7 +37,7 @@ class Historial2 extends StatelessWidget {
                       icon: Icon(Icons.edit),
                       onPressed: () => Navigator.push(context,
                         MaterialPageRoute(
-                          builder: (_) => AddHistorialPage(historial : historial,email: email,),
+                          builder: (_) => AddHistorialPage(historial : historial, email: email,),
                         ))
                       ),
                     IconButton(
@@ -62,7 +63,7 @@ class Historial2 extends StatelessWidget {
          child:  Icon(Icons.add),
          onPressed: (){
            Navigator.push(context, MaterialPageRoute(
-              builder: (_) => AddHistorialPage()
+              builder: (_) => AddHistorialPage(email: email,)
            )
           );
          },

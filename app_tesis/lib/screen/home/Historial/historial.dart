@@ -73,7 +73,7 @@ class HistorialVacuna extends StatelessWidget {
          child:  Icon(Icons.add),
          onPressed: (){
            Navigator.push(context, MaterialPageRoute(
-              builder: (_) => AddHistorialPage(),
+              builder: (_) => AddHistorialPage(email: email),
            )
           );
          },
