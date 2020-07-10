@@ -59,7 +59,7 @@ class HistorialVacuna extends StatelessWidget {
                 ),
                 onTap:  () => Navigator.push(
                   context, MaterialPageRoute(
-                    builder: (_) => HistorialDetailsPage(vacuna: vacuna)
+                    builder: (_) => HistorialDetailsPage()
                   ),
                 ),
               ));
@@ -73,7 +73,7 @@ class HistorialVacuna extends StatelessWidget {
          child:  Icon(Icons.add),
          onPressed: (){
            Navigator.push(context, MaterialPageRoute(
-              builder: (_) => AddHistorial(),
+              builder: (_) => AddHistorialPage(),
            )
           );
          },

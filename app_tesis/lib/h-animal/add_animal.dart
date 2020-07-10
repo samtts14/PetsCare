@@ -19,7 +19,7 @@ class _AddAnimalPageState extends State<AddAnimalPage> {
   TextEditingController _raza;
   TextEditingController _sexo;
   TextEditingController _owner;
-  DateTime _dateTime;
+  //DateTime _dateTime;
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   FocusNode _descriptionNode;
   FirebaseUser user;
@@ -354,8 +354,10 @@ class _AddAnimalPageState extends State<AddAnimalPage> {
                         sexo: sexo,
                         owner: currentUser.email,
                         fecha: _dateText,
-                        fechaVeterinario: _dateString,
-                        detalleVeterinario: detalleVet,
+                       
+                       
+                        
+                        
                         id: widget.animal.id
                       );
                        await FirestoreService().updateAnimal(animal);
@@ -367,8 +369,6 @@ class _AddAnimalPageState extends State<AddAnimalPage> {
                         sexo: sexo,
                         owner: currentUser.email,
                         fecha: _dateText,
-                        fechaVeterinario: _dateString,
-                        detalleVeterinario: detalleVet,
                         
                        
                         

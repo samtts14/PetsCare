@@ -3,6 +3,7 @@ import 'package:app_tesis/screen/home/Historial/animales.dart';
 import 'package:app_tesis/screen/home/Historial/historial.dart';
 import 'package:app_tesis/screen/home/alimentosPDF.dart';
 import 'package:app_tesis/screen/home/citasHomeP.dart';
+import 'package:app_tesis/screen/home/histo2.dart';
 import 'package:app_tesis/screen/home/historial.dart';
 import 'package:app_tesis/servicios/auth.dart';
 import 'package:app_tesis/src/bloc/authentication_bloc/authentication_bloc.dart';
@@ -270,7 +271,7 @@ class _MenuCentralState extends State<MenuCentral>{
                     onPressed: () async{  
                        Navigator.push(
                         context, 
-                        MaterialPageRoute(builder: (context) => HistorialVacuna(email: widget.name,)));              
+                        MaterialPageRoute(builder: (context) => Historial2(email: widget.name,)));              
                     },
                   ),
               ),

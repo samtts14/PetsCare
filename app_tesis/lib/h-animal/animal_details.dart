@@ -36,14 +36,6 @@ class AnimalDetailsPage extends StatelessWidget {
                 Text("Sexo: ${animal.sexo}", style:TextStyle(                
                   fontSize: 16.0
                 ),),
-                const SizedBox(height: 20.0),//tamano de palabras de notas
-                Text("Ultima visita al Veterinario: ${animal.fechaVeterinario}", style:TextStyle(               
-                  fontSize: 16.0
-                ),),
-                const SizedBox(height: 20.0),//tamano de palabras de notas
-                Text("Vacunas: ${animal.detalleVeterinario}", style:TextStyle(                
-                  fontSize: 16.0
-                ),),
                 
               ],
               
