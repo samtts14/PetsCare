@@ -2,12 +2,20 @@ import 'package:app_tesis/Servicios/firestore_historial.dart';
 import 'package:app_tesis/Servicios/historial_ser.dart';
 import 'package:app_tesis/screen/home/Historial/add_historial.dart';
 import 'package:app_tesis/screen/home/Historial/historial_details.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:app_tesis/cnotas/note_details.dart';
 
-class Historial2 extends StatelessWidget {
+class Historial2 extends StatefulWidget {
   final String email;
   Historial2({Key key, @required this.email}) : super(key:key);
+  @override
+  _Historial2State createState() => _Historial2State();
+}
+
+class _Historial2State extends State<Historial2> {
+  
+  var mascota;
   @override
   Widget build(BuildContext context) {
 
@@ -15,9 +23,58 @@ class Historial2 extends StatelessWidget {
       appBar: AppBar(
         title: Text('Historial'),
         backgroundColor: Colors.brown[600],
+        actions: <Widget>[
+          StreamBuilder<QuerySnapshot>(
+              stream: Firestore.instance.collection("pets").where("owner", isEqualTo: widget.email).snapshots(),
+              builder: (context, snapshot){
+                if(!snapshot.hasData){
+                  Text("Cargando");
+                }
+                else{
+                  List<DropdownMenuItem> mascotas=[];
+                  for(int i = 0; i < snapshot.data.documents.length; i++){
+                    DocumentSnapshot snap = snapshot.data.documents[i];
+                    mascotas.add(
+                      DropdownMenuItem(
+                        child: Text(
+                          snap.data["name"],
+                          style: TextStyle(color: Colors.black),
+                        ),
+                        value: "${snap.data["name"]}",
+                      )
+                    );
+                  }
+                  return Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Icon(Icons.pets, size: 25.0,color: Colors.brown),
+                      DropdownButton(
+                        items:mascotas,
+                        onChanged: (mascotas){
+                          final snackBar = SnackBar(
+                            content: Text("Selecciono a ${mascotas}",style: TextStyle(color: Colors.cyan)),
+                            );
+                            Scaffold.of(context).showSnackBar(snackBar);
+                            setState(() {
+                              mascota = mascotas;
+                              print("${widget.email}");
+                            });
+                        },
+                        value: mascota,
+                        
+                        isExpanded: false,
+                        hint: new Text('Mascota', style:TextStyle(color: Colors.black))
+
+                      )
+                    ],
+                  );
+                }
+              },
+            ),
+        ],
       ),
      body: StreamBuilder(
-       stream: FirestoreService().getHistorial(email),
+       stream: FirestoreService().getHistorial(mascota, widget.email),
        builder: (BuildContext context, AsyncSnapshot <List<HistorialServ>> snapshot){
          if(snapshot.hasError || !snapshot.hasData){
            return CircularProgressIndicator();//cargando. Hay que centrarlo
@@ -38,7 +95,7 @@ class Historial2 extends StatelessWidget {
                         icon: Icon(Icons.edit),
                         onPressed: () => Navigator.push(context,
                           MaterialPageRoute(
-                            builder: (_) => AddHistorialPage(historial : historial, email: email,),
+                            builder: (_) => AddHistorialPage(historial : historial, email: widget.email,),
                           ))
                         ),
                       IconButton(
@@ -65,7 +122,7 @@ class Historial2 extends StatelessWidget {
          child:  Icon(Icons.add),
          onPressed: (){
            Navigator.push(context, MaterialPageRoute(
-              builder: (_) => AddHistorialPage(email: email,)
+              builder: (_) => AddHistorialPage(email: widget.email,)
            )
           );
          },
@@ -117,5 +174,4 @@ class Historial2 extends StatelessWidget {
       )
     );
   }
-
 }
