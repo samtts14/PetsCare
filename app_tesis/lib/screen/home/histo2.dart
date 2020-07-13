@@ -26,32 +26,34 @@ class Historial2 extends StatelessWidget {
             itemCount: snapshot.data.length,
             itemBuilder:(BuildContext context, int index){
              HistorialServ historial = snapshot.data[index];
-              return ListTile(
-                title: Text(historial.titulo),
-                subtitle: Text(historial.descripcion),
-                trailing: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                     IconButton(
-                      color: Colors.blue,
-                      icon: Icon(Icons.edit),
-                      onPressed: () => Navigator.push(context,
-                        MaterialPageRoute(
-                          builder: (_) => AddHistorialPage(historial : historial, email: email,),
-                        ))
-                      ),
-                    IconButton(
-                      color: Colors.red,
-                      icon: Icon(Icons.delete),
-                      onPressed: () => _deleteNote(context,historial.id),
-                   ),           
-                  ],
-                ),
-                onTap:  () => Navigator.push(
-                  context, MaterialPageRoute(
-                    builder: (_) => HistorialDetailsPage(historial: historial)
+              return Card(
+                child: ListTile(
+                  title: Text(historial.titulo),
+                  subtitle: Text(historial.descripcion),
+                  trailing: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      IconButton(
+                        color: Colors.blue,
+                        icon: Icon(Icons.edit),
+                        onPressed: () => Navigator.push(context,
+                          MaterialPageRoute(
+                            builder: (_) => AddHistorialPage(historial : historial, email: email,),
+                          ))
+                        ),
+                      IconButton(
+                        color: Colors.red,
+                        icon: Icon(Icons.delete),
+                        onPressed: () => _deleteNote(context,historial.id),
+                    ),           
+                    ],
                   ),
-                ),
+                  onTap:  () => Navigator.push(
+                    context, MaterialPageRoute(
+                      builder: (_) => HistorialDetailsPage(historial: historial)
+                    ),
+                  ),
+                )
               );
             } ,
          );

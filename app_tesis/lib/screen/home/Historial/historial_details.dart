@@ -24,6 +24,10 @@ class HistorialDetailsPage extends StatelessWidget {
             Text(historial.descripcion, style:TextStyle(
               fontSize: 16.0
             ),),
+            const SizedBox(height: 20.0),//tamano de palabras de notas
+            Text(historial.fecha, style:TextStyle(
+              fontSize: 16.0
+            ),),
             //const SizedBox(height: 30.0),
           ],
         ),
