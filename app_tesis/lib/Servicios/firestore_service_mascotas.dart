@@ -30,6 +30,13 @@ class FirestoreService{
     return _db.collection('pets').document(id).delete();
   }
 
+  Future<void> deleteAnimalFromHistorial(mascota){
+    return _db.collection('historial').where("mascota", isEqualTo: mascota).getDocuments().then((snapshot) {
+      for (DocumentSnapshot ds in snapshot.documents){
+        ds.reference.delete();
+    }}); 
+  }
+
   Future<void> updateAnimal(Animal animal){
     return _db.collection('pets').document(animal.id).updateData(animal.toMap());
   }

@@ -48,7 +48,7 @@ class Mascotas extends StatelessWidget {
                     IconButton(
                       color: Colors.red,
                       icon: Icon(Icons.delete),
-                      onPressed: () => _deleteAnimal(context,animal.id),
+                      onPressed: () => _deleteAnimal(context,animal.id, animal.name),
                    ),           
                   ],
                 ),
@@ -89,16 +89,16 @@ class Mascotas extends StatelessWidget {
     );
   }
 
-  void _deleteAnimal(BuildContext context,String id) async{
+  void _deleteAnimal(BuildContext context,String id, mascota) async{
     if(await _showConfirmationDialog(context)){
       try {
             await FirestoreService().deleteAnimal(id);
+            await FirestoreService().deleteAnimalFromHistorial(mascota);
         } catch (e) {
           print(e);
      }
     }
   } 
-
   
 
   Future<bool> _showConfirmationDialog(BuildContext context)async{
