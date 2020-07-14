@@ -1,10 +1,8 @@
 import 'package:app_tesis/pdfInfo/pdfInformation.dart';
 import 'package:app_tesis/screen/home/Historial/animales.dart';
-import 'package:app_tesis/screen/home/Historial/historial.dart';
 import 'package:app_tesis/screen/home/alimentosPDF.dart';
 import 'package:app_tesis/screen/home/citasHomeP.dart';
 import 'package:app_tesis/screen/home/histo2.dart';
-import 'package:app_tesis/screen/home/historial.dart';
 import 'package:app_tesis/servicios/auth.dart';
 import 'package:app_tesis/src/bloc/authentication_bloc/authentication_bloc.dart';
 import 'package:app_tesis/src/bloc/authentication_bloc/authentication_event.dart';
@@ -13,7 +11,6 @@ import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:line_awesome_icons/line_awesome_icons.dart';
 import 'package:app_tesis/screen/home/notas.dart';
-//import 'package:app_tesis/pdfInfo/pdfInformation.dart';
 import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
 import 'dart:io';
@@ -36,7 +33,7 @@ class _MenuCentralState extends State<MenuCentral>{
   void initState() {
     super.initState();
 
-    getFileFromAsset("assets/pdf/gato.pdf").then((f) {
+    getFileFromAsset("assets/pdf/gatos.pdf").then((f) {
       setState(() {
         infoPDF = f.path;
         print(infoPDF);
@@ -158,7 +155,13 @@ class _MenuCentralState extends State<MenuCentral>{
             Divider(),
 
              InkWell(
-              onTap: (){},//Boton home menu lateral
+              onTap: (){
+                Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      PdfViewPageInfo(path: infoPDF)));
+              },//Boton home menu lateral
               child: ListTile(
                 title: Text('Información'),
                 leading: Icon(Icons.info, color: Colors.blue[300],),

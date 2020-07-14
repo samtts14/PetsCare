@@ -22,21 +22,21 @@ class _GuiaNutricionState extends State<GuiaNutricion> {
   void initState() {
     super.initState();
 
-    getFileFromAsset("assets/pdf/avesNutricion.pdf").then((f) {
+    getFileFromAsset("assets/pdf/perros.pdf").then((f) {
       setState(() {
         perrosPDF = f.path;
         print(perrosPDF);
       });
     });
 
-    getFileFromAsset2("assets/pdf/nutricion.pdf").then((f) {
+    getFileFromAsset2("assets/pdf/gatos.pdf").then((f) {
       setState(() {
         gatosPDF = f.path;
         print(gatosPDF);
       });
     });
 
-    getFileFromAsset3("assets/pdf/gato.pdf").then((f){
+    getFileFromAsset3("assets/pdf/avesNutricion.pdf").then((f){
       setState(() {
         avesPDF = f.path;
         print(avesPDF);

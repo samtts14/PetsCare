@@ -110,13 +110,21 @@ class _AddAnimalPageState extends State<AddAnimalPage> {
   final perro = {
     '1' : "Chow-Chow",
     '2' : "Chihuahua",
-    '3' : "Husky",
+    '3' : "Bulldog Frances",
+    '4' : "Husky",
+    '5' : "Beagle",
+    '6' : "Pug",
+    '7' : "Pastor Alemán",
+    '8' : "Pitbull",
+    '9' : "Yorkshire Terrier",
+    '10' : "Doberman",
   };
 
   final gato = {
-    '1' : "British Shorthair",
-    '2' : "Coon De Maine",
-    '3' : "Persas Doll",
+    '1' : "Persa",
+    '2' : "Siames",
+    '3' : "Himalayo",
+    '4' : "American Wirehair",
   };
 
   final ave = {

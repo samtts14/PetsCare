@@ -74,9 +74,9 @@ flutter:
     - images/perro.jpg
     - images/periquito.jpg
     - images/gatos.jpg
-    - assets/pdf/nutricion.pdf
+    - assets/pdf/perros.pdf
     - assets/pdf/avesNutricion.pdf
-    - assets/pdf/gato.pdf
+    - assets/pdf/gatos.pdf
     
     
 
