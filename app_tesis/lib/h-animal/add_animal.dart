@@ -128,9 +128,16 @@ class _AddAnimalPageState extends State<AddAnimalPage> {
   };
 
   final ave = {
-    '1' : "Cacatua",
-    '2' : "Loro",
+    '1' : "Agapornis",
+    '2' : "Cacatua",
     '3' : "Perico",
+    '4' : "Periquito australiano",
+    '5' : "Loro",
+    '6' : "Canarios",
+    '7' : "Diamantes mandarin",
+    '8' : "Paloma",
+    '9' : "Guacamayo",
+    '10' : "",
   };
 
   void populateperro(){

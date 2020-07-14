@@ -36,7 +36,7 @@ class _GuiaNutricionState extends State<GuiaNutricion> {
       });
     });
 
-    getFileFromAsset3("assets/pdf/avesNutricion.pdf").then((f){
+    getFileFromAsset3("assets/pdf/aves.pdf").then((f){
       setState(() {
         avesPDF = f.path;
         print(avesPDF);
