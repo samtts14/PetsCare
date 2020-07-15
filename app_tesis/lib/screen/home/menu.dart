@@ -33,7 +33,7 @@ class _MenuCentralState extends State<MenuCentral>{
   void initState() {
     super.initState();
 
-    getFileFromAsset("assets/pdf/gatos.pdf").then((f) {
+    getFileFromAsset("assets/pdf/informacion.pdf").then((f) {
       setState(() {
         infoPDF = f.path;
         print(infoPDF);
