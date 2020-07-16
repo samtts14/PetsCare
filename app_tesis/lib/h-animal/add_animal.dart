@@ -108,16 +108,17 @@ class _AddAnimalPageState extends State<AddAnimalPage> {
   bool disabledropdown = true;
   List<DropdownMenuItem<String>> menu_items = List();
   final perro = {
-    '1' : "Chow-Chow",
-    '2' : "Chihuahua",
-    '3' : "Bulldog Frances",
-    '4' : "Husky",
-    '5' : "Beagle",
-    '6' : "Pug",
-    '7' : "Pastor Alemán",
+    '1' : "Beagle",
+    '2' : "Bulldog Frances",
+    '3' : "Chihuahua",
+    '4' : "Chow chow",
+    '5' : "Doberman",
+    '6' : "Husky",
+    '7' : "Pastor Alemá",
     '8' : "Pitbull",
-    '9' : "Yorkshire Terrier",
-    '10' : "Doberman",
+    '9' : "Pug",
+    '10' : "Yorkshire Terrier",
+    
   };
 
   final gato = {
@@ -130,13 +131,13 @@ class _AddAnimalPageState extends State<AddAnimalPage> {
   final ave = {
     '1' : "Agapornis",
     '2' : "Cacatua",
-    '3' : "Perico",
-    '4' : "Periquito australiano",
-    '5' : "Loro",
-    '6' : "Canarios",
-    '7' : "Diamantes mandarin",
-    '8' : "Paloma",
-    '9' : "Guacamayo",
+    '3' : "Canarios",
+    '4' : "Diamantes mandarin",
+    '5' : "Guacamayo",
+    '6' : "Loro",
+    '7' : "Paloma",
+    '8' : "Perico",
+    '9' : "Periquito australiano",
     '10' : "",
   };
 

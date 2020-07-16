@@ -4,7 +4,6 @@ import 'package:app_tesis/screen/home/Historial/add_historial.dart';
 import 'package:app_tesis/screen/home/Historial/historial_details.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:app_tesis/cnotas/note_details.dart';
 
 class Historial2 extends StatefulWidget {
   final String email;
