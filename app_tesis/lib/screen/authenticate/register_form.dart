@@ -1,12 +1,12 @@
-import 'package:app_tesis/src/bloc/UI/google_login_button.dart';
-import 'package:app_tesis/src/bloc/UI/register_button.dart';
-import 'package:app_tesis/src/bloc/register_bloc/register_event.dart';
-import 'package:app_tesis/src/bloc/register_bloc/bloc.dart';
-import 'package:app_tesis/src/bloc/authentication_bloc/authentication_bloc.dart';
-import 'package:app_tesis/src/bloc/authentication_bloc/authentication_event.dart';
+import 'package:PetsCare/src/bloc/UI/google_login_button.dart';
+import 'package:PetsCare/src/bloc/UI/register_button.dart';
+import 'package:PetsCare/src/bloc/register_bloc/register_event.dart';
+import 'package:PetsCare/src/bloc/register_bloc/bloc.dart';
+import 'package:PetsCare/src/bloc/authentication_bloc/authentication_bloc.dart';
+import 'package:PetsCare/src/bloc/authentication_bloc/authentication_event.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:app_tesis/animations/FadeAnimation.dart';
+import 'package:PetsCare/animations/FadeAnimation.dart';
 
 
 class RegisterForm extends StatefulWidget {

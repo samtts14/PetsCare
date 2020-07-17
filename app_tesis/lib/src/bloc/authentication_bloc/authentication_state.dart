@@ -1,4 +1,4 @@
-import 'package:app_tesis/src/bloc/authentication_bloc/bloc.dart';
+import 'package:PetsCare/src/bloc/authentication_bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/rendering.dart';
 

@@ -1,4 +1,4 @@
-import 'package:app_tesis/widgetsCitas/custom_buttom.dart';
+import 'package:PetsCare/widgetsCitas/custom_buttom.dart';
 import 'package:flutter/material.dart';
 
 class CustomModalActionButton extends StatelessWidget {

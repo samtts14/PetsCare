@@ -1,4 +1,4 @@
-import 'package:app_tesis/src/bloc/login_bloc/bloc.dart';
+import 'package:PetsCare/src/bloc/login_bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_auth_buttons/flutter_auth_buttons.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

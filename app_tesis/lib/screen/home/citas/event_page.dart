@@ -1,4 +1,4 @@
-import 'package:app_tesis/screen/home/citas/editEventPage.dart';
+import 'package:PetsCare/screen/home/citas/editEventPage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';

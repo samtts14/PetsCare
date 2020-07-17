@@ -1,4 +1,4 @@
-# app_tesis
+# PetsCare
 
 A new Flutter project.
 

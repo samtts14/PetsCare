@@ -1,4 +1,4 @@
-package com.example.app_tesis
+package com.example.PetsCare
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity

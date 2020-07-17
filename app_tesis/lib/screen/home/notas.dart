@@ -1,8 +1,8 @@
-import 'package:app_tesis/Servicios/firestore_service.dart';
-import 'package:app_tesis/Servicios/note.dart';
-import 'package:app_tesis/cnotas/add_note.dart';
+import 'package:PetsCare/Servicios/firestore_service.dart';
+import 'package:PetsCare/Servicios/note.dart';
+import 'package:PetsCare/cnotas/add_note.dart';
 import 'package:flutter/material.dart';
-import 'package:app_tesis/cnotas/note_details.dart';
+import 'package:PetsCare/cnotas/note_details.dart';
 
 class Notas extends StatelessWidget {
   final String email;

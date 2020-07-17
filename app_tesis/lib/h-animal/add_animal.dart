@@ -1,5 +1,5 @@
-import 'package:app_tesis/Servicios/firestore_service_mascotas.dart';
-import 'package:app_tesis/Servicios/animal.dart';
+import 'package:PetsCare/Servicios/firestore_service_mascotas.dart';
+import 'package:PetsCare/Servicios/animal.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

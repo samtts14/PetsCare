@@ -1,4 +1,4 @@
-import 'package:app_tesis/models/user.dart';
+import 'package:PetsCare/models/user.dart';
 
 class Note{
   final String title;

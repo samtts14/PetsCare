@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:216429704717:android:eebfd2c93a8184ba648744",
         "android_client_info": {
-          "package_name": "com.example.app_tesis"
+          "package_name": "com.example.PetsCare"
         }
       },
       "oauth_client": [
@@ -18,7 +18,7 @@
           "client_id": "216429704717-94uubsi7tvlmv1jvctmv8d05i8bv2meu.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.app_tesis",
+            "package_name": "com.example.PetsCare",
             "certificate_hash": "b1437f0bb450260d8692c1e93f466d5e94e111ab"
           }
         },

@@ -1,5 +1,5 @@
-import 'package:app_tesis/widgetsCitas/custom_buttom.dart';
-import 'package:app_tesis/widgetsCitas/custom_date_time_picker.dart';
+import 'package:PetsCare/widgetsCitas/custom_buttom.dart';
+import 'package:PetsCare/widgetsCitas/custom_date_time_picker.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 

@@ -1,5 +1,5 @@
-import 'package:app_tesis/screen/home/citas/add_event_page.dart';
-import 'package:app_tesis/screen/home/citas/event_page.dart';
+import 'package:PetsCare/screen/home/citas/add_event_page.dart';
+import 'package:PetsCare/screen/home/citas/event_page.dart';
 import 'package:flutter/material.dart';
 
 class TareasHomeP extends StatefulWidget {

@@ -1,10 +1,10 @@
-import 'package:app_tesis/Servicios/firestore_service_mascotas.dart';
-import 'package:app_tesis/Servicios/animal.dart';
-import 'package:app_tesis/h-animal/add_animal.dart';
-import 'package:app_tesis/models/user.dart';
+import 'package:PetsCare/Servicios/firestore_service_mascotas.dart';
+import 'package:PetsCare/Servicios/animal.dart';
+import 'package:PetsCare/h-animal/add_animal.dart';
+import 'package:PetsCare/models/user.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:app_tesis/h-animal/animal_details.dart';
+import 'package:PetsCare/h-animal/animal_details.dart';
 
 class Mascotas extends StatelessWidget {
   final String email;

@@ -1,4 +1,4 @@
-import 'package:app_tesis/Servicios/historial_ser.dart';
+import 'package:PetsCare/Servicios/historial_ser.dart';
 import 'package:flutter/material.dart';
 
 class HistorialDetailsPage extends StatelessWidget {

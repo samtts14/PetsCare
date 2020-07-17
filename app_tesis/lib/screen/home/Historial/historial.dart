@@ -1,15 +1,15 @@
-import 'package:app_tesis/Servicios/firestore_service.dart';
-import 'package:app_tesis/Servicios/firestore_service_historial.dart';
+import 'package:PetsCare/Servicios/firestore_service.dart';
+import 'package:PetsCare/Servicios/firestore_service_historial.dart';
 
-import 'package:app_tesis/Servicios/animal.dart';
-import 'package:app_tesis/Servicios/vacunas.dart';
-import 'package:app_tesis/h-animal/add_animal.dart';
-import 'package:app_tesis/models/user.dart';
-import 'package:app_tesis/screen/home/Historial/add_historial.dart';
-import 'package:app_tesis/screen/home/Historial/historial_details.dart';
+import 'package:PetsCare/Servicios/animal.dart';
+import 'package:PetsCare/Servicios/vacunas.dart';
+import 'package:PetsCare/h-animal/add_animal.dart';
+import 'package:PetsCare/models/user.dart';
+import 'package:PetsCare/screen/home/Historial/add_historial.dart';
+import 'package:PetsCare/screen/home/Historial/historial_details.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:app_tesis/h-animal/animal_details.dart';
+import 'package:PetsCare/h-animal/animal_details.dart';
 
 class HistorialVacuna extends StatelessWidget {
   final String email;

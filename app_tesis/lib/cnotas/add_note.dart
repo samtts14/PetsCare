@@ -1,8 +1,8 @@
-import 'package:app_tesis/Servicios/firestore_service.dart';
-import 'package:app_tesis/Servicios/note.dart';
+import 'package:PetsCare/Servicios/firestore_service.dart';
+import 'package:PetsCare/Servicios/note.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
-import 'package:app_tesis/src/bloc/repository/user_repository.dart';
+import 'package:PetsCare/src/bloc/repository/user_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 

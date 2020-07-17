@@ -1,6 +1,6 @@
-import 'package:app_tesis/Servicios/firestore_historial.dart';
-import 'package:app_tesis/Servicios/historial_ser.dart';
-import 'package:app_tesis/widgetsCitas/custom_date_time_picker.dart';
+import 'package:PetsCare/Servicios/firestore_historial.dart';
+import 'package:PetsCare/Servicios/historial_ser.dart';
+import 'package:PetsCare/widgetsCitas/custom_date_time_picker.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';

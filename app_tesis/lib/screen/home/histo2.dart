@@ -1,7 +1,7 @@
-import 'package:app_tesis/Servicios/firestore_historial.dart';
-import 'package:app_tesis/Servicios/historial_ser.dart';
-import 'package:app_tesis/screen/home/Historial/add_historial.dart';
-import 'package:app_tesis/screen/home/Historial/historial_details.dart';
+import 'package:PetsCare/Servicios/firestore_historial.dart';
+import 'package:PetsCare/Servicios/historial_ser.dart';
+import 'package:PetsCare/screen/home/Historial/add_historial.dart';
+import 'package:PetsCare/screen/home/Historial/historial_details.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
