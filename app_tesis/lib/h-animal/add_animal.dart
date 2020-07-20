@@ -122,10 +122,16 @@ class _AddAnimalPageState extends State<AddAnimalPage> {
   };
 
   final gato = {
-    '1' : "Persa",
-    '2' : "Siames",
-    '3' : "Himalayo",
-    '4' : "American Wirehair",
+    '1' : "American Wirehair",
+    '2' : "Himalayo",
+    '3' : "Munchkin",
+    '4' : "Persa",
+    '5' : "Savannah",
+    '6' : "Siames",
+    '7' : "Siberiano",
+    '8' : "Sokoke",
+    '9' : "Snowshoe",
+    '10' : "Van Turco",
   };
 
   final ave = {

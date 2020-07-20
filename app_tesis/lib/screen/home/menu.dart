@@ -80,7 +80,7 @@ class _MenuCentralState extends State<MenuCentral>{
       
        appBar: new AppBar(
         backgroundColor: Colors.brown[600], //Color del bacground del titulo
-        title:Text('Animal App') ,// Titulo de la app en el home page
+        title:Text('PetsCare') ,// Titulo de la app en el home page
         actions: <Widget>[
          // new IconButton(icon: Icon(Icons.search, color: Colors.black87,), onPressed: (){})//boton de buscar
         ],
