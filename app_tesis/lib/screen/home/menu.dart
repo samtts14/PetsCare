@@ -120,13 +120,13 @@ class _MenuCentralState extends State<MenuCentral>{
               ),
             ),
 
-             InkWell(
-              onTap: (){},//Boton home menu lateral
-              child: ListTile(
-                title: Text('Mi cuenta'),
-                leading: Icon(Icons.person),
-              ),
-            ),
+            //  InkWell(
+            //   onTap: (){},//Boton home menu lateral
+            //   child: ListTile(
+            //     title: Text('Mi cuenta'),
+            //     leading: Icon(Icons.person),
+            //   ),
+            // ),
 
              InkWell(
               onTap:() async{
@@ -144,7 +144,7 @@ class _MenuCentralState extends State<MenuCentral>{
              InkWell(
               onTap: (){
                Navigator.of(context).push(new MaterialPageRoute(
-                  builder: (BuildContext context)=> TareasHomeP()
+                  builder: (_) => TareasHomeP(email: widget.name,)
                 ));
               },//Boton home menu lateral
               child: ListTile(

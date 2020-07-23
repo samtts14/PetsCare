@@ -1,7 +1,5 @@
 //imports
 import 'dart:async';
-import 'package:PetsCare/Servicios/firestore_service.dart';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 

@@ -67,7 +67,7 @@ class _TareasHomePState extends State<TareasHomeP> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             IconButton(
-              icon: Icon(Icons.help_outline),
+              icon: Icon(Icons.help_outline, color:  Colors.transparent,),
               onPressed: (){},// enviar a pantalla de ayuda de la app
             ),
           ],)
