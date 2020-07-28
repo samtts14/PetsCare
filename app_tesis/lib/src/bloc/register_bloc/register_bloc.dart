@@ -1,9 +1,9 @@
-import 'package:PetsCare/src/bloc/repository/user_repository.dart';
+import 'package:petscare/src/bloc/repository/user_repository.dart';
 import 'package:bloc/bloc.dart';
-import 'package:PetsCare/src/bloc/register_bloc/bloc.dart';
+import 'package:petscare/src/bloc/register_bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:PetsCare/src/util/validators.dart';
+import 'package:petscare/src/util/validators.dart';
 class RegisterBloc extends Bloc<RegisterEvent, RegisterState>{
   final UserRepository _userRepository;
 

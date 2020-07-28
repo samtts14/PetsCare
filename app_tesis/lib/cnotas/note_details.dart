@@ -1,4 +1,4 @@
-import 'package:PetsCare/Servicios/note.dart';
+import 'package:petscare/Servicios/note.dart';
 import 'package:flutter/material.dart';
 
 class NoteDetailsPage extends StatelessWidget {

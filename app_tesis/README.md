@@ -1,4 +1,4 @@
-# PetsCare
+# petscare
 
 A new Flutter project.
 

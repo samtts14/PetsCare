@@ -1,6 +1,6 @@
-import 'package:PetsCare/src/bloc/login_bloc/bloc.dart';
+import 'package:petscare/src/bloc/login_bloc/bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:PetsCare/src/bloc/repository/user_repository.dart';
+import 'package:petscare/src/bloc/repository/user_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'login_form.dart';
 

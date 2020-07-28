@@ -1,4 +1,4 @@
-package com.example.PetsCare
+package com.example.petscare
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity

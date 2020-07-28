@@ -1,5 +1,5 @@
-import 'package:PetsCare/Servicios/animal.dart';
-import 'package:PetsCare/Servicios/vacunas.dart';
+import 'package:petscare/Servicios/animal.dart';
+import 'package:petscare/Servicios/vacunas.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 

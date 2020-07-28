@@ -1,5 +1,5 @@
-import 'package:PetsCare/screen/authenticate/sign_up.dart';
-import 'package:PetsCare/src/bloc/repository/user_repository.dart';
+import 'package:petscare/screen/authenticate/sign_up.dart';
+import 'package:petscare/src/bloc/repository/user_repository.dart';
 import 'package:flutter/material.dart';
 
 class CreateAccountButton extends StatelessWidget {

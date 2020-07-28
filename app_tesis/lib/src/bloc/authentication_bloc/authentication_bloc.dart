@@ -1,7 +1,7 @@
-import 'package:PetsCare/src/bloc/authentication_bloc/authentication_event.dart';
-import 'package:PetsCare/src/bloc/authentication_bloc/authentication_state.dart';
-import 'package:PetsCare/src/bloc/authentication_bloc/bloc.dart';
-import 'package:PetsCare/src/bloc/repository/user_repository.dart';
+import 'package:petscare/src/bloc/authentication_bloc/authentication_event.dart';
+import 'package:petscare/src/bloc/authentication_bloc/authentication_state.dart';
+import 'package:petscare/src/bloc/authentication_bloc/bloc.dart';
+import 'package:petscare/src/bloc/repository/user_repository.dart';
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:meta/meta.dart';

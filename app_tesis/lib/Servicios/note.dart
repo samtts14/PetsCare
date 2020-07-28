@@ -1,4 +1,4 @@
-import 'package:PetsCare/models/user.dart';
+import 'package:petscare/models/user.dart';
 
 class Note{
   final String title;

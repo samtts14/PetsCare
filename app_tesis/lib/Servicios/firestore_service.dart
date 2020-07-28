@@ -1,4 +1,4 @@
-import 'package:PetsCare/Servicios/note.dart';
+import 'package:petscare/Servicios/note.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class FirestoreService{

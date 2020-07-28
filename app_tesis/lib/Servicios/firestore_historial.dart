@@ -1,4 +1,4 @@
-import 'package:PetsCare/Servicios/historial_ser.dart';
+import 'package:petscare/Servicios/historial_ser.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class FirestoreService{

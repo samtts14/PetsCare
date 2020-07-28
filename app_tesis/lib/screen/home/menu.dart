@@ -1,16 +1,16 @@
-import 'package:PetsCare/pdfInfo/pdfInformation.dart';
-import 'package:PetsCare/screen/home/Historial/animales.dart';
-import 'package:PetsCare/screen/home/alimentosPDF.dart';
-import 'package:PetsCare/screen/home/citasHomeP.dart';
-import 'package:PetsCare/screen/home/histo2.dart';
-import 'package:PetsCare/servicios/auth.dart';
-import 'package:PetsCare/src/bloc/authentication_bloc/authentication_bloc.dart';
-import 'package:PetsCare/src/bloc/authentication_bloc/authentication_event.dart';
+import 'package:petscare/pdfInfo/pdfInformation.dart';
+import 'package:petscare/screen/home/Historial/animales.dart';
+import 'package:petscare/screen/home/alimentosPDF.dart';
+import 'package:petscare/screen/home/citasHomeP.dart';
+import 'package:petscare/screen/home/histo2.dart';
+import 'package:petscare/servicios/auth.dart';
+import 'package:petscare/src/bloc/authentication_bloc/authentication_bloc.dart';
+import 'package:petscare/src/bloc/authentication_bloc/authentication_event.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:line_awesome_icons/line_awesome_icons.dart';
-import 'package:PetsCare/screen/home/notas.dart';
+import 'package:petscare/screen/home/notas.dart';
 import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
 import 'dart:io';
@@ -26,8 +26,6 @@ class MenuCentral extends StatefulWidget {
 class _MenuCentralState extends State<MenuCentral>{
    String infoPDF = "";//string para pdfinfo 
    final AuthService _auth = AuthService();
-
-  
 
   @override
   void initState() {
@@ -80,7 +78,7 @@ class _MenuCentralState extends State<MenuCentral>{
       
        appBar: new AppBar(
         backgroundColor: Colors.brown[600], //Color del bacground del titulo
-        title:Text('PetsCare') ,// Titulo de la app en el home page
+        title:Text('petscare') ,// Titulo de la app en el home page
         actions: <Widget>[
          // new IconButton(icon: Icon(Icons.search, color: Colors.black87,), onPressed: (){})//boton de buscar
         ],

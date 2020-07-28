@@ -1,13 +1,16 @@
-import 'package:PetsCare/screen/home/citas/editEventPage.dart';
+import 'package:petscare/screen/home/citas/editEventPage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
+const EVENTS_KEY = "fetch_events";
 class EventPage extends StatefulWidget {
   EventPage({this.user, this.googleSignIn, Key key, this.email}) : super(key:key);
   final FirebaseUser user;
   final GoogleSignIn googleSignIn;
+  
   @override
   _EventPageState createState() => _EventPageState();
   final String email;
@@ -42,27 +45,43 @@ class _EventPageState extends State<EventPage> {
   }
 }
 
-class CitasList extends StatelessWidget {
-  CitasList({this.document});
+class CitasList extends StatefulWidget {
   final List<DocumentSnapshot> document;
+  const CitasList({Key key, this.document}) : super(key: key);
+  @override
+  _CitasListState createState() => _CitasListState();
+}
+
+class _CitasListState extends State<CitasList> {
+  List<String>_events = [];
+
+  
+
   @override
   Widget build(BuildContext context) {
+    
     return new ListView.builder(
-      itemCount:  document.length,
+      itemCount:  widget.document.length,
       itemBuilder: (BuildContext context, int i){
 
-        String title = document[i].data["title"].toString();
-        String description = document[i].data["description"].toString();
-        String date = document[i].data["date"].toString();
-        String time = document[i].data["time"].toString();
+        String title = widget.document[i].data["title"].toString();
+        String description = widget.document[i].data["description"].toString();
+        String date = widget.document[i].data["date"].toString();
+        String time = widget.document[i].data["time"].toString();
 
         return Dismissible(
-          key: new Key(document[i].documentID),
+          key: new Key(widget.document[i].documentID),
           onDismissed: (direction){
             Firestore.instance.runTransaction((transaction) async{
                 DocumentSnapshot snapshot = 
-                await transaction.get(document[i].reference);
+                await transaction.get(widget.document[i].reference);
                 await transaction.delete(snapshot.reference);
+
+                void _onClickClear() async {
+                  SharedPreferences prefs = await SharedPreferences.getInstance();
+                  prefs.remove(EVENTS_KEY);
+                  _events = [];
+                }
             });
 
             Scaffold.of(context).showSnackBar(
@@ -124,9 +143,9 @@ class CitasList extends StatelessWidget {
                       builder: (BuildContext context)=> EditEventPage(
                         title: title,
                         description: description,
-                        date: document[i].data["date"],
-                        time: document[i].data["time"],
-                        index: document[i].reference,
+                        date: widget.document[i].data["date"],
+                        time: widget.document[i].data["time"],
+                        index: widget.document[i].reference,
                       )
                     ));
                   }
@@ -139,3 +158,4 @@ class CitasList extends StatelessWidget {
     );
   }
 }
+

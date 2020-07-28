@@ -1,8 +1,13 @@
-import 'package:PetsCare/widgetsCitas/custom_buttom.dart';
-import 'package:PetsCare/widgetsCitas/custom_date_time_picker.dart';
+import 'package:petscare/widgetsCitas/custom_buttom.dart';
+import 'package:petscare/widgetsCitas/custom_date_time_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:petscare/screen/home/citas/sharedPrefs.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:intl/intl.dart';
+import 'package:android_alarm_manager/android_alarm_manager.dart';
+import 'package:petscare/screen/home/citas/notificationHelper.dart';
 
 
 class AddEventPage extends StatefulWidget {
@@ -14,12 +19,27 @@ class AddEventPage extends StatefulWidget {
 
 class _AddEventPageState extends State<AddEventPage> {
 
+  DateTime _dateTimeAux;
+  TimeOfDay _dayTimeAux;
   String _selectedDate = 'Elegir fecha';
   String _selectedTime = 'Elegir hora';
   String id = "id";
   String newCita = "";
   String descripcion = "";
   String owner = "";
+
+  String startTime = "";
+  String endTime = "";
+  @override
+  void initState() {
+    super.initState();
+    getTime();
+  }
+
+  static periodicCallback() {
+    NotificationHelper().showNotificationBtweenInterval();
+  }
+
 
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
    DateTime _dueDate = new DateTime.now();
@@ -36,7 +56,19 @@ class _AddEventPageState extends State<AddEventPage> {
     if(datepick != null ) setState(() {
       _selectedDate = datepick.toString();
       _dateText = '${datepick.day}/${datepick.month}/${datepick.year}';
+      _dateTimeAux = datepick;
     });
+  }
+//Prueba
+
+//@override
+  void asingDate(e,h) {
+    //var now = DateTime.now();
+    var startTime = DateTime(e.year, e.month, e.day, h.hour, h.minute-1); // eg 7 AM
+    var endTime = DateTime(e.year, e.month, e.day,  h.hour, h.minute + 1); // eg 10 PM
+    setStartTime(startTime);
+    setEndTime(endTime);
+    print(startTime.toString() + "//////////////////////////////////");
   }
 
   Future _pickTime() async{
@@ -47,9 +79,12 @@ class _AddEventPageState extends State<AddEventPage> {
     if(timepick != null){
       setState(() {
         _selectedTime = "${timepick.hour}:${timepick.minute}";
+        _dayTimeAux = timepick;
       });
     }
   }
+
+
 
  void _addData(String owner){//subir a la BD
   Firestore.instance.runTransaction((Transaction transsaction) async{
@@ -146,9 +181,14 @@ class _AddEventPageState extends State<AddEventPage> {
             children: <Widget>[
               CustomButtom(
                 onPressed: ()async{
+                  asingDate(_dateTimeAux,_dayTimeAux);
                   final currentUser = await _firebaseAuth.currentUser();
                   String email = currentUser.email.toString();
                   _addData(email);
+                  print("------------------+++++++++");
+                  WidgetsFlutterBinding.ensureInitialized();
+                            await AndroidAlarmManager.initialize();
+                            onTimePeriodic();
                 }, 
                 buttonText: "Guardar",
                 color: Colors.brown[600],
@@ -164,5 +204,37 @@ class _AddEventPageState extends State<AddEventPage> {
           ),
     );
   }
+
+  onTimePeriodic() {
+    SharedPreferences.getInstance().then((value) async {
+      var a = value.getBool('oneTimePeriodic') ?? true;
+      print(a.toString() +
+          "/////////////////////////////////////////////////////////////////");
+      
+      if (a) {
+        print("holaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        await AndroidAlarmManager.periodic(
+            Duration(seconds: 1), 0, periodicCallback);
+        onlyOneTimePeriodic();
+      } else {
+        print("holeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
+        print("Cannot run more than once");
+      }
+    });
+  }
+
+  getTime() {
+    SharedPreferences.getInstance().then((value) {
+      var a = value.getString('startTime');
+      var b = value.getString('endTime');
+      if (a != null && b != null) {
+        setState(() {
+          startTime = DateFormat('jm').format(DateTime.parse(a));
+          endTime = DateFormat('jm').format(DateTime.parse(b));
+        });
+      }
+    });
+  }
+
 }
-           
+        

@@ -1,4 +1,4 @@
-import 'package:PetsCare/Servicios/animal.dart';
+import 'package:petscare/Servicios/animal.dart';
 import 'package:flutter/material.dart';
 
 class AnimalDetailsPage extends StatelessWidget {

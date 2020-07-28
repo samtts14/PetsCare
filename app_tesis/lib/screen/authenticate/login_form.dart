@@ -1,13 +1,13 @@
-import 'package:PetsCare/src/bloc/UI/google_login_button.dart';
-import 'package:PetsCare/src/bloc/authentication_bloc/authentication_bloc.dart';
-import 'package:PetsCare/src/bloc/authentication_bloc/authentication_event.dart';
-import 'package:PetsCare/src/bloc/login_bloc/bloc.dart';
+import 'package:petscare/src/bloc/UI/google_login_button.dart';
+import 'package:petscare/src/bloc/authentication_bloc/authentication_bloc.dart';
+import 'package:petscare/src/bloc/authentication_bloc/authentication_event.dart';
+import 'package:petscare/src/bloc/login_bloc/bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:PetsCare/src/bloc/repository/user_repository.dart';
+import 'package:petscare/src/bloc/repository/user_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:PetsCare/animations/FadeAnimation.dart';
-import 'package:PetsCare/src/bloc/UI/login_button.dart';
-import 'package:PetsCare/src/bloc/UI/create_account_button.dart';
+import 'package:petscare/animations/FadeAnimation.dart';
+import 'package:petscare/src/bloc/UI/login_button.dart';
+import 'package:petscare/src/bloc/UI/create_account_button.dart';
 
 class LoginForm extends StatefulWidget {
   final UserRepository _userRepository;

@@ -1,10 +1,10 @@
-import 'package:PetsCare/src/bloc/login_bloc/bloc.dart';
-import 'package:PetsCare/src/util/validators.dart';
+import 'package:petscare/src/bloc/login_bloc/bloc.dart';
+import 'package:petscare/src/util/validators.dart';
 import 'package:bloc/bloc.dart';
 import 'dart:async';
 import 'package:meta/meta.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:PetsCare/src/bloc/repository/user_repository.dart';
+import 'package:petscare/src/bloc/repository/user_repository.dart';
 
 
 class LoginBloc extends Bloc<LoginEvent, LoginState>{

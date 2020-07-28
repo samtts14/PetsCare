@@ -1,4 +1,4 @@
-import 'package:PetsCare/Servicios/firestore_service.dart';
+import 'package:petscare/Servicios/firestore_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
