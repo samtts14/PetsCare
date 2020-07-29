@@ -64,8 +64,8 @@ class _AddEventPageState extends State<AddEventPage> {
 //@override
   void asingDate(e,h) {
     //var now = DateTime.now();
-    var startTime = DateTime(e.year, e.month, e.day, h.hour, h.minute-1); // eg 7 AM
-    var endTime = DateTime(e.year, e.month, e.day,  h.hour, h.minute + 1); // eg 10 PM
+    var startTime = DateTime(e.year, e.month, e.day, h.hour-2, h.minute); // eg 7 AM
+    var endTime = DateTime(e.year, e.month, e.day,  h.hour, h.minute); // eg 10 PM
     setStartTime(startTime);
     setEndTime(endTime);
     print(startTime.toString() + "//////////////////////////////////");
@@ -214,7 +214,7 @@ class _AddEventPageState extends State<AddEventPage> {
       if (a) {
         print("holaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
         await AndroidAlarmManager.periodic(
-            Duration(seconds: 1), 0, periodicCallback);
+            Duration(minutes: 59), 1, periodicCallback);
         onlyOneTimePeriodic();
       } else {
         print("holeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
