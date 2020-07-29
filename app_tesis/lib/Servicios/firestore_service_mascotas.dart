@@ -1,15 +1,15 @@
 import 'package:petscare/Servicios/animal.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class FirestoreService{
-  static final FirestoreService _firestoreService = FirestoreService._internal();
+class FirestoreServiceAnimal{
+  static final FirestoreServiceAnimal _firestoreService = FirestoreServiceAnimal._internal();
   Firestore _db= Firestore.instance;
   
-  FirestoreService._internal(); 
+  FirestoreServiceAnimal._internal(); 
   
   
 
-  factory FirestoreService(){
+  factory FirestoreServiceAnimal(){
     return _firestoreService;
   }
 
@@ -39,5 +39,7 @@ class FirestoreService{
   Future<void> updateAnimal(Animal animal){
     return _db.collection('pets').document(animal.id).updateData(animal.toMap());
   }
+
+  
 
 }

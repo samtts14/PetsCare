@@ -21,7 +21,7 @@ class Mascotas extends StatelessWidget {
         backgroundColor: Colors.brown[600],
       ),
      body: StreamBuilder(
-       stream: FirestoreService().getAnimales(email),
+       stream: FirestoreServiceAnimal().getAnimales(email),
        builder: (BuildContext context, AsyncSnapshot <List<Animal>> snapshot){
          if(snapshot.hasError || !snapshot.hasData){
            return CircularProgressIndicator();//cargando. Hay que centrarlo
@@ -92,8 +92,8 @@ class Mascotas extends StatelessWidget {
   void _deleteAnimal(BuildContext context,String id, mascota) async{
     if(await _showConfirmationDialog(context)){
       try {
-            await FirestoreService().deleteAnimal(id);
-            await FirestoreService().deleteAnimalFromHistorial(mascota);
+            await FirestoreServiceAnimal().deleteAnimal(id);
+            await FirestoreServiceAnimal().deleteAnimalFromHistorial(mascota);
         } catch (e) {
           print(e);
      }

@@ -323,37 +323,7 @@ class _AddAnimalPageState extends State<AddAnimalPage> {
                       child: Text(_dateText, style: new TextStyle(fontSize: 18.0, color: Colors.black),))
                   ],
                 ),
-              ),
-              new Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: new Row(
-                  children: <Widget>[
-                    new Expanded(child: Text("Ultima visita al Veterinario",style: new TextStyle(fontSize:18.0, color: Colors.black))),
-                    new FlatButton(
-                      onPressed: ()=> _selectVetDate(context), 
-                      child: Text(_dateString, style: new TextStyle(fontSize: 18.0, color: Colors.black),))
-                  ],
-                ),
-              ),
-              TextFormField(
-                textInputAction: TextInputAction.next,
-                // onEditingComplete: (){
-                //   FocusScope.of(context).requestFocus(_descriptionNode);
-                // },
-                
-                validator: (value){
-                  detalleVet= value;
-                  if(value == null || value.isEmpty){
-                    return "No puede quedar vacio";
-                  }
-                  return null;
-                },
-                decoration: InputDecoration(
-                  labelText: "Detalles de la visita al veterinario",
-                  border: OutlineInputBorder()
-                ),
-              ),
-              
+              ),              
               const SizedBox(height:20.0),
               RaisedButton(
                 color: Colors.yellow[800],
@@ -382,7 +352,7 @@ class _AddAnimalPageState extends State<AddAnimalPage> {
                         
                         id: widget.animal.id
                       );
-                       await FirestoreService().updateAnimal(animal);
+                       await FirestoreServiceAnimal().updateAnimal(animal);
                       }else{
                        Animal animal =  Animal(
                         especie: especie,
@@ -395,7 +365,7 @@ class _AddAnimalPageState extends State<AddAnimalPage> {
                        
                         
                       );
-                        await  FirestoreService().addAnimal(animal);
+                        await  FirestoreServiceAnimal().addAnimal(animal);
                       }                   
                       Navigator.pop(context);
                     } catch (e) {

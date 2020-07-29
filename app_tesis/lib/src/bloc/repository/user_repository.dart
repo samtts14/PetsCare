@@ -57,7 +57,7 @@ class UserRepository{
                         owner: user.email.toString(),
                         fecha: "Fecha"
                       );
-                        await  FirestoreService().addAnimal(animal);
+                        await  FirestoreServiceAnimal().addAnimal(animal);
       
       return result;
     }catch(e){
