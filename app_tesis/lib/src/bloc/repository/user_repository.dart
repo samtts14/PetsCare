@@ -1,11 +1,19 @@
 //imports
 import 'dart:async';
+import 'package:petscare/Servicios/firestore_service_mascotas.dart';
+import 'package:petscare/Servicios/animal.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class UserRepository{
   final FirebaseAuth _firebaseAuth;
   final GoogleSignIn _googleSignIn;
+  String name = '';
+  String especie = '';
+  String raza = '';
+  String edad = '';
+  String sexo = '';
+  String owner = '';
 
   //Constructor
   UserRepository({FirebaseAuth firebaseAuth, GoogleSignIn googleSignIn})
@@ -41,6 +49,15 @@ class UserRepository{
         password: password
       );
       FirebaseUser user = result.user;
+      Animal animal =  Animal(
+                        especie: "Especie",
+                        name: "Nombre",
+                        raza: "Raza",
+                        sexo: "Sexo",
+                        owner: user.email.toString(),
+                        fecha: "Fecha"
+                      );
+                        await  FirestoreService().addAnimal(animal);
       
       return result;
     }catch(e){

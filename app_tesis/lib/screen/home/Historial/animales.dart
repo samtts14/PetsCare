@@ -32,8 +32,8 @@ class Mascotas extends StatelessWidget {
              Animal animal = snapshot.data[index];
               return Card(
                 child: ListTile(
-                title: Text(animal.name),
-                subtitle: Text(animal.especie),
+                title: Text("Nombre: ${animal.name}"),
+                subtitle: Text("Especie: ${animal.especie}"),
                 trailing: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
