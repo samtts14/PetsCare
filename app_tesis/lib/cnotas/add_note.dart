@@ -1,8 +1,6 @@
 import 'package:petscare/Servicios/firestore_service.dart';
 import 'package:petscare/Servicios/note.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-// import 'package:firebase_auth/firebase_auth.dart';
-import 'package:petscare/src/bloc/repository/user_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 

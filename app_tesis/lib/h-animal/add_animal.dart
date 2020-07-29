@@ -15,24 +15,24 @@ class AddAnimalPage extends StatefulWidget {
 class _AddAnimalPageState extends State<AddAnimalPage> {
   GlobalKey<FormState> _key = GlobalKey<FormState>();
   TextEditingController _nameController;
-  TextEditingController _especie;// No en funcionamiento.
-  TextEditingController _raza;
-  TextEditingController _sexo;
-  TextEditingController _owner;
+  // TextEditingController _especie;// No en funcionamiento.
+  // TextEditingController _raza;
+  // TextEditingController _sexo;
+  // TextEditingController _owner;
   //DateTime _dateTime;
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   FocusNode _descriptionNode;
   FirebaseUser user;
-  List<String> _tipoDeMascota = <String>[
-    'Perro',
-    'Gato',
-    'Ave',
-  ];
-  List<String> _razaDeMascota = <String>[
-      'Cacatua',
-      'Loro',
-      'Perico',
-  ];
+  // List<String> _tipoDeMascota = <String>[
+  //   'Perro',
+  //   'Gato',
+  //   'Ave',
+  // ];
+  // List<String> _razaDeMascota = <String>[
+  //     'Cacatua',
+  //     'Loro',
+  //     'Perico',
+  // ];
 
   String name = '';
   String especie = 'Seleciona el tipo de Mascota';
@@ -86,13 +86,13 @@ class _AddAnimalPageState extends State<AddAnimalPage> {
     super.initState();
     _nameController =  TextEditingController(text: isEditMote ?
     widget.animal.name: "");
-    _especie = TextEditingController(text: isEditMote ?
-    widget.animal.especie: "");
+    // _especie = TextEditingController(text: isEditMote ?
+    // widget.animal.especie: "");
     _descriptionNode = FocusNode();
-     _raza =  TextEditingController(text: isEditMote ?
-    widget.animal.raza: "");
-     _sexo =  TextEditingController(text: isEditMote ?
-    widget.animal.sexo: "");
+    //  _raza =  TextEditingController(text: isEditMote ?
+    // widget.animal.raza: "");
+    //  _sexo =  TextEditingController(text: isEditMote ?
+    // widget.animal.sexo: "");
     
 
     super.initState();

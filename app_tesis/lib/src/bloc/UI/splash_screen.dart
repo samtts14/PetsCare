@@ -11,6 +11,6 @@ class  SplashScreen extends StatelessWidget {
           size: 50.0,
         ),
       ),
-    );;
+    );
   }
 }

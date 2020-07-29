@@ -1,5 +1,3 @@
-import 'package:petscare/models/user.dart';
-
 class Note{
   final String title;
   final String description;

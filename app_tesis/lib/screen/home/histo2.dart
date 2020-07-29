@@ -89,14 +89,6 @@ class _Historial2State extends State<Historial2> {
                   trailing: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
-                     /* IconButton(
-                        color: Colors.blue,
-                        icon: Icon(Icons.edit),
-                        onPressed: () => Navigator.push(context,
-                          MaterialPageRoute(
-                            builder: (_) => AddHistorialPage(historial : historial, email: widget.email,),
-                          ))
-                        ),*/
                       IconButton(
                         color: Colors.red,
                         icon: Icon(Icons.delete),

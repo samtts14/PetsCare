@@ -117,15 +117,6 @@ class _MenuCentralState extends State<MenuCentral>{
                 leading: Icon(Icons.home),
               ),
             ),
-
-            //  InkWell(
-            //   onTap: (){},//Boton home menu lateral
-            //   child: ListTile(
-            //     title: Text('Mi cuenta'),
-            //     leading: Icon(Icons.person),
-            //   ),
-            // ),
-
              InkWell(
               onTap:() async{
                

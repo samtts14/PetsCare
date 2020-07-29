@@ -1,6 +1,5 @@
 
 import 'package:petscare/screen/authenticate/login2.dart';
-import 'package:petscare/screen/home/Historial/add_historial.dart';
 import 'package:petscare/screen/home/Historial/animales.dart';
 import 'package:petscare/screen/home/citas/event_page.dart';
 import 'package:petscare/screen/home/histo2.dart';

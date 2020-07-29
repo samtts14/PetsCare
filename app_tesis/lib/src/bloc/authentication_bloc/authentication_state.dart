@@ -1,6 +1,6 @@
-import 'package:petscare/src/bloc/authentication_bloc/bloc.dart';
+
 import 'package:equatable/equatable.dart';
-import 'package:flutter/rendering.dart';
+
 
 abstract class AuthenticationState extends Equatable{
   const AuthenticationState();

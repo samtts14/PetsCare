@@ -28,7 +28,6 @@ class HistorialDetailsPage extends StatelessWidget {
             Text(historial.fecha, style:TextStyle(
               fontSize: 16.0
             ),),
-            //const SizedBox(height: 30.0),
           ],
         ),
       ),

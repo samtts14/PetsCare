@@ -1,15 +1,9 @@
-import 'package:petscare/Servicios/firestore_service.dart';
 import 'package:petscare/Servicios/firestore_service_historial.dart';
-
-import 'package:petscare/Servicios/animal.dart';
 import 'package:petscare/Servicios/vacunas.dart';
-import 'package:petscare/h-animal/add_animal.dart';
-import 'package:petscare/models/user.dart';
 import 'package:petscare/screen/home/Historial/add_historial.dart';
 import 'package:petscare/screen/home/Historial/historial_details.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:petscare/h-animal/animal_details.dart';
+
 
 class HistorialVacuna extends StatelessWidget {
   final String email;
@@ -42,14 +36,6 @@ class HistorialVacuna extends StatelessWidget {
                 trailing: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
-                    //  IconButton(
-                    //   color: Colors.blue,
-                    //   icon: Icon(Icons.edit),
-                    //   onPressed: () => Navigator.push(context,
-                    //     MaterialPageRoute(
-                    //       builder: (_) => AddHistorial(vacuna : vacuna),
-                    //     ))
-                    //   ),
                     IconButton(
                       color: Colors.red,
                       icon: Icon(Icons.delete),
