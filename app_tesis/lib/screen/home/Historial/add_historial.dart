@@ -25,6 +25,7 @@ class _AddHistorialPageState extends State<AddHistorialPage> {
   DateTime _dueDate = new DateTime.now();
     String _dateText = 'Elegir fecha';
   String _selectedDate = 'Elegir fecha';
+  String mascotaId = "";
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   var mascota;
   
@@ -124,6 +125,7 @@ class _AddHistorialPageState extends State<AddHistorialPage> {
                           final snackBar = SnackBar(
                             content: Text("Selecciono a ${mascotas}",style: TextStyle(color: Colors.cyan)),
                             );
+                            
                             Scaffold.of(context).showSnackBar(snackBar);
                             setState(() {
                               mascota = mascotas;
