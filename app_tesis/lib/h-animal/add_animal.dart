@@ -15,11 +15,7 @@ class AddAnimalPage extends StatefulWidget {
 class _AddAnimalPageState extends State<AddAnimalPage> {
   GlobalKey<FormState> _key = GlobalKey<FormState>();
   TextEditingController _nameController;
-  // TextEditingController _especie;// No en funcionamiento.
-  // TextEditingController _raza;
-  // TextEditingController _sexo;
-  // TextEditingController _owner;
-  //DateTime _dateTime;
+  
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   FocusNode _descriptionNode;
   FirebaseUser user;
