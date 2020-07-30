@@ -23,16 +23,7 @@ class _AddAnimalPageState extends State<AddAnimalPage> {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   FocusNode _descriptionNode;
   FirebaseUser user;
-  // List<String> _tipoDeMascota = <String>[
-  //   'Perro',
-  //   'Gato',
-  //   'Ave',
-  // ];
-  // List<String> _razaDeMascota = <String>[
-  //     'Cacatua',
-  //     'Loro',
-  //     'Perico',
-  // ];
+
 
   String name = '';
   String especie = 'Seleciona el tipo de Mascota';
