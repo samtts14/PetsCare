@@ -51,7 +51,23 @@ class _AddAnimalPageState extends State<AddAnimalPage> {
       context: context,
       initialDate: _dueDate,
       firstDate: DateTime(2020),
-      lastDate: DateTime(2060)
+      lastDate: DateTime(2060),
+       builder: (BuildContext context, Widget child) {
+            return Theme(
+              data: ThemeData.from(colorScheme: 
+                    ColorScheme.light(
+                    primary: Colors.brown[600],
+                    onPrimary: Colors.white,
+                    surface: Colors.brown[600],
+                    onSurface: Colors.black,
+                    background: Colors.white,
+                    onBackground: Colors.black
+                    ),
+               // dialogBackgroundColor:Colors.white,
+              ),
+              child: child,
+            );
+          },
     );
 
     if(picked != null){
@@ -65,21 +81,22 @@ class _AddAnimalPageState extends State<AddAnimalPage> {
   DateTime _vetDate = new DateTime.now();
     String _dateString = '';
 
-  Future<Null> _selectVetDate(BuildContext context) async{
-    final picked = await showDatePicker(
-      context: context,
-      initialDate: _vetDate,
-      firstDate: DateTime(2020),
-      lastDate: DateTime(2060)
-    );
+  // Future<Null> _selectVetDate(BuildContext context) async{
+  //   final picked = await showDatePicker(
+  //     context: context,
+  //     initialDate: _vetDate,
+  //     firstDate: DateTime(2020),
+  //     lastDate: DateTime(2060),
+      
+  //   );
 
-    if(picked != null){
-      setState(() {
-        _vetDate = picked;
-        _dateString = '${picked.day}/${picked.month}/${picked.year}';
-      });
-    }
-  }
+  //   if(picked != null){
+  //     setState(() {
+  //       _vetDate = picked;
+  //       _dateString = '${picked.day}/${picked.month}/${picked.year}';
+  //     });
+  //   }
+  // }
 
   @override
   void initState() {

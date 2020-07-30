@@ -111,7 +111,7 @@ class _RegisterFormState extends State<RegisterForm> {
                 children: <Widget>[
                   FadeAnimation(1, Text("Crear cuenta", style: TextStyle(color: Colors.black, fontSize: 40),)),
                   SizedBox(height: 10,),
-                  FadeAnimation(1.3, Text(" Registrate con nosotros!", style: TextStyle(color: Colors.black, fontSize: 18),)),
+                  FadeAnimation(1.3, Text("¡Registrate con nosotros!", style: TextStyle(color: Colors.black, fontSize: 18),)),
                 ],
               ),
             ),
@@ -145,14 +145,14 @@ class _RegisterFormState extends State<RegisterForm> {
                             decoration: BoxDecoration(
                               border: Border(bottom: BorderSide(color: Colors.grey[200]))
                             ),
-                            child: TextField(
-                              decoration: InputDecoration(
-                                icon: Icon(Icons.people),
-                                hintText: "Nombre de usuario",
-                                hintStyle: TextStyle(color: Colors.grey),
-                                border: InputBorder.none
-                              ),
-                            ),
+                            // child: TextField(
+                            //   decoration: InputDecoration(
+                            //     icon: Icon(Icons.people),
+                            //     hintText: "Nombre de usuario",
+                            //     hintStyle: TextStyle(color: Colors.grey),
+                            //     border: InputBorder.none
+                            //   ),
+                            // ),
                           ),
                           // colocar e-mail
                           Container(
@@ -172,7 +172,7 @@ class _RegisterFormState extends State<RegisterForm> {
                               autocorrect: false,
                               autovalidate: true,
                               validator: (_){
-                                return !state.isEmailValid? 'Email invalido' : null;
+                                return !state.isEmailValid? 'E-mail invalido' : null;
                               },
                             ),
                           ),

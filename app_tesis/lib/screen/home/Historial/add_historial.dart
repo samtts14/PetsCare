@@ -46,7 +46,24 @@ class _AddHistorialPageState extends State<AddHistorialPage> {
       context: context, 
       initialDate: _dueDate,
       firstDate: DateTime(2020),
-      lastDate: DateTime(2060)
+      lastDate: DateTime(2060),
+      builder: (BuildContext context, Widget child) {
+            return Theme(
+              data: ThemeData.from(colorScheme: 
+                    ColorScheme.light(
+                    primary: Colors.brown[600],
+                    onPrimary: Colors.white,
+                    surface: Colors.brown[600],
+                    onSurface: Colors.black,
+                    background: Colors.white,
+                    onBackground: Colors.black
+                    ),
+               // dialogBackgroundColor:Colors.white,
+              ),
+              child: child,
+            );
+          },
+      
     );
 
     if(datepick != null ) setState(() {

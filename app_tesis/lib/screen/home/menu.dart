@@ -78,7 +78,7 @@ class _MenuCentralState extends State<MenuCentral>{
       
        appBar: new AppBar(
         backgroundColor: Colors.brown[600], //Color del bacground del titulo
-        title:Text('petscare') ,// Titulo de la app en el home page
+        title:Text('Pets Care') ,// Titulo de la app en el home page
         actions: <Widget>[
          // new IconButton(icon: Icon(Icons.search, color: Colors.black87,), onPressed: (){})//boton de buscar
         ],
@@ -91,7 +91,7 @@ class _MenuCentralState extends State<MenuCentral>{
          
 //header   
           new UserAccountsDrawerHeader(
-            accountName: Text('nombre de usuario'),
+            accountName: Text('E-mail'),
             
             accountEmail: Text('${widget.name}'),
             currentAccountPicture: GestureDetector( // foto de perfil

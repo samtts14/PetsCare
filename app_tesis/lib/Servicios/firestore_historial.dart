@@ -12,7 +12,7 @@ class FirestoreService{
   }
   Stream<List<HistorialServ>>getHistorial(mascota, email){
     return _db
-    .collection('historial').where("mascota", isEqualTo: mascota).where('owner', isEqualTo: email).snapshots().map(
+    .collection('historial').where("mascota", isEqualTo: mascota).where('owner', isEqualTo: email).orderBy("fecha",descending:true).snapshots().map(
       (snapshot)=>snapshot.documents.map(
         (doc)=>HistorialServ.fromMap(doc.data, doc.documentID),
       ).toList(),

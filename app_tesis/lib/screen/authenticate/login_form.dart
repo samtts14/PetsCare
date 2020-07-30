@@ -52,7 +52,7 @@ bool isButtonLoginEnable(LoginState state){
                SnackBar(
                  content: Row(
                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                   children:[ Text('Fallo en inicio de sesion'), Icon(Icons.error)],
+                   children:[ Text('Fallo en inicio de sesión'), Icon(Icons.error)],
                  ),
                  backgroundColor: Colors.red,
               ),
@@ -66,7 +66,7 @@ bool isButtonLoginEnable(LoginState state){
                SnackBar(
                  content: Row(
                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                   children:[ Text('Iniciando sesion...'),
+                   children:[ Text('Iniciando sesión...'),
                    CircularProgressIndicator()],
                    
                  ),
@@ -101,9 +101,9 @@ bool isButtonLoginEnable(LoginState state){
 
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                FadeAnimation(1, Text("Inicio de sesion", style: TextStyle(color: Colors.black, fontSize: 40),)),
+                FadeAnimation(1, Text("Inicio de sesión", style: TextStyle(color: Colors.black, fontSize: 40),)),
                 SizedBox(height: 10,),
-                FadeAnimation(1.3, Text("Bienvenido nuevamente!", style: TextStyle(color: Colors.black, fontSize: 18),)),
+                FadeAnimation(1.3, Text("¡Bienvenido nuevamente!", style: TextStyle(color: Colors.black, fontSize: 18),)),
               ],
             ),
             SizedBox(height: 20,),
