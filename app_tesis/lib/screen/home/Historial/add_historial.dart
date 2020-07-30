@@ -23,7 +23,8 @@ class _AddHistorialPageState extends State<AddHistorialPage> {
   TextEditingController _descriptionController;
   FocusNode _descriptionNode;
   DateTime _dueDate = new DateTime.now();
-    String _dateText = 'Elegir fecha';
+  String _dateText = 'Elegir fecha';
+  Timestamp fecha;
   String _selectedDate = 'Elegir fecha';
   String mascotaId = "";
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
@@ -69,6 +70,8 @@ class _AddHistorialPageState extends State<AddHistorialPage> {
     if(datepick != null ) setState(() {
       _selectedDate = datepick.toString();
       _dateText = '${datepick.day}/${datepick.month}/${datepick.year}';
+      fecha = Timestamp.fromMillisecondsSinceEpoch(datepick.millisecondsSinceEpoch);
+      print("${datepick}");
     });
   }
   Future<String> get user async{
@@ -190,7 +193,8 @@ class _AddHistorialPageState extends State<AddHistorialPage> {
                         descripcion: _descriptionController.text,
                         titulo: _titleController.text,
                         owner: email,
-                        fecha: _dateText,
+                        fechaString: _dateText,
+                        fecha: fecha,
                         mascota: mascota,
                         id: widget.historial.id
                       );
@@ -199,8 +203,9 @@ class _AddHistorialPageState extends State<AddHistorialPage> {
                        HistorialServ historial =  HistorialServ(
                         descripcion: _descriptionController.text,
                         titulo: _titleController.text,
+                         fechaString: _dateText,
                         owner: email,
-                        fecha: _dateText,
+                        fecha: fecha,
                         mascota: mascota,
                         
                       );

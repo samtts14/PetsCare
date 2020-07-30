@@ -84,7 +84,7 @@ class _Historial2State extends State<Historial2> {
              HistorialServ historial = snapshot.data[index];
               return Card(
                 child: ListTile(
-                  title: Text(historial.titulo),
+                  title: Text(historial.fechaString),
                   subtitle: Text(historial.descripcion),
                   trailing: Row(
                     mainAxisSize: MainAxisSize.min,

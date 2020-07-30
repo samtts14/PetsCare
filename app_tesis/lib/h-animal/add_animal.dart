@@ -309,7 +309,7 @@ class _AddAnimalPageState extends State<AddAnimalPage> {
                           
                         ],
                         onChanged: (_value) => {
-                          print(_value.toString()),
+                          
                           setState((){
                             sexo = _value;
                           })
@@ -370,6 +370,7 @@ class _AddAnimalPageState extends State<AddAnimalPage> {
                         
                       );
                         await  FirestoreServiceAnimal().addAnimal(animal);
+                        print("/////////////////////////////////////");
                       }                   
                       Navigator.pop(context);
                     } catch (e) {
