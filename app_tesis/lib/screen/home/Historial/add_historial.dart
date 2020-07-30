@@ -82,7 +82,7 @@ class _AddHistorialPageState extends State<AddHistorialPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(isEditMote ? 'Editar nota' : 'Añadir notas'),
+        title: Text(isEditMote ? 'Editar historial' : 'Añadir historial'),
          backgroundColor: Colors.brown[600],
       ),
       body: SingleChildScrollView(
