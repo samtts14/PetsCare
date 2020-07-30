@@ -48,6 +48,22 @@ class _EditEventPageState extends State<EditEventPage> {
       initialDate: new DateTime.now(), 
       firstDate: new DateTime.now().add(Duration(days: -365)), 
       lastDate: new DateTime.now().add(Duration(days: 365)), 
+       builder: (BuildContext context, Widget child) {
+            return Theme(
+              data: ThemeData.from(colorScheme: 
+                    ColorScheme.light(
+                    primary: Colors.brown[600],
+                    onPrimary: Colors.white,
+                    surface: Colors.brown[600],
+                    onSurface: Colors.black,
+                    background: Colors.white,
+                    onBackground: Colors.black
+                    ),
+               // dialogBackgroundColor:Colors.white,
+              ),
+              child: child,
+            );
+          }
     );
 
   setState(() {

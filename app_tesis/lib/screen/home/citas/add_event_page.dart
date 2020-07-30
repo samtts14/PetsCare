@@ -231,7 +231,7 @@ class _AddEventPageState extends State<AddEventPage> {
       if (a) {
         print("holaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
         await AndroidAlarmManager.periodic(
-            Duration(minutes: 59), 1, periodicCallback);
+            Duration(minutes: 10), 1, periodicCallback);
         onlyOneTimePeriodic();
       } else {
         print("holeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
